@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Magazyn.Entities
 {
-    internal class Role
+    internal class UserPermission
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int UserId { get; set; }
+        public List<User> Users { get; set; }
+        public Permission Permission { get; set; }
     }
 }

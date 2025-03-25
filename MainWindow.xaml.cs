@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Magazyn.Entities;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,17 @@ namespace Magazyn
     /// </summary>
     public partial class MainWindow : Window
     {
+        WarehouseDbContext context;
         public MainWindow()
         {
+            context = new WarehouseDbContext();
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Address address = context.Addresses.FirstOrDefault(e=>e.Id==1);
+            MessageBox.Show(address.Street);
         }
     }
 }
