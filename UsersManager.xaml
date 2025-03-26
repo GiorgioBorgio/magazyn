@@ -130,16 +130,7 @@
     <Grid>
         <!-- Pasek górny -->
         <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
-            <DockPanel Margin="20,0" LastChildFill="False">
-                <TextBlock Text="👥 User Management" FontSize="18" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
-                <Button Name="ButtonAddUser"
-                        Content="Add User"
-                        VerticalAlignment="Center"
-                        Width="100" Height="30"
-                        Style="{StaticResource RoundedButtonStyle}"
-                        DockPanel.Dock="Right"
-                        Background="#22C55E" Foreground="White" Click="ButtonAddUser_Click"/>
-            </DockPanel>
+            <TextBox x:Name="TextBoxSearch" HorizontalAlignment="Left" Height="20" Margin="343,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="385" TextChanged="TextBoxSearch_TextChanged" />
         </Border>
 
         <!-- Główna zawartość -->

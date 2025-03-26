@@ -35,10 +35,11 @@ namespace Magazyn
             oknoDodajUser.ShowDialog(); // Otwiera nowe okno modalnie
             RefreshUserDataGrid();
         }
-        private void RefreshUserDataGrid()
+        private void RefreshUserDataGrid(string searchText = "")
         {
             UserDataGrid.ItemsSource = null; // Resetujemy źródło
-            UserDataGrid.ItemsSource = _context.Users.ToList(); // Ładujemy dane z listy User
+            UserDataGrid.ItemsSource = _context.Users.Where(e => ((e.FirstName.Contains(searchText) || e.Login.Contains(searchText)
+             || e.PESEL.Contains(searchText)) && (e.IsForgotten == false))).ToList();
         }
 
         private void Button_edycja_Click_1(object sender, RoutedEventArgs e)
@@ -77,5 +78,11 @@ namespace Magazyn
             UserDataGrid.ItemsSource = null;
             UserDataGrid.ItemsSource = _context.Users.ToList();
         }
+
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RefreshUserDataGrid(TextBoxSearch.Text);
+        }
+
     }
 }

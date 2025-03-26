@@ -124,6 +124,7 @@ namespace Magazyn
             }
             if (Textbox_pesel.Text.Length != 11 || !(Textbox_pesel.Text.All(char.IsDigit)))
             {
+                
                 MessageBox.Show("Proszę podać poprawny pesel.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
