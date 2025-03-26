@@ -75,8 +75,7 @@ namespace Magazyn
 
             var editWindow = new AddModifyUser(wybranyUser);
             editWindow.ShowDialog();
-            UserDataGrid.ItemsSource = null;
-            UserDataGrid.ItemsSource = _context.Users.ToList();
+            RefreshUserDataGrid();
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
