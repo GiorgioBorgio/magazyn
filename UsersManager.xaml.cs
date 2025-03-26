@@ -39,7 +39,7 @@ namespace Magazyn
         {
             UserDataGrid.ItemsSource = null; // Resetujemy źródło
             UserDataGrid.ItemsSource = _context.Users.Where(e => ((e.FirstName.Contains(searchText) || e.Login.Contains(searchText)
-             || e.PESEL.Contains(searchText)) && (e.IsForgotten == false))).ToList();
+             || e.PESEL.Contains(searchText) || e.LastName.Contains(searchText)) && (e.IsForgotten == false))).ToList();
         }
 
         private void Button_edycja_Click_1(object sender, RoutedEventArgs e)
