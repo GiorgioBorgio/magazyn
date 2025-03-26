@@ -18,10 +18,10 @@ namespace Magazyn
     /// <summary>
     /// Interaction logic for UsersMenager.xaml
     /// </summary>
-    public partial class UsersMenager : Window
+    public partial class UsersManager : Window
     {
         private WarehouseDbContext _context;
-        public UsersMenager()
+        public UsersManager()
         {
             _context = new WarehouseDbContext();
             InitializeComponent();

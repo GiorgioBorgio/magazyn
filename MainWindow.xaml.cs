@@ -26,8 +26,8 @@ namespace Magazyn
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            UsersMenager usersMenager = new UsersMenager();
-            usersMenager.Show();
+            UsersManager usersManager = new UsersManager();
+            usersManager.Show();
         }
 
     }
