@@ -1,0 +1,42 @@
+﻿<Window x:Class="Magazyn.AddModifyUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magazyn"
+        mc:Ignorable="d"
+                Title="Dodaj użytkownika" Height="530" Width="379">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="250*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="126,435,0,0" VerticalAlignment="Top" Height="45" Width="126" Click="Button_Dodaj_Click" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Textbox_imie" HorizontalAlignment="Left" Margin="63,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" />
+        <TextBox x:Name="Textbox_nazwisko" HorizontalAlignment="Left" Margin="63,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_miejscowość" HorizontalAlignment="Left" Margin="63,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label Content="Imie" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Miejscowość" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Mail" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Płeć" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Data urodzenia" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Pesel" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Numer lokalu (opcjonalne)" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014" Grid.ColumnSpan="2"/>
+        <Label Content="Numer posesji" HorizontalAlignment="Left" Margin="9,210,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Ulica " HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Numer telefonu" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <TextBox x:Name="Textbox_numer_telefonu" HorizontalAlignment="Left" Margin="63,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_mail" HorizontalAlignment="Left" Margin="63,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_pesel" HorizontalAlignment="Left" Margin="63,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_numer_lokalu" HorizontalAlignment="Left" Margin="63,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_numer_posesji" HorizontalAlignment="Left" Margin="63,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_ulica" HorizontalAlignment="Left" Margin="63,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="Textbox_kod_pocztowy" HorizontalAlignment="Left" Margin="63,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <DatePicker x:Name="Date_picker_data_urodzenia" HorizontalAlignment="Left" Margin="63,308,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <RadioButton x:Name="Radio_btn_kobieta" Content="Kobieta" HorizontalAlignment="Left" Margin="61,344,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <RadioButton x:Name="Radio_btn_mężczyzna" Content="Mężczyzna" HorizontalAlignment="Left" Margin="139,344,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.35,0.013" Grid.Column="1"/>
+
+    </Grid>
+</Window>

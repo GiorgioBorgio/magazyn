@@ -16,7 +16,6 @@ namespace Magazyn.Entities
         public DbSet<User> Users { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
         public DbSet<PasswordHistory> PasswordHistories { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Address>(eb =>
@@ -59,17 +58,8 @@ namespace Magazyn.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:testowanie-oprogramowania.database.windows.net,1433;Initial Catalog=WarehouseDB;User ID=magazyn_admin;Password=Angelic8-Grumbling6-Unblessed0-Darkness7-Cupped0;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tcp:testowanie-oprogramowania.database.windows.net,1433;Initial Catalog=WarehouseDB;User ID=magazyn_admin;Password=Angelic8-Grumbling6-Unblessed0-Darkness7-Cupped0;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"); 
         }
 
-        //public static string GetConnectionString()
-        //{
-        //    var builder = new ConfigurationBuilder()
-        //        .SetBasePath(Directory.GetParent(Directory.GetCurrentDirectory()).FullName)
-        //        .AddJsonFile("appsettings.json");
-
-        //    var config = builder.Build();
-        //    return config.GetConnectionString("MyDB");
-        //}
     }
 }

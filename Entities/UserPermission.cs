@@ -11,6 +11,7 @@ namespace Magazyn.Entities
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public int PermissionId { get; set; }
         public List<User> Users { get; set; }
         public Permission Permission { get; set; }
     }

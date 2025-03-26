@@ -26,8 +26,9 @@ namespace Magazyn
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Address address = context.Addresses.FirstOrDefault(e=>e.Id==1);
-            MessageBox.Show(address.Street);
+            UsersMenager usersMenager = new UsersMenager();
+            usersMenager.Show();
         }
+
     }
 }
