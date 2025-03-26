@@ -59,7 +59,7 @@ namespace Magazyn
 
                 // Wypełnij formularz istniejącymi danymi użytkownika
 
-
+                Textbox_login.Text = _edytowany_user.Login;
                 Textbox_imie.Text = _edytowany_user.FirstName;
                 Textbox_nazwisko.Text = _edytowany_user.LastName;
                 Textbox_miejscowość.Text = _edytowany_user.City;
@@ -89,6 +89,7 @@ namespace Magazyn
             // Tworzenie słownika z wymaganymi polami
             var wymagane_pola = new Dictionary<string, string>
             {
+                {"Login", Textbox_login.Text },
                 {"Imię", Textbox_imie.Text },
                 {"Nazwisko", Textbox_nazwisko.Text },
                 {"Miejscowość", Textbox_miejscowość.Text },
@@ -137,6 +138,7 @@ namespace Magazyn
             if (_edytowany_user != null)
             {
                 // Aktualizuj dane edytowanego użytkownika
+                user.Login = Textbox_login.Text;
                 user.FirstName = Textbox_imie.Text;
                 user.LastName = Textbox_nazwisko.Text;
                 user.City = Textbox_miejscowość.Text;
@@ -168,38 +170,40 @@ namespace Magazyn
                     //czarny zrub
 
                 }
+            }
+            else
+            {
+
+                if (Radio_btn_kobieta.IsChecked == true)
+                {
+                    plec = false;
+                }
                 else
                 {
-
-                    if (Radio_btn_kobieta.IsChecked == true)
-                    {
-                        plec = false;
-                    }
-                    else
-                    {
-                        plec = true;
-                    }
-                    user.FirstName = Textbox_imie.Text;
-                    user.LastName = Textbox_nazwisko.Text;
-                    user.City = Textbox_miejscowość.Text;
-                    user.PostalCode = Textbox_kod_pocztowy.Text;
-                    user.Street = Textbox_ulica.Text;
-                    user.ApartmentNumber = Textbox_numer_lokalu.Text;
-                    user.HouseNumber = Textbox_numer_posesji.Text;
-                    user.PESEL = Textbox_pesel.Text;
-                    user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-                    user.Gender = plec;
-                    user.Email = Textbox_mail.Text;
-                    user.PhoneNumber = Textbox_numer_telefonu.Text;
-                    //mapowanie z dto do user
-                    //
-
-                    User newUser = _mapper.Map<User>(user);
-                    //MessageBox.Show(_edytowany_user.FirstName);
-                    _context.Users.Add(newUser);
-                    _context.Addresses.Add(newUser.Address);
-
+                    plec = true;
                 }
+                user.Login = Textbox_login.Text;
+                user.FirstName = Textbox_imie.Text;
+                user.LastName = Textbox_nazwisko.Text;
+                user.City = Textbox_miejscowość.Text;
+                user.PostalCode = Textbox_kod_pocztowy.Text;
+                user.Street = Textbox_ulica.Text;
+                user.ApartmentNumber = Textbox_numer_lokalu.Text;
+                user.HouseNumber = Textbox_numer_posesji.Text;
+                user.PESEL = Textbox_pesel.Text;
+                user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
+                user.Gender = plec;
+                user.Email = Textbox_mail.Text;
+                user.PhoneNumber = Textbox_numer_telefonu.Text;
+                //mapowanie z dto do user
+                //
+
+                User newUser = _mapper.Map<User>(user);
+                //MessageBox.Show(_edytowany_user.FirstName);
+                _context.Users.Add(newUser);
+                _context.Addresses.Add(newUser.Address);
+
+            }
                 _context.SaveChanges();
 
 
@@ -209,4 +213,4 @@ namespace Magazyn
             }
         }
     }
-}
+

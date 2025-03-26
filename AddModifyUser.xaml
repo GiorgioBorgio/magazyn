@@ -12,10 +12,12 @@
             <ColumnDefinition Width="250*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="126,435,0,0" VerticalAlignment="Top" Height="45" Width="126" Click="Button_Dodaj_Click" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="Textbox_imie" HorizontalAlignment="Left" Margin="63,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" />
+        <TextBox x:Name="Textbox_login" HorizontalAlignment="Left" Margin="63,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" />
+        <TextBox x:Name="Textbox_imie" HorizontalAlignment="Left" Margin="63,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" />
         <TextBox x:Name="Textbox_nazwisko" HorizontalAlignment="Left" Margin="63,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBox x:Name="Textbox_miejscowość" HorizontalAlignment="Left" Margin="63,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <Label Content="Imie" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="9,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
+        <Label Content="Imie" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
         <Label Content="Miejscowość" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
         <Label Content="Mail" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.721,-0.014"/>
