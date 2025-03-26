@@ -52,7 +52,7 @@
                         CornerRadius="6"
                         SnapsToDevicePixels="True">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0">
-                                <TextBlock Text="⚙" FontSize="14" Margin="0,0,6,0"/>
+                                <TextBlock Text="⚙️" FontSize="14" Margin="0,0,6,0"/>
                                 <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -149,7 +149,11 @@
         <!-- Pasek górny -->
         <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
             <DockPanel Margin="20,0" LastChildFill="False">
-                <TextBlock Text="👥 User Management" FontSize="18" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock Text="👥 User Management" 
+                           FontSize="18" 
+                           Foreground="White" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center"/>
                 <Button Name="ButtonAddUser"
                         Content="Add User"
                         VerticalAlignment="Center"
@@ -236,10 +240,18 @@
                         <DataGridTemplateColumn Header="Actions" Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Modify" Click="ButtonModify_Click" Style="{StaticResource ModifyButtonStyle}" />
+                                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Button Content="Modify"
+                                                Click="ButtonModify_Click"
+                                                Style="{StaticResource ModifyButtonStyle}"
+                                                Width="100"                                     
+                                                Height="40"
+                                                Padding="10"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
