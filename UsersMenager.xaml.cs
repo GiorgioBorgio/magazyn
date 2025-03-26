@@ -56,7 +56,14 @@ namespace Magazyn
             UserDataGrid.ItemsSource = _context.Users.ToList();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            var oknoDodajUser = new AddModifyUser();
+            oknoDodajUser.ShowDialog(); // Otwiera nowe okno modalnie
+            RefreshUserDataGrid();
+        }
+
+        private void ButtonModify_Click(object sender, RoutedEventArgs e)
         {
             var wybranyUser = UserDataGrid.SelectedItem as User;
             if (wybranyUser == null)

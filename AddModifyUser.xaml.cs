@@ -28,6 +28,7 @@ namespace Magazyn
         private readonly IMapper _mapper;
         private CreateUserDto _edytowany_user;
         private WarehouseDbContext _context;
+        private User _existingUser;
         public AddModifyUser()
         {
             var config = new MapperConfiguration(cfg =>
@@ -53,11 +54,11 @@ namespace Magazyn
             if (edytowany_user != null)
             {
                 int userId = edytowany_user.Id;
-                edytowany_user = _context.Users.Include(u=>u.Address).First(e=>e.Id == userId);
+                edytowany_user = _context.Users.Include(u => u.Address).First(e => e.Id == userId);
                 _edytowany_user = _mapper.Map<CreateUserDto>(edytowany_user);
 
                 // Wypełnij formularz istniejącymi danymi użytkownika
-                
+
 
                 Textbox_imie.Text = _edytowany_user.FirstName;
                 Textbox_nazwisko.Text = _edytowany_user.LastName;
@@ -79,6 +80,7 @@ namespace Magazyn
                 {
                     Radio_btn_mężczyzna.IsChecked = true;
                 }
+                _existingUser = edytowany_user;
             }
         }
 
@@ -148,55 +150,63 @@ namespace Magazyn
                 user.PhoneNumber = Textbox_numer_telefonu.Text;
 
                 //tutaj nie dziala
-                User newUser = _mapper.Map<User>(user);
-                _context.Users.Update(newUser);
-                var address = _context.Addresses.First(e=>e.Id == newUser.AddressId);
-                address.Street = newUser.Address.Street;
-                address.City = newUser.Address.City;
-                address.ApartmentNumber = newUser.Address.ApartmentNumber;
-                address.HouseNumber = newUser.Address.HouseNumber; 
-                address.PostalCode = newUser.Address.PostalCode;   
-                //czarny zrub
 
-            }
-            else
-            {
-
-                if (Radio_btn_kobieta.IsChecked == true)
+                if (_existingUser != null)
                 {
-                    plec = false;
+                    var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
+                    _mapper.Map(user, _existingUser);
+                    _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
+
+
+
+
+                    //address.Street = newUser.Address.Street;
+                    //address.City = newUser.Address.City;
+                    //address.ApartmentNumber = newUser.Address.ApartmentNumber;
+                    //address.HouseNumber = newUser.Address.HouseNumber; 
+                    //address.PostalCode = newUser.Address.PostalCode;   
+                    //czarny zrub
+
                 }
                 else
                 {
-                    plec = true;
+
+                    if (Radio_btn_kobieta.IsChecked == true)
+                    {
+                        plec = false;
+                    }
+                    else
+                    {
+                        plec = true;
+                    }
+                    user.FirstName = Textbox_imie.Text;
+                    user.LastName = Textbox_nazwisko.Text;
+                    user.City = Textbox_miejscowość.Text;
+                    user.PostalCode = Textbox_kod_pocztowy.Text;
+                    user.Street = Textbox_ulica.Text;
+                    user.ApartmentNumber = Textbox_numer_lokalu.Text;
+                    user.HouseNumber = Textbox_numer_posesji.Text;
+                    user.PESEL = Textbox_pesel.Text;
+                    user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
+                    user.Gender = plec;
+                    user.Email = Textbox_mail.Text;
+                    user.PhoneNumber = Textbox_numer_telefonu.Text;
+                    //mapowanie z dto do user
+                    //
+
+                    User newUser = _mapper.Map<User>(user);
+                    //MessageBox.Show(_edytowany_user.FirstName);
+                    _context.Users.Add(newUser);
+                    _context.Addresses.Add(newUser.Address);
+
                 }
-                user.FirstName = Textbox_imie.Text;
-                user.LastName = Textbox_nazwisko.Text;
-                user.City = Textbox_miejscowość.Text;
-                user.PostalCode = Textbox_kod_pocztowy.Text;
-                user.Street = Textbox_ulica.Text;
-                user.ApartmentNumber = Textbox_numer_lokalu.Text;
-                user.HouseNumber = Textbox_numer_posesji.Text;
-                user.PESEL = Textbox_pesel.Text;
-                user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-                user.Gender = plec;
-                user.Email = Textbox_mail.Text;
-                user.PhoneNumber = Textbox_numer_telefonu.Text;
-                //mapowanie z dto do user
-                //
+                _context.SaveChanges();
 
-                User newUser = _mapper.Map<User>(user);
-                //MessageBox.Show(_edytowany_user.FirstName);
-                _context.Users.Add(newUser);
-                _context.Addresses.Add(newUser.Address);
 
+
+
+                this.Close();
             }
-            _context.SaveChanges();
-
-
-
-
-            this.Close();
         }
     }
 }
