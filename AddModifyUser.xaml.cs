@@ -257,6 +257,7 @@ namespace Magazyn
                 if (_existingUser != null)
                 {
                     var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
+                    user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
                     _mapper.Map(user, _existingUser);
                     _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
 
