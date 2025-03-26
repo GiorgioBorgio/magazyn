@@ -160,8 +160,20 @@
                 <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Border Background="#E2E8F0" BorderBrush="#CBD5E1" BorderThickness="1"
             CornerRadius="6" Height="38" Width="270" VerticalAlignment="Top">
-                        <DockPanel Margin="10,0">
-                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center" Margin="0,0,6,0" Foreground="#334155"/>
+                        <Grid Margin="10,0">
+                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
+                       Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
+
+                            <!-- Placeholder -->
+                            <TextBlock x:Name="PlaceholderText"
+                                       Text="Search"
+                                       FontSize="13"
+                                       Foreground="Gray"
+                                       Margin="24,0,0,0"
+                                       VerticalAlignment="Center"
+                                       IsHitTestVisible="False"
+                       Visibility="Visible"/>
+
                             <TextBox Name="TextBoxSearch"
                                      Width="200"
                                      BorderThickness="0"
@@ -169,12 +181,13 @@
                                      Foreground="#1E293B"
                                      FontSize="13"
                                      VerticalContentAlignment="Center"
+                                     Margin="24,0,0,0"
                                      TextChanged="TextBoxSearch_TextChanged"
-                                     Text=""
-                     />
-                        </DockPanel>
+                     Text=""/>
+                        </Grid>
                     </Border>
                 </DockPanel>
+
 
 
 

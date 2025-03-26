@@ -81,7 +81,12 @@ namespace Magazyn
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             RefreshUserDataGrid(TextBoxSearch.Text);
+            PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         }
+
+
 
     }
 }
