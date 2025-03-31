@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Magazyn.Entities
 {
-    internal class User
+    internal class User : INotifyPropertyChanged
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -28,6 +29,9 @@ namespace Magazyn.Entities
         public UserPermission UserPermission { get; set; }
         public List<PasswordHistory> PasswordHistories { get; set; }
         public List<User> ForgottenUsers { get; set; }
+
+        //zeby observable dzialalo
+        public event PropertyChangedEventHandler? PropertyChanged;
         //public int UserPermissionId { get; set; }
 
         //public List<Product> Products { get; set; }

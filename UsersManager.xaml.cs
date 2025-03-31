@@ -1,6 +1,8 @@
 ﻿using Magazyn.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace Magazyn
     public partial class UsersManager : Window
     {
         private WarehouseDbContext _context;
+        private List<User> _users = new List<User>();
         public UsersManager()
         {
             _context = new WarehouseDbContext();
@@ -28,38 +31,26 @@ namespace Magazyn
             RefreshUserDataGrid();
         }
 
-
-        private void Button_dodaj_Click(object sender, RoutedEventArgs e)
+        public void RefreshUserDataGrid(string searchText = "")
         {
-            var oknoDodajUser = new AddModifyUser();
-            oknoDodajUser.ShowDialog(); // Otwiera nowe okno modalnie
-            RefreshUserDataGrid();
-        }
-        private void RefreshUserDataGrid(string searchText = "")
-        {
+            _context.ChangeTracker.Clear();
+            var keywords = searchText.Split(' ');
             UserDataGrid.ItemsSource = null; // Resetujemy źródło
-            UserDataGrid.ItemsSource = _context.Users.Where(e => ((e.FirstName.Contains(searchText) || e.Login.Contains(searchText)
-             || e.PESEL.Contains(searchText) || e.LastName.Contains(searchText)) && (e.IsForgotten == false))).ToList();
+            var filteredUsers = _context.Users
+                .Where(user =>
+        keywords.All(kw =>
+            user.FirstName.ToLower().Contains(kw) ||
+            user.LastName.ToLower().Contains(kw) ||
+            user.Login.ToLower().Contains(kw) ||
+            user.PESEL.Contains(kw))).AsNoTracking().ToList();
+            _users = new List<User>(filteredUsers);
+            UserDataGrid.ItemsSource = _users;
         }
 
-        private void Button_edycja_Click_1(object sender, RoutedEventArgs e)
-        {
-            var wybranyUser = UserDataGrid.SelectedItem as User;
-            if (wybranyUser == null)
-            {
-                MessageBox.Show("Proszę wybrać użytkownika do edycji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            var editWindow = new AddModifyUser(wybranyUser);
-            editWindow.ShowDialog();
-            UserDataGrid.ItemsSource = null;
-            UserDataGrid.ItemsSource = _context.Users.ToList();
-        }
 
         private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
         {
-            var oknoDodajUser = new AddModifyUser();
+            var oknoDodajUser = new AddUser();
             oknoDodajUser.ShowDialog(); // Otwiera nowe okno modalnie
             RefreshUserDataGrid();
         }
@@ -73,7 +64,7 @@ namespace Magazyn
                 return;
             }
 
-            var editWindow = new AddModifyUser(wybranyUser);
+            var editWindow = new ModifyUser(wybranyUser, this);
             editWindow.ShowDialog();
             RefreshUserDataGrid();
         }

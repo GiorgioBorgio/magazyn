@@ -18,18 +18,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Magazyn
 {
     /// <summary>
     /// Interaction logic for AddModifyUser.xaml
     /// </summary>
-    public partial class AddModifyUser : Window
+    public partial class AddUser : Window
     {
         private readonly IMapper _mapper;
         private CreateUserDto _edytowany_user;
         private WarehouseDbContext _context;
         private User _existingUser;
-        public AddModifyUser()
+        public AddUser()
         {
             var config = new MapperConfiguration(cfg =>
             {
@@ -41,48 +42,8 @@ namespace Magazyn
             InitializeComponent();
 
         }
-        internal AddModifyUser(User edytowany_user)
-        {
-            _context = new WarehouseDbContext();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new WarehouseMappingProfile());
-            });
-            var mapper = config.CreateMapper();
-            _mapper = config.CreateMapper();
-            InitializeComponent();
-            if (edytowany_user != null)
-            {
-                int userId = edytowany_user.Id;
-                edytowany_user = _context.Users.Include(u => u.Address).First(e => e.Id == userId);
-                _edytowany_user = _mapper.Map<CreateUserDto>(edytowany_user);
-
-                // Wypełnij formularz istniejącymi danymi użytkownika
-
-                Textbox_login.Text = _edytowany_user.Login;
-                Textbox_imie.Text = _edytowany_user.FirstName;
-                Textbox_nazwisko.Text = _edytowany_user.LastName;
-                Textbox_miejscowość.Text = _edytowany_user.City;
-                Textbox_kod_pocztowy.Text = _edytowany_user.PostalCode;
-                Textbox_ulica.Text = _edytowany_user.Street;
-                Textbox_numer_lokalu.Text = _edytowany_user.ApartmentNumber;
-                Textbox_numer_posesji.Text = _edytowany_user.HouseNumber;
-                Textbox_pesel.Text = _edytowany_user.PESEL;
-                Date_picker_data_urodzenia.SelectedDate = _edytowany_user.DateOfBirth;
-                Textbox_mail.Text = _edytowany_user.Email;
-                Textbox_numer_telefonu.Text = _edytowany_user.PhoneNumber;
-
-                if (_edytowany_user.Gender == false)
-                {
-                    Radio_btn_kobieta.IsChecked = true;
-                }
-                else
-                {
-                    Radio_btn_mężczyzna.IsChecked = true;
-                }
-                _existingUser = edytowany_user;
-            }
-        }
+        
+        
 
         private bool Walidacja()
         {
@@ -252,7 +213,7 @@ namespace Magazyn
                 user.Email = Textbox_mail.Text;
                 user.PhoneNumber = Textbox_numer_telefonu.Text;
 
-                //tutaj nie dziala
+                
 
                 if (_existingUser != null)
                 {
@@ -260,17 +221,7 @@ namespace Magazyn
                     user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
                     _mapper.Map(user, _existingUser);
                     _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
-
-
-
-
-                    //address.Street = newUser.Address.Street;
-                    //address.City = newUser.Address.City;
-                    //address.ApartmentNumber = newUser.Address.ApartmentNumber;
-                    //address.HouseNumber = newUser.Address.HouseNumber; 
-                    //address.PostalCode = newUser.Address.PostalCode;   
-                    //czarny zrub
-
+  
                 }
             }
             else
@@ -301,17 +252,18 @@ namespace Magazyn
                 //
 
                 User newUser = _mapper.Map<User>(user);
-                //MessageBox.Show(_edytowany_user.FirstName);
                 _context.Users.Add(newUser);
                 _context.Addresses.Add(newUser.Address);
 
             }
-                _context.SaveChanges();
+            _context.SaveChanges();
+            //RefreshUserDataGrid();
 
 
 
 
-                this.Close();
+
+            this.Close();
             }
         }
     }

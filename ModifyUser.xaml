@@ -1,0 +1,160 @@
+﻿<Window x:Class="Magazyn.ModifyUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magazyn"
+        mc:Ignorable="d"
+                Title="Edytuj użytkownika" Height="673" Width="450" ResizeMode="NoResize"
+        Background="#f2f2f2">
+    <Window.Resources>
+        <!-- Definicje kolorów -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#4CAF50"/>
+        <SolidColorBrush x:Key="SecondaryColor" Color="#333333"/>
+        <SolidColorBrush x:Key="TextBoxBackground" Color="White"/>
+        <SolidColorBrush x:Key="BorderColor" Color="#ccc"/>
+
+        <!-- Styl etykiet -->
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{StaticResource SecondaryColor}"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Styl pól tekstowych -->
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="Background" Value="{StaticResource TextBoxBackground}"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+
+        <!-- Styl DatePicker -->
+        <Style TargetType="DatePicker">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+
+        <!-- Styl przycisku -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="126"/>
+        </Style>
+
+        <!-- Styl RadioButton -->
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5,0,5,0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10,10,10,6">
+        <!-- Definicje wierszy -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Login -->
+            <RowDefinition Height="Auto"/>
+            <!-- Imię -->
+            <RowDefinition Height="Auto"/>
+            <!-- Nazwisko -->
+            <RowDefinition Height="Auto"/>
+            <!-- Miejscowość -->
+            <RowDefinition Height="Auto"/>
+            <!-- Kod pocztowy -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ulica -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer posesji -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer lokalu (opcjonalne) -->
+            <RowDefinition Height="Auto"/>
+            <!-- Pesel -->
+            <RowDefinition Height="Auto"/>
+            <!-- Data urodzenia -->
+            <RowDefinition Height="Auto"/>
+            <!-- Płeć -->
+            <RowDefinition Height="Auto"/>
+            <!-- Mail -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer telefonu -->
+            <RowDefinition Height="*"/>
+            <!-- Wypełnienie -->
+            <RowDefinition Height="Auto"/>
+            <!-- Przycisk -->
+        </Grid.RowDefinitions>
+
+        <!-- Definicje kolumn -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Wiersz 0: Login -->
+        <Label Content="Login" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_login" Grid.Row="0" Grid.Column="1"/>
+
+        <!-- Wiersz 1: Imię -->
+        <Label Content="Imię" Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_imie" Grid.Row="1" Grid.Column="1"/>
+
+        <!-- Wiersz 2: Nazwisko -->
+        <Label Content="Nazwisko" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_nazwisko" Grid.Row="2" Grid.Column="1"/>
+
+        <!-- Wiersz 3: Miejscowość -->
+        <Label Content="Miejscowość" Grid.Row="3" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_miejscowość" Grid.Row="3" Grid.Column="1"/>
+
+        <!-- Wiersz 4: Kod pocztowy -->
+        <Label Content="Kod pocztowy" Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_kod_pocztowy" Grid.Row="4" Grid.Column="1"/>
+
+        <!-- Wiersz 5: Ulica -->
+        <Label Content="Ulica" Grid.Row="5" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_ulica" Grid.Row="5" Grid.Column="1"/>
+
+        <!-- Wiersz 6: Numer posesji -->
+        <Label Content="Numer posesji" Grid.Row="6" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_numer_posesji" Grid.Row="6" Grid.Column="1"/>
+
+        <!-- Wiersz 7: Numer lokalu (opcjonalne) -->
+        <Label Content="Numer lokalu (opcjonalne)" Grid.Row="7" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_numer_lokalu" Grid.Row="7" Grid.Column="1"/>
+
+        <!-- Wiersz 8: Pesel -->
+        <Label Content="Pesel" Grid.Row="8" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_pesel" Grid.Row="8" Grid.Column="1"/>
+
+        <!-- Wiersz 9: Data urodzenia -->
+        <Label Content="Data urodzenia" Grid.Row="9" Grid.Column="0"/>
+        <DatePicker x:Name="Date_picker_data_urodzenia" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <!-- Wiersz 10: Płeć -->
+        <Label Content="Płeć" Grid.Row="10" Grid.Column="0"/>
+        <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <RadioButton x:Name="Radio_btn_kobieta" Content="Kobieta"/>
+            <RadioButton x:Name="Radio_btn_mężczyzna" Content="Mężczyzna"/>
+        </StackPanel>
+
+        <!-- Wiersz 11: Mail -->
+        <Label Content="Mail" Grid.Row="11" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_mail" Grid.Row="11" Grid.Column="1"/>
+
+        <!-- Wiersz 12: Numer telefonu -->
+        <Label Content="Numer telefonu" Grid.Row="12" Grid.Column="0"/>
+        <TextBox x:Name="Textbox_numer_telefonu" Grid.Row="12" Grid.Column="1"/>
+
+        <!-- Wiersz 14: Przycisk Dodaj -->
+        <Button x:Name="buttonEdytuj" Content="Edytuj" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="ButtonEdytujClick" Margin="152,35,0,12" Grid.RowSpan="2" RenderTransformOrigin="0.5,-0.149"/>
+    </Grid>
+</Window>
+
