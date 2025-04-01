@@ -77,7 +77,17 @@ namespace Magazyn
             : Visibility.Collapsed;
         }
 
+        private void UserDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedUser = UserDataGrid.SelectedItem as User;
+            if (selectedUser == null)
+            {
+                MessageBox.Show("Proszę wybrać użytkownika.", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
-
+            var podgla = new Podglad(selectedUser);
+            podgla.ShowDialog();
+        }
     }
 }

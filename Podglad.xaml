@@ -1,0 +1,30 @@
+﻿<Window x:Class="Magazyn.Podglad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Magazyn"
+        mc:Ignorable="d"
+        Title="Podglad" Height="337" Width="400">
+    <Grid>
+        <Label Content="Imie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="30"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Adres" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top"/>
+        <Label Content="Pesel" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
+        <Label Content="Data urodzenia" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top"/>
+        <Label Content="Płeć" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top"/>
+        <Label Content="Numer telefonu" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_nr_tel" Content="Imie" HorizontalAlignment="Left" Margin="226,262,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_mail" Content="Imie" HorizontalAlignment="Left" Margin="226,231,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_plec" Content="Imie" HorizontalAlignment="Left" Margin="226,200,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_data_urodzenia" Content="Imie" HorizontalAlignment="Left" Margin="226,169,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_pesel" Content="Imie" HorizontalAlignment="Left" Margin="226,138,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_adres" Content="Imie" HorizontalAlignment="Left" Margin="226,107,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_login" Content="Imie" HorizontalAlignment="Left" Margin="226,76,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_nazwisko" Content="Imie" HorizontalAlignment="Left" Margin="226,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_imie" Content="Imie" HorizontalAlignment="Left" Margin="226,10,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -211,7 +211,7 @@
                           SelectionMode="Single"
                           SelectionUnit="FullRow"
                           HorizontalAlignment="Stretch"
-                          Background="Transparent">
+                          Background="Transparent" MouseDoubleClick="UserDataGrid_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*" />
@@ -238,5 +238,6 @@
                 </DataGrid>
             </Grid>
         </Border>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="523,19,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
