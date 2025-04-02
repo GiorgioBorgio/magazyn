@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Dodaj użytkownika" Height="673" Width="450" ResizeMode="NoResize"
         Background="#f2f2f2">
     <Window.Resources>

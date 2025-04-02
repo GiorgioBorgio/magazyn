@@ -4,6 +4,7 @@
         Title="Zarządzanie użytkownikami" Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         FontFamily="Segoe UI" FontSize="14"
+        WindowState="Maximized"
         Background="#F2F4F7">
 
     <Window.Resources>

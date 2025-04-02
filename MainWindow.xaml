@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowState="Maximized"
+        Title="Ekran główny" Height="450" Width="800">
     <Grid>
         <Button Content="Zarzadzanie uzytkownikami" HorizontalAlignment="Left" VerticalAlignment="Top" Height="83" Width="166" Click="Button_Click"/>
         <Button Content="Użytkownicy zapomniani" HorizontalAlignment="Left" VerticalAlignment="Top" Height="83" Width="166" Margin="171,0,0,0" Click="Button_Click_1"/>

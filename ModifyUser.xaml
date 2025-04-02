@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
-                Title="Edytuj użytkownika" Height="673" Width="450" ResizeMode="NoResize"
+        Title="Edytuj użytkownika" Height="673" Width="450" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Background="#f2f2f2">
     <Window.Resources>
         <!-- Definicje kolorów -->

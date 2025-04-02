@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
-        Title="UserPreview" Height="337" Width="400">
+        WindowStartupLocation="CenterScreen"
+        Title="Podgląd użytkownika" Height="337" Width="400">
     <Grid Margin="10,10,10,6">
         <!-- Definicje wierszy -->
         <Grid.RowDefinitions>
