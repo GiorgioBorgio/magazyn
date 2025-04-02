@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
-        Title="ForgottenUsers" Height="450" Width="800">
+        Title="Lista zapomnianych użytkowników" Height="450" Width="800">
     <Window.Resources>
-        
+        <!-- Kolory -->
+        <SolidColorBrush x:Key="DarkGreen" Color="#134E4A"/>
+        <SolidColorBrush x:Key="LightBackground" Color="White"/>
+        <SolidColorBrush x:Key="TextMain" Color="#1E293B"/>
+
         <!-- Styl komórek DataGrid -->
         <Style TargetType="DataGridCell">
             <Setter Property="Background" Value="Transparent"/>
@@ -25,8 +29,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
-        
+
         <!-- Styl wierszy DataGrid -->
         <Style TargetType="DataGridRow">
             <Setter Property="Background" Value="White"/>
@@ -45,8 +48,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
+
         <!-- Styl nagłówków kolumn DataGrid -->
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -61,8 +63,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="DataGridColumnHeader">
                         <Border Background="{TemplateBinding Background}" 
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -70,9 +72,88 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-        <DataGrid x:Name="ForgottenDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        
 
+    <Grid>
+        <!-- Pasek górny -->
+        <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
+            <DockPanel Margin="20,0" LastChildFill="False">
+                <TextBlock Text="📋 Lista użytkowników zapomnianych" 
+                           FontSize="18" 
+                           Foreground="White" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Główna zawartość -->
+        <Border Background="{StaticResource LightBackground}" CornerRadius="12" Margin="40,80,40,20" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Wyszukiwarka (przyciemniona) -->
+                <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Border Background="#E2E8F0" BorderBrush="#CBD5E1" BorderThickness="1"
+            CornerRadius="6" Height="38" Width="270" VerticalAlignment="Top">
+                        <Grid Margin="10,0">
+                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
+                       Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
+
+                            <!-- Placeholder -->
+                            <TextBlock x:Name="PlaceholderText"
+                                       Text="Wyszukaj"
+                                       FontSize="13"
+                                       Foreground="Gray"
+                                       Margin="24,0,0,0"
+                                       VerticalAlignment="Center"
+                                       IsHitTestVisible="False"
+                       Visibility="Visible"/>
+
+                            <TextBox Name="TextBoxSearch"
+                                     Width="200"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     Foreground="#1E293B"
+                                     FontSize="13"
+                                     VerticalContentAlignment="Center"
+                                     Margin="24,0,0,0"
+                                     TextChanged="TextBoxSearch_TextChanged"
+                                     Text=""/>
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                <!-- DataGrid -->
+                <DataGrid x:Name="ForgottenDataGrid"
+                          Grid.Row="1"
+                          AutoGenerateColumns="False"
+                          HeadersVisibility="Column"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserReorderColumns="False"
+                          CanUserSortColumns="False"
+                          RowHeight="60"
+                          RowHeaderWidth="0"
+                          GridLinesVisibility="None"
+                          BorderThickness="0"
+                          AlternatingRowBackground="White"
+                          RowBackground="White"
+                          ColumnHeaderHeight="40"
+                          EnableRowVirtualization="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          HorizontalAlignment="Stretch"
+                          Background="Transparent">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
+                        <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
+                        <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*" />
+                        <DataGridTextColumn Header="Rola" Binding="{Binding UserPermission}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
+
