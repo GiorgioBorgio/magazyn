@@ -20,18 +20,28 @@ namespace Magazyn
     /// </summary>
     public partial class UserPreview : Window
     {
+        WarehouseDbContext _context;
         internal UserPreview(User user)
         {
             InitializeComponent();
-            label_imie.Content = user.FirstName;
-            label_nazwisko.Content = user.LastName;
+            _context = new WarehouseDbContext();
+            var address = _context.Addresses.Where(e=>e.Id ==user.AddressId).FirstOrDefault();
+            label_firstname.Content = user.FirstName;
+            label_lastname.Content = user.LastName;
             label_login.Content = user.Login;
-            label_adres.Content = user.Address;
-            label_data_urodzenia.Content = user.DateOfBirth.ToString();
-            label_mail.Content = user.Email;
+            label_city.Content = address.City;
+            label_postalcode.Content = address.PostalCode;
+            label_street.Content = address.Street;
+            label_streetnumber.Content = address.HouseNumber;
+            label_housenumber.Content = address.HouseNumber;
+            label_dateofbirth.Content = user.DateOfBirth.ToString();
+            label_email.Content = user.Email;
             label_pesel.Content = user.PESEL.ToString();
-            label_plec.Content = user.Gender;
-            label_nr_tel.Content = user.PhoneNumber.ToString();
+            if (user.Gender == true)
+                label_gender.Content = "Mężczyzna";
+            else
+                label_gender.Content = "Kobieta";
+            label_phonenumber.Content = user.PhoneNumber.ToString();
         }
     }
 }

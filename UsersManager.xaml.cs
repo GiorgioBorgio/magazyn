@@ -44,7 +44,7 @@ namespace Magazyn
             user.Login.ToLower().Contains(kw) ||
             user.PESEL.Contains(kw))).AsNoTracking().ToList();
             _users = new List<User>(filteredUsers);
-            UserDataGrid.ItemsSource = _users;
+            UserDataGrid.ItemsSource = _users.Where(e=>e.IsForgotten == false);
         }
 
 
@@ -90,8 +90,9 @@ namespace Magazyn
             podgla.ShowDialog();
         }
 
-        private void ForgetUser(User selectedUser)
+        private void ForgetUser(int userId)
         {
+            var selectedUser = _context.Users.FirstOrDefault(e=>e.Id == userId);
             selectedUser.IsForgotten = true;
             DataRandomizer randomizer = new DataRandomizer();
             selectedUser.FirstName = randomizer.GenerateRandomString(10);
@@ -101,6 +102,21 @@ namespace Magazyn
             selectedUser.Gender = null;
             selectedUser.UserPermission = null;
             selectedUser.ForgottenDate = DateTime.Now;
+            
+            _context.SaveChanges();
+            RefreshUserDataGrid();
+        }
+
+        private void buttonForget_Click(object sender, RoutedEventArgs e)
+        {
+            var wybranyUser = UserDataGrid.SelectedItem as User;
+            if (wybranyUser == null)
+            {
+                MessageBox.Show("Proszę wybrać użytkownika do edycji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            ForgetUser(wybranyUser.Id);
+
         }
     }
 }

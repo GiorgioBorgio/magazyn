@@ -267,7 +267,7 @@
                                                 Style="{StaticResource ForgetButtonStyle}"
                                                 Width="100"
                                                 Height="40"
-                                                Padding="10,4"/>
+                                                Padding="10,4" Click="buttonForget_Click"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

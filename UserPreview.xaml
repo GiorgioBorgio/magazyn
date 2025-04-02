@@ -6,25 +6,110 @@
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
         Title="UserPreview" Height="337" Width="400">
-    <Grid>
-        <Label Content="Imie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="30"/>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
-        <Label Content="Adres" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top"/>
-        <Label Content="Pesel" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
-        <Label Content="Data urodzenia" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top"/>
-        <Label Content="Płeć" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
-        <Label Content="E-mail" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top"/>
-        <Label Content="Numer telefonu" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_nr_tel" Content="Imie" HorizontalAlignment="Left" Margin="226,262,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_mail" Content="Imie" HorizontalAlignment="Left" Margin="226,231,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_plec" Content="Imie" HorizontalAlignment="Left" Margin="226,200,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_data_urodzenia" Content="Imie" HorizontalAlignment="Left" Margin="226,169,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_pesel" Content="Imie" HorizontalAlignment="Left" Margin="226,138,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_adres" Content="Imie" HorizontalAlignment="Left" Margin="226,107,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_login" Content="Imie" HorizontalAlignment="Left" Margin="226,76,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_nazwisko" Content="Imie" HorizontalAlignment="Left" Margin="226,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_imie" Content="Imie" HorizontalAlignment="Left" Margin="226,10,0,0" VerticalAlignment="Top"/>
+    <Grid Margin="10,10,10,6">
+        <!-- Definicje wierszy -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Login -->
+            <RowDefinition Height="Auto"/>
+            <!-- Imię -->
+            <RowDefinition Height="Auto"/>
+            <!-- Nazwisko -->
+            <RowDefinition Height="Auto"/>
+            <!-- Miejscowość -->
+            <RowDefinition Height="Auto"/>
+            <!-- Kod pocztowy -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ulica -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer posesji -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer lokalu (opcjonalne) -->
+            <RowDefinition Height="Auto"/>
+            <!-- Pesel -->
+            <RowDefinition Height="Auto"/>
+            <!-- Data urodzenia -->
+            <RowDefinition Height="Auto"/>
+            <!-- Płeć -->
+            <RowDefinition Height="Auto"/>
+            <!-- Mail -->
+            <RowDefinition Height="Auto"/>
+            <!-- Numer telefonu -->
+            <RowDefinition Height="*"/>
+            <!-- Wypełnienie -->
+            <RowDefinition Height="Auto"/>
+            <!-- Przycisk -->
+        </Grid.RowDefinitions>
 
+        <!-- Definicje kolumn -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Wiersz 0: Login -->
+        <Label Content="Login" Grid.Row="0" Grid.Column="0"/>
+        <Label x:Name="label_login" Grid.Row="0" Grid.Column="1"/>
+
+        <!-- Wiersz 1: Imię -->
+        <Label Content="Imię" Grid.Row="1" Grid.Column="0"/>
+        <Label x:Name="label_firstname" Grid.Row="1" Grid.Column="1"/>
+
+        <!-- Wiersz 2: Nazwisko -->
+        <Label Content="Nazwisko" Grid.Row="2" Grid.Column="0"/>
+        <Label x:Name="label_lastname" Grid.Row="2" Grid.Column="1"/>
+
+
+        <!-- Wiersz 3: Miejscowość -->
+        <Label Content="Miejscowość" Grid.Row="3" Grid.Column="0"/>
+        <Label x:Name="label_city" Grid.Row="3" Grid.Column="1"/>
+
+
+        <!-- Wiersz 4: Kod pocztowy -->
+        <Label Content="Kod pocztowy" Grid.Row="4" Grid.Column="0"/>
+        <Label x:Name="label_postalcode" Grid.Row="4" Grid.Column="1"/>
+
+
+        <!-- Wiersz 5: Ulica -->
+        <Label Content="Ulica" Grid.Row="5" Grid.Column="0"/>
+        <Label x:Name="label_street" Grid.Row="5" Grid.Column="1"/>
+
+
+        <!-- Wiersz 6: Numer posesji -->
+        <Label Content="Numer posesji" Grid.Row="6" Grid.Column="0"/>
+        <Label x:Name="label_streetnumber" Grid.Row="6" Grid.Column="1"/>
+
+
+        <!-- Wiersz 7: Numer lokalu (opcjonalne) -->
+        <Label Content="Numer lokalu (opcjonalne)" Grid.Row="7" Grid.Column="0"/>
+        <Label x:Name="label_housenumber" Grid.Row="7" Grid.Column="1"/>
+
+
+        <!-- Wiersz 8: Pesel -->
+        <Label Content="Pesel" Grid.Row="8" Grid.Column="0"/>
+        <Label x:Name="label_pesel" Grid.Row="8" Grid.Column="1"/>
+
+
+        <!-- Wiersz 9: Data urodzenia -->
+        <Label Content="Data urodzenia" Grid.Row="9" Grid.Column="0"/>
+        <Label x:Name="label_dateofbirth" Grid.Row="9" Grid.Column="1"/>
+
+
+        <!-- Wiersz 10: Płeć -->
+        <Label Content="Płeć" Grid.Row="10" Grid.Column="0"/>
+        <Label x:Name="label_gender" Grid.Row="10" Grid.Column="1"/>
+
+
+        <!-- Wiersz 11: Mail -->
+        <Label Content="Mail" Grid.Row="11" Grid.Column="0"/>
+        <Label x:Name="label_email" Grid.Row="11" Grid.Column="1"/>
+
+
+        <!-- Wiersz 12: Numer telefonu -->
+        <Label Content="Numer telefonu" Grid.Row="12" Grid.Column="0"/>
+        <Label x:Name="label_phonenumber" Grid.Row="12" Grid.Column="1"/>
+
+
+        
     </Grid>
 </Window>
