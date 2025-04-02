@@ -27,5 +27,10 @@ namespace Magazyn
             _context = new WarehouseDbContext();
             ForgottenDataGrid.ItemsSource = _context.Users.Where(e=>e.IsForgotten == true).ToList();
         }
+
+        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
