@@ -145,11 +145,11 @@
                           HorizontalAlignment="Stretch"
                           Background="Transparent">
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="Identyfikator" Binding="{Binding Id}" Width="*" />
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
-                        <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*" />
-                        <DataGridTextColumn Header="Rola" Binding="{Binding UserPermission}" Width="*" />
+                        <DataGridTextColumn Header="Data zapomnienia" Binding="{Binding ForgottenDate, StringFormat='dd.MM.yyyy HH:mm'}" Width="*" />
+                        <DataGridTextColumn Header="Zapomniany przez" Binding="{Binding ForgottenById}" Width="*" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
