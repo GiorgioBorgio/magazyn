@@ -74,30 +74,35 @@ namespace Magazyn
 
         private void ButtonEdytujClick(object sender, RoutedEventArgs e)
         {
-            var user = new CreateUserDto();
-            user.Login = Textbox_login.Text;
-            user.FirstName = Textbox_imie.Text;
-            user.LastName = Textbox_nazwisko.Text;
-            user.City = Textbox_miejscowość.Text;
-            user.PostalCode = Textbox_kod_pocztowy.Text;
-            user.Street = Textbox_ulica.Text;
-            user.ApartmentNumber = Textbox_numer_lokalu.Text;
-            user.HouseNumber = Textbox_numer_posesji.Text;
-            user.PESEL = Textbox_pesel.Text;
-            user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-            user.Email = Textbox_mail.Text;
-            user.PhoneNumber = Textbox_numer_telefonu.Text;
-            if (_existingUser != null)
+            MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapomieć tego użytkownika?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
-                user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
-                _mapper.Map(user, _existingUser);
-                _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
+                var user = new CreateUserDto();
+                user.Login = Textbox_login.Text;
+                user.FirstName = Textbox_imie.Text;
+                user.LastName = Textbox_nazwisko.Text;
+                user.City = Textbox_miejscowość.Text;
+                user.PostalCode = Textbox_kod_pocztowy.Text;
+                user.Street = Textbox_ulica.Text;
+                user.ApartmentNumber = Textbox_numer_lokalu.Text;
+                user.HouseNumber = Textbox_numer_posesji.Text;
+                user.PESEL = Textbox_pesel.Text;
+                user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
+                user.Email = Textbox_mail.Text;
+                user.PhoneNumber = Textbox_numer_telefonu.Text;
+                if (_existingUser != null)
+                {
+                    var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
+                    user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
+                    _mapper.Map(user, _existingUser);
+                    _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
 
+                }
+                _context.SaveChanges();
+                _usersManager.RefreshUserDataGrid();
+                this.Close();
             }
-            _context.SaveChanges();
-            _usersManager.RefreshUserDataGrid();
-            this.Close();
+            else return;
         }
     }
 }

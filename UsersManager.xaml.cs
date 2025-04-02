@@ -109,13 +109,18 @@ namespace Magazyn
 
         private void buttonForget_Click(object sender, RoutedEventArgs e)
         {
-            var wybranyUser = UserDataGrid.SelectedItem as User;
-            if (wybranyUser == null)
+            MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapomieć tego użytkownika?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Proszę wybrać użytkownika do edycji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                var wybranyUser = UserDataGrid.SelectedItem as User;
+                if (wybranyUser == null)
+                {
+                    MessageBox.Show("Proszę wybrać użytkownika do edycji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                ForgetUser(wybranyUser.Id);
             }
-            ForgetUser(wybranyUser.Id);
+            else return;
 
         }
     }
