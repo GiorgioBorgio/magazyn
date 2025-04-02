@@ -100,6 +100,7 @@ namespace Magazyn
             selectedUser.PESEL = randomizer.GenerateValidPesel(selectedUser.DateOfBirth);
             selectedUser.Gender = null;
             selectedUser.UserPermission = null;
+            selectedUser.ForgottenDate = DateTime.Now;
         }
     }
 }
