@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Magazyn.UsersManager"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="User Management" Height="700" Width="1000"
+        Title="Zarządzanie użytkownikami" Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         FontFamily="Segoe UI" FontSize="14"
         Background="#F2F4F7">
@@ -135,9 +135,9 @@
         <!-- Pasek górny -->
         <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
             <DockPanel Margin="20,0" LastChildFill="False">
-                <TextBlock Text="👥 User Management" FontSize="18" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBlock Text="👥 Zarządzanie użytkownikami" FontSize="18" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
                 <Button Name="ButtonAddUser"
-                        Content="Add User"
+                        Content="Dodaj"
                         VerticalAlignment="Center"
                         Width="100" Height="30"
                         Style="{StaticResource RoundedButtonStyle}"
@@ -213,16 +213,16 @@
                           HorizontalAlignment="Stretch"
                           Background="Transparent" MouseDoubleClick="UserDataGrid_MouseDoubleClick">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*" />
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*" />
+                        <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
+                        <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*" />
-                        <DataGridTextColumn Header="Permissions" Binding="{Binding UserPermission}" Width="*" />
-                        <DataGridTemplateColumn Header="Actions" Width="150">
+                        <DataGridTextColumn Header="Role" Binding="{Binding UserPermission}" Width="*" />
+                        <DataGridTemplateColumn Header="Akcje" Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                                        <Button Content="Modify"
+                                        <Button Content="Edytuj"
                                                 Click="ButtonModify_Click"
                                                 Style="{StaticResource ModifyButtonStyle}"
                                                 Width="100"
