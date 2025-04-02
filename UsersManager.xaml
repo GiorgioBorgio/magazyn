@@ -67,6 +67,38 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Styl przycisku Zapomnij -->
+        <Style x:Key="ForgetButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource BadgeRed}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0">
+                                <TextBlock Text="🗑" FontSize="14" Margin="0,0,6,0"/>
+                                <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#DC2626"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#B91C1C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- Styl komórek DataGrid -->
         <Style TargetType="DataGridCell">
             <Setter Property="Background" Value="Transparent"/>
@@ -166,7 +198,7 @@
 
                             <!-- Placeholder -->
                             <TextBlock x:Name="PlaceholderText"
-                                       Text="Search"
+                                       Text="Wyszukaj"
                                        FontSize="13"
                                        Foreground="Gray"
                                        Margin="24,0,0,0"
@@ -218,18 +250,24 @@
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*" />
                         <DataGridTextColumn Header="Role" Binding="{Binding UserPermission}" Width="*" />
-                        <DataGridTemplateColumn Header="Akcje" Width="150">
+                        <DataGridTemplateColumn Header="Akcje" Width="220">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Button Content="Edytuj"
                                                 Click="ButtonModify_Click"
                                                 Style="{StaticResource ModifyButtonStyle}"
                                                 Width="100"
                                                 Height="40"
-                                                Padding="10,4"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"/>
+                                                Margin="0,0,10,0"
+                                                Padding="10,4"/>
+                                        <Button Content="Zapomnij"
+                                                
+                                                Name="buttonForget"
+                                                Style="{StaticResource ForgetButtonStyle}"
+                                                Width="100"
+                                                Height="40"
+                                                Padding="10,4"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
