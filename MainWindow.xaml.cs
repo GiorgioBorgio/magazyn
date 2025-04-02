@@ -32,8 +32,8 @@ namespace Magazyn
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            DeletedUsers deletedUsers = new DeletedUsers();
-            deletedUsers.Show();
+            ForgottenUser forgottenUsers = new ForgottenUser();
+            forgottenUsers.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazyn.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,14 @@ namespace Magazyn
     /// <summary>
     /// Logika interakcji dla klasy DeletedUsers.xaml
     /// </summary>
-    public partial class DeletedUsers : Window
+    public partial class ForgottenUser : Window
     {
-        public DeletedUsers()
+        private WarehouseDbContext _context;
+        public ForgottenUser()
         {
             InitializeComponent();
+            _context = new WarehouseDbContext();
+            ForgottenDataGrid.ItemsSource = _context.Users.Where(e=>e.IsForgotten == true).ToList();
         }
     }
 }

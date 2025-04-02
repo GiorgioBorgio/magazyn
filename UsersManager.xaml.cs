@@ -86,8 +86,20 @@ namespace Magazyn
                 return;
             }
 
-            var podgla = new Podglad(selectedUser);
+            var podgla = new UserPreview(selectedUser);
             podgla.ShowDialog();
+        }
+
+        private void ForgetUser(User selectedUser)
+        {
+            selectedUser.IsForgotten = true;
+            DataRandomizer randomizer = new DataRandomizer();
+            selectedUser.FirstName = randomizer.GenerateRandomString(10);
+            selectedUser.LastName = randomizer.GenerateRandomString(10);
+            selectedUser.DateOfBirth = randomizer.GenerateRandomDateOfBirth();
+            selectedUser.PESEL = randomizer.GenerateValidPesel(selectedUser.DateOfBirth);
+            selectedUser.Gender = null;
+            selectedUser.UserPermission = null;
         }
     }
 }

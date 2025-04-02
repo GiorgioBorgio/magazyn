@@ -1,11 +1,11 @@
-﻿<Window x:Class="Magazyn.Podglad"
+﻿<Window x:Class="Magazyn.UserPreview"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
-        Title="Podglad" Height="337" Width="400">
+        Title="UserPreview" Height="337" Width="400">
     <Grid>
         <Label Content="Imie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="30"/>

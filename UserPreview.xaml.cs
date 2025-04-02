@@ -18,9 +18,9 @@ namespace Magazyn
     /// <summary>
     /// Logika interakcji dla klasy Podglad.xaml
     /// </summary>
-    public partial class Podglad : Window
+    public partial class UserPreview : Window
     {
-        internal Podglad(User user)
+        internal UserPreview(User user)
         {
             InitializeComponent();
             label_imie.Content = user.FirstName;

@@ -238,6 +238,5 @@
                 </DataGrid>
             </Grid>
         </Border>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="523,19,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

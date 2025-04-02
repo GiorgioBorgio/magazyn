@@ -58,7 +58,7 @@ namespace Magazyn.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:testowanie-oprogramowania.database.windows.net,1433;Initial Catalog=WarehouseDB;User ID=magazyn_admin;Password=Angelic8-Grumbling6-Unblessed0-Darkness7-Cupped0;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"); 
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Database=WarehouseDb;Integrated Security=True;Encrypt=True"); 
         }
 
     }

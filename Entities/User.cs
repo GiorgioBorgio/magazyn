@@ -18,7 +18,7 @@ namespace Magazyn.Entities
         public Address Address { get; set; }
         public string PESEL { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public bool Gender{ get; set; }
+        public bool? Gender{ get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string? Password { get; set; }
@@ -26,7 +26,7 @@ namespace Magazyn.Entities
         public DateTime ForgottenDate { get; set; }
         public int? ForgottenById { get; set; }
         public User ForgotenBy { get; set; }
-        public UserPermission UserPermission { get; set; }
+        public UserPermission? UserPermission { get; set; }
         public List<PasswordHistory> PasswordHistories { get; set; }
         public List<User> ForgottenUsers { get; set; }
 
