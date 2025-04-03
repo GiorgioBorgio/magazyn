@@ -16,21 +16,30 @@ namespace Magazyn
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public string GenerateValidPesel(DateTime birthDate)
+        public string GenerateValidPesel(DateTime birthDate, bool gender)
         {
             var random = new Random();
             int year = birthDate.Year % 100;
             int month = birthDate.Month;
             int day = birthDate.Day;
-            int genderDigit = random.Next(0, 9);
 
-            if (birthDate.Year >= 2000) month += 20;
-            else if (birthDate.Year >= 2100) month += 40;
-            else if (birthDate.Year >= 2200) month += 60;
-            else if (birthDate.Year >= 1800) month += 80;
+            // Określanie serii miesiąca w zależności od wieku
+            if (birthDate.Year >= 2000 && birthDate.Year < 2100) month += 20;
+            else if (birthDate.Year >= 2100 && birthDate.Year < 2200) month += 40;
+            else if (birthDate.Year >= 2200 && birthDate.Year < 2300) month += 60;
+            else if (birthDate.Year >= 1800 && birthDate.Year < 1900) month += 80;
 
-            string pesel = $"{year:D2}{month:D2}{day:D2}{random.Next(100, 999)}{genderDigit}";
-            return pesel + CalculatePeselChecksum(pesel);
+            // Generowanie losowej serii 3 cyfr
+            int serialNumber = random.Next(100, 999);
+
+            // Generowanie cyfry kontrolnej płci (parzysta dla kobiet, nieparzysta dla mężczyzn)
+            int genderDigit = gender ? random.Next(0, 5) * 2 + 1 : random.Next(0, 5) * 2;
+
+            // Składanie numeru PESEL
+            string peselBase = $"{year:D2}{month:D2}{day:D2}{serialNumber}{genderDigit}";
+            int checksum = CalculatePeselChecksum(peselBase);
+
+            return peselBase + checksum;
         }
 
         public int CalculatePeselChecksum(string pesel)

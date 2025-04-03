@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Magazyn.Entities;
 using Magazyn.Models;
+using Magazyn.Validators;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,10 +30,12 @@ namespace Magazyn
         private WarehouseDbContext _context;
         private User _existingUser;
         private UsersManager _usersManager;
+        private UserValidator _userValidator;
         internal ModifyUser(User edytowany_user, UsersManager usersManager)
         {
             _usersManager = usersManager;
             _context = new WarehouseDbContext();
+            _userValidator = new UserValidator(_context);
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new WarehouseMappingProfile());
@@ -74,11 +78,17 @@ namespace Magazyn
 
         private void ButtonEdytujClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapomieć tego użytkownika?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
+           
                 var user = new CreateUserDto();
                 user.Login = Textbox_login.Text;
+                if(Radio_btn_kobieta.IsChecked == true)
+                {
+                    user.Gender = false;
+                }
+                else
+                {
+                    user.Gender = true;
+                }
                 user.FirstName = Textbox_imie.Text;
                 user.LastName = Textbox_nazwisko.Text;
                 user.City = Textbox_miejscowość.Text;
@@ -90,11 +100,16 @@ namespace Magazyn
                 user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
                 user.Email = Textbox_mail.Text;
                 user.PhoneNumber = Textbox_numer_telefonu.Text;
+                if (!_userValidator.Walidacja(user, _existingUser)) return;
+                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapisac zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+            {
+
                 if (_existingUser != null)
                 {
                     var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
                     user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
-                    _mapper.Map(user, _existingUser);
+                    _mapper.Map(user, _existingUser); 
                     _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
 
                 }
@@ -102,7 +117,7 @@ namespace Magazyn
                 _usersManager.RefreshUserDataGrid();
                 this.Close();
             }
-            else return;
+            
         }
     }
 }

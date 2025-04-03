@@ -1,8 +1,12 @@
-﻿using Magazyn.Entities;
+﻿using AutoMapper;
+using Magazyn.Entities;
+using Magazyn.Models;
+using Magazyn.Validators;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +28,16 @@ namespace Magazyn
     {
         private WarehouseDbContext _context;
         private List<User> _users = new List<User>();
+        private IMapper _mapper;
         public UsersManager()
         {
             _context = new WarehouseDbContext();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new WarehouseMappingProfile());
+            });
+            var mapper = config.CreateMapper();
+            _mapper = config.CreateMapper();
             InitializeComponent();
             RefreshUserDataGrid();
         }
@@ -92,17 +103,18 @@ namespace Magazyn
 
         private void ForgetUser(int userId)
         {
-            var selectedUser = _context.Users.FirstOrDefault(e=>e.Id == userId);
+            var selectedUser = _context.Users.Include(u => u.Address).First(e => e.Id == userId);
             selectedUser.IsForgotten = true;
             DataRandomizer randomizer = new DataRandomizer();
             selectedUser.FirstName = randomizer.GenerateRandomString(10);
             selectedUser.LastName = randomizer.GenerateRandomString(10);
             selectedUser.DateOfBirth = randomizer.GenerateRandomDateOfBirth();
-            selectedUser.PESEL = randomizer.GenerateValidPesel(selectedUser.DateOfBirth);
-            selectedUser.Gender = null;
+            selectedUser.Gender = randomizer.GenerateRandomGender();
+            selectedUser.PESEL = randomizer.GenerateValidPesel(selectedUser.DateOfBirth, selectedUser.Gender);
             selectedUser.UserPermission = null;
             selectedUser.ForgottenDate = DateTime.Now;
-            
+            UserValidator uv = new UserValidator(_context);
+            if (!uv.Walidacja(_mapper.Map<CreateUserDto>(selectedUser))) return;
             _context.SaveChanges();
             RefreshUserDataGrid();
         }
