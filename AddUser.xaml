@@ -154,7 +154,22 @@
         <Label Content="Numer telefonu" Grid.Row="12" Grid.Column="0"/>
         <TextBox x:Name="Textbox_numer_telefonu" Grid.Row="12" Grid.Column="1"/>
 
-        <!-- Wiersz 14: Przycisk Dodaj -->
-        <Button Content="Dodaj" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="Button_Dodaj_Click" Margin="152,35,0,12" Grid.RowSpan="2" RenderTransformOrigin="0.5,-0.149"/>
+        <!-- Wiersz 14: Przycisk Zapisz -->
+        <StackPanel Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+
+            <Button Content="Zapisz"
+            Width="140" 
+            Height="45"
+            Click="Button_Dodaj_Click"/>
+
+            <Button Content="Anuluj"
+            Width="140" 
+            Height="45"
+            Background="#94A3B8"
+            Click="ButtonCancelClick"/>
+        </StackPanel>
+
     </Grid>
 </Window>
