@@ -176,27 +176,40 @@
 
                 <!-- Przyciski po prawej stronie -->
                 <StackPanel Orientation="Horizontal"
-                    DockPanel.Dock="Right"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right">
+            DockPanel.Dock="Right"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,10,0"
+            >
                     <!-- Zapomniani użytkownicy -->
                     <Button Content="Zapomniani użytkownicy"
-                    Width="180" Height="30"
-                    Margin="0,0,10,0"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Background="#f56b1b"
-                    Foreground="White"
-                    Click="ShowForgottenUsers_Click"/>
+            Width="180" Height="30"
+            Margin="0,0,10,0"
+            Style="{StaticResource RoundedButtonStyle}"
+            Background="#f56b1b"
+            Foreground="White"
+            Click="ShowForgottenUsers_Click"/>
 
                     <!-- Dodaj -->
                     <Button x:Name="ButtonAddUser"
-                    Content="Dodaj"
-                    Width="100" Height="30"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Background="#22C55E"
-                    Foreground="White"
-                    Click="ButtonAddUser_Click"/>
+            Content="Dodaj"
+            Width="100" Height="30"
+            Margin="0,0,10,0"
+            Style="{StaticResource RoundedButtonStyle}"
+            Background="#22C55E"
+            Foreground="White"
+            Click="ButtonAddUser_Click"/>
+
+                    <!-- Powrót -->
+                    <Button Content="↩ Powrót"
+            Width="100" Height="30"
+            Margin="0,0,0,0"
+            Style="{StaticResource RoundedButtonStyle}"
+            Background="#94A3B8"
+            Foreground="White"
+            Click="ButtonReturn_Click"/>
                 </StackPanel>
+
             </DockPanel>
         </Border>
 
@@ -309,7 +322,5 @@
 
         <!--<ContentControl x:Name="ContentArea" Grid.Row="1"/>-->
         <ContentControl x:Name="ForgottenUserContent" Grid.Row="2" Visibility="Collapsed"/>
-
-
     </Grid>
 </UserControl>

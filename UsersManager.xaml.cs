@@ -147,6 +147,15 @@ namespace Magazyn
             ForgottenUserContent.Content = forgottenControl;
             ForgottenUserContent.Visibility = Visibility.Visible;
         }
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainContentArea.Content = null; // lub np. jakiś domyślny UserControl
+            }
+        }
+
 
     }
 }
