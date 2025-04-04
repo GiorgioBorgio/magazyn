@@ -119,6 +119,9 @@ namespace Magazyn
             }
             
         }
-
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
+        {
+            this.Close(); // Zamknij okno bez zapisu
+        }
     }
 }
