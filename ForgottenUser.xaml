@@ -94,7 +94,7 @@
         </Border>
 
         <!-- 🔁 Przycisk powrotu (na samej górze layoutu) -->
-        <Button Content="← Powrót"
+        <Button Content="↩ Powrót"
             Width="120"
             Height="40"
             HorizontalAlignment="Right"
