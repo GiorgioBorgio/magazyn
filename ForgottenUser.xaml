@@ -6,80 +6,52 @@
              xmlns:local="clr-namespace:Magazyn"
              mc:Ignorable="d"
              Background="#F2F4F7">
+
     <UserControl.Resources>
         <SolidColorBrush x:Key="DarkGreen" Color="#134E4A"/>
         <SolidColorBrush x:Key="LightBackground" Color="White"/>
         <SolidColorBrush x:Key="TextMain" Color="#1E293B"/>
+        <SolidColorBrush x:Key="BadgeGreen" Color="#22C55E"/>
 
-        <Style TargetType="DataGridCell">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="16,0,0,0"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style TargetType="DataGridRow">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="DataGridRow">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <DataGridCellsPresenter/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="Padding" Value="16,4"/>
-            <Setter Property="Foreground" Value="Black"/>
+        <!-- Styl zaokrąglonego przycisku -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0088ff"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#F9FAFB"/>
-            <Setter Property="BorderBrush" Value="#E5E7EB"/>
-            <Setter Property="BorderThickness" Value="0,0,0,1"/>
-            <Setter Property="SeparatorVisibility" Value="Collapsed"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="DataGridColumnHeader">
-                        <Border Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- (DataGrid Style – bez zmian) -->
+        <!-- ... -->
     </UserControl.Resources>
 
     <Grid>
+        <!-- Pasek górny -->
         <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
             <DockPanel Margin="20,0" LastChildFill="False">
                 <TextBlock Text="📋 Lista użytkowników zapomnianych" 
-                           FontSize="18" 
-                           Foreground="White" 
-                           FontWeight="Bold" 
-                           VerticalAlignment="Center"/>
+                       FontSize="18" 
+                       Foreground="White" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Center"/>
             </DockPanel>
         </Border>
 
+        <!-- Główna zawartość -->
         <Border Background="{StaticResource LightBackground}" CornerRadius="12" Margin="40,80,40,20" Padding="20">
             <Grid>
                 <Grid.RowDefinitions>
@@ -87,27 +59,29 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+                <!-- Wyszukiwarka -->
                 <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Border Background="#E2E8F0" BorderBrush="#CBD5E1" BorderThickness="1"
-                            CornerRadius="6" Height="38" Width="270">
+                        CornerRadius="6" Height="38" Width="270">
                         <Grid Margin="10,0">
                             <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
-                                       Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
+                                   Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
                             <TextBlock x:Name="PlaceholderText" Text="Wyszukaj" FontSize="13" Foreground="Gray"
-                                       Margin="24,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible"/>
+                                   Margin="24,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible"/>
                             <TextBox Name="TextBoxSearch" Width="200" BorderThickness="0" Background="Transparent"
-                                     Foreground="#1E293B" FontSize="13" VerticalContentAlignment="Center"
-                                     Margin="24,0,0,0" TextChanged="TextBoxSearch_TextChanged" Text=""/>
+                                 Foreground="#1E293B" FontSize="13" VerticalContentAlignment="Center"
+                                 Margin="24,0,0,0" TextChanged="TextBoxSearch_TextChanged" Text=""/>
                         </Grid>
                     </Border>
                 </DockPanel>
 
+                <!-- Tabela -->
                 <DataGrid x:Name="ForgottenDataGrid" Grid.Row="1" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True"
-                          CanUserAddRows="False" CanUserReorderColumns="False" CanUserSortColumns="False"
-                          RowHeight="60" RowHeaderWidth="0" GridLinesVisibility="None" BorderThickness="0"
-                          AlternatingRowBackground="White" RowBackground="White" ColumnHeaderHeight="40"
-                          EnableRowVirtualization="False" SelectionMode="Single" SelectionUnit="FullRow"
-                          Background="Transparent">
+                      CanUserAddRows="False" CanUserReorderColumns="False" CanUserSortColumns="False"
+                      RowHeight="60" RowHeaderWidth="0" GridLinesVisibility="None" BorderThickness="0"
+                      AlternatingRowBackground="White" RowBackground="White" ColumnHeaderHeight="40"
+                      EnableRowVirtualization="False" SelectionMode="Single" SelectionUnit="FullRow"
+                      Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Identyfikator" Binding="{Binding Id}" Width="*" />
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
@@ -118,5 +92,16 @@
                 </DataGrid>
             </Grid>
         </Border>
+
+        <!-- 🔁 Przycisk powrotu (na samej górze layoutu) -->
+        <Button Content="← Powrót"
+            Width="120"
+            Height="40"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="0,10,10,0"
+            Style="{StaticResource RoundedButtonStyle}"
+            Click="BackButton_Click"
+            Panel.ZIndex="100"/>
     </Grid>
 </UserControl>

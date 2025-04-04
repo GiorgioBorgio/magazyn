@@ -58,7 +58,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Margin="10,10,10,6">
+    <Grid Margin="10,10,10,6" Name="MainGrid">
         <!-- Definicje wierszy -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

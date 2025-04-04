@@ -1,13 +1,14 @@
 ﻿<Window x:Class="Magazyn.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Magazyn"
         Title="Ekran główny"
         WindowState="Maximized"
-        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize"
         Background="#F5F5F5">
 
     <Window.Resources>
-        <!-- Styl przycisków z zaokrągleniami -->
         <Style TargetType="Button" x:Key="RoundedNavButton">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -15,13 +16,15 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"
-                                CornerRadius="8"
+                                CornerRadius="12"
                                 SnapsToDevicePixels="True">
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
@@ -34,7 +37,7 @@
 
     <Grid>
         <!-- Lewy pasek -->
-        <DockPanel Width="180" Background="#1E293B" HorizontalAlignment="Left">
+        <DockPanel Width="200" Background="#1E293B" HorizontalAlignment="Left">
             <StackPanel VerticalAlignment="Stretch">
                 <!-- Logo -->
                 <StackPanel Orientation="Horizontal" Margin="20,20,10,20">
@@ -42,32 +45,14 @@
                     <TextBlock Text="Magazyn" FontSize="18" FontWeight="Bold" Foreground="White"/>
                 </StackPanel>
 
-                <!-- Przycisk 1 -->
+                <!-- Przycisk: Zarządzanie użytkownikami -->
                 <Button Content="Zarządzanie użytkownikami"
-                    Margin="10,0,10,10"
-                    Height="40"
-                    Click="OpenUsersManager"
-                    Background="White"
-                    Foreground="Black"
-                    FontSize="14"
-                    FontWeight="SemiBold"
-                    BorderThickness="0"/>
-
-                <!-- Przycisk 2 -->
-                <Button Content="Użytkownicy zapomniani"
-                    Margin="10,0,10,10"
-                    Height="40"
-                    Background="White"
-                    Foreground="Black"
-                    FontSize="14"
-                    FontWeight="SemiBold"
-                    BorderThickness="0"/>
+                        Style="{StaticResource RoundedNavButton}"
+                        Click="OpenUsersManager"/>
             </StackPanel>
         </DockPanel>
 
-        <!-- Miejsce na dynamiczną zawartość -->
-        <ContentControl x:Name="MainContentArea" Margin="180,0,0,0"/>
-        <ContentControl x:Name="MainContent"></ContentControl>
+        <!-- Obszar główny -->
+        <ContentControl x:Name="MainContentArea" Margin="200,0,0,0"/>
     </Grid>
-
 </Window>
