@@ -19,12 +19,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Magazyn
 {
     /// <summary>
     /// Interaction logic for UsersMenager.xaml
     /// </summary>
-    public partial class UsersManager : Window
+    public partial class UsersManager : UserControl
     {
         private WarehouseDbContext _context;
         private List<User> _users = new List<User>();
@@ -55,7 +56,7 @@ namespace Magazyn
             user.Login.ToLower().Contains(kw) ||
             user.PESEL.Contains(kw))).AsNoTracking().ToList();
             _users = new List<User>(filteredUsers);
-            UserDataGrid.ItemsSource = _users.Where(e=>e.IsForgotten == false);
+            UserDataGrid.ItemsSource = _users.Where(e => e.IsForgotten == false);
         }
 
 
@@ -78,6 +79,11 @@ namespace Magazyn
             var editWindow = new ModifyUser(wybranyUser, this);
             editWindow.ShowDialog();
             RefreshUserDataGrid();
+
+            //UserPreview userPreview = new UserPreview();
+            //ContentArea.Content = userPreview;
+
+
         }
 
         private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -135,5 +141,12 @@ namespace Magazyn
             else return;
 
         }
+        private void ShowForgottenUsers_Click(object sender, RoutedEventArgs e)
+        {
+            var forgottenControl = new ForgottenUser();
+            ForgottenUserContent.Content = forgottenControl;
+            ForgottenUserContent.Visibility = Visibility.Visible;
+        }
+
     }
 }

@@ -27,13 +27,16 @@ namespace Magazyn
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UsersManager usersManager = new UsersManager();
-            usersManager.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ForgottenUser forgottenUsers = new ForgottenUser();
-            forgottenUsers.Show();
         }
+        private void OpenUsersManager(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new UsersManager();
+        }
+
     }
 }

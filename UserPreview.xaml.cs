@@ -21,11 +21,16 @@ namespace Magazyn
     public partial class UserPreview : Window
     {
         WarehouseDbContext _context;
+
+        public UserPreview()
+        {
+        }
+
         internal UserPreview(User user)
         {
             InitializeComponent();
             _context = new WarehouseDbContext();
-            var address = _context.Addresses.Where(e=>e.Id ==user.AddressId).FirstOrDefault();
+            var address = _context.Addresses.Where(e => e.Id == user.AddressId).FirstOrDefault();
             label_firstname.Content = user.FirstName;
             label_lastname.Content = user.LastName;
             label_login.Content = user.Login;

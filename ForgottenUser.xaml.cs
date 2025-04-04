@@ -19,7 +19,7 @@ namespace Magazyn
     /// <summary>
     /// Logika interakcji dla klasy DeletedUsers.xaml
     /// </summary>
-    public partial class ForgottenUser : Window 
+    public partial class ForgottenUser : UserControl
     {
         private WarehouseDbContext _context;
         private List<User> _users;
@@ -27,7 +27,7 @@ namespace Magazyn
         {
             InitializeComponent();
             _context = new WarehouseDbContext();
-            ForgottenDataGrid.ItemsSource = _context.Users.Where(e=>e.IsForgotten == true).ToList();
+            ForgottenDataGrid.ItemsSource = _context.Users.Where(e => e.IsForgotten == true).ToList();
         }
 
         public void RefreshUserDataGrid(string searchText = "")
