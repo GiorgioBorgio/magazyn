@@ -15,7 +15,7 @@
 
         <!-- Styl zaokrąglonego przycisku -->
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#0088ff"/>
+            <Setter Property="Background" Value="#94A3B8"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
