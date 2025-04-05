@@ -94,7 +94,7 @@ namespace Magazyn
             : Visibility.Collapsed;
         }
 
-        private void UserDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ButtonPreview_Click(object sender, RoutedEventArgs e)
         {
             var selectedUser = UserDataGrid.SelectedItem as User;
             if (selectedUser == null)
@@ -103,7 +103,7 @@ namespace Magazyn
                 return;
             }
 
-            var podgla = new UserPreview(selectedUser);
+            var podgla = new UserPreview(selectedUser,this);
             podgla.ShowDialog();
         }
 

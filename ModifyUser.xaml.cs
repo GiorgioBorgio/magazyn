@@ -78,7 +78,6 @@ namespace Magazyn
 
         private void ButtonEdytujClick(object sender, RoutedEventArgs e)
         {
-           
                 var user = new CreateUserDto();
                 user.Login = Textbox_login.Text;
                 if(Radio_btn_kobieta.IsChecked == true)
@@ -101,9 +100,12 @@ namespace Magazyn
                 user.Email = Textbox_mail.Text;
                 user.PhoneNumber = Textbox_numer_telefonu.Text;
                 if (!_userValidator.Walidacja(user, _existingUser)) return;
+                //sprawdza czy zmieniono dane
+                if (!IsChanged(_edytowany_user, user)) { this.Close(); return; }
+                
                 MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapisac zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
-            {
+                {
 
                 if (_existingUser != null)
                 {
@@ -122,6 +124,23 @@ namespace Magazyn
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             this.Close(); // Zamknij okno bez zapisu
+        }
+
+        private bool IsChanged(CreateUserDto original, CreateUserDto modified)
+        {
+            return original.Login != modified.Login ||
+                   original.Gender != modified.Gender ||
+                   original.FirstName != modified.FirstName ||
+                   original.LastName != modified.LastName ||
+                   original.City != modified.City ||
+                   original.PostalCode != modified.PostalCode ||
+                   original.Street != modified.Street ||
+                   original.ApartmentNumber != modified.ApartmentNumber ||
+                   original.HouseNumber != modified.HouseNumber ||
+                   original.PESEL != modified.PESEL ||
+                   original.DateOfBirth != modified.DateOfBirth ||
+                   original.Email != modified.Email ||
+                   original.PhoneNumber != modified.PhoneNumber;
         }
     }
 }

@@ -158,7 +158,7 @@
         <StackPanel Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
             Orientation="Horizontal"
             HorizontalAlignment="Center">
-            <Button x:Name="buttonEdytuj" Content="Edytuj" Click="ButtonEdytujClick"/>
+            <Button x:Name="buttonEdytuj" Content="Zapisz" Click="ButtonEdytujClick"/>
             <Button Content="Anuluj"
             Width="140" 
             Height="45"

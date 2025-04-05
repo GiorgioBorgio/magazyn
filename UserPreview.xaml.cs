@@ -21,15 +21,19 @@ namespace Magazyn
     public partial class UserPreview : Window
     {
         WarehouseDbContext _context;
+        private User _user;
+        UsersManager _usersManager;
 
         public UserPreview()
         {
         }
 
-        internal UserPreview(User user)
+        internal UserPreview(User user, UsersManager usersManager)
         {
             InitializeComponent();
             _context = new WarehouseDbContext();
+            _user = user;
+            _usersManager = usersManager;
             var address = _context.Addresses.Where(e => e.Id == user.AddressId).FirstOrDefault();
             label_firstname.Content = user.FirstName;
             label_lastname.Content = user.LastName;
@@ -47,6 +51,19 @@ namespace Magazyn
             else
                 label_gender.Content = "Kobieta";
             label_phonenumber.Content = user.PhoneNumber.ToString();
+        }
+
+        private void ButtonEdytujClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            var editWindow = new ModifyUser(_user, _usersManager);
+            editWindow.ShowDialog();
+            //RefreshUserDataGrid();
+        }
+
+        private void ButtonCancelClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

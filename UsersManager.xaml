@@ -284,7 +284,7 @@
                           EnableRowVirtualization="False"
                           SelectionMode="Single"
                           SelectionUnit="FullRow"
-                          Background="Transparent" MouseDoubleClick="UserDataGrid_MouseDoubleClick" Margin="0,0,0,-56">
+                          Background="Transparent"  Margin="0,0,0,-56">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
@@ -296,7 +296,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <Button Content="Podgląd"
-                                                Click="ButtonModify_Click"
+                                                Click="ButtonPreview_Click"
                                                 Style="{StaticResource ModifyButtonStyle}"
                                                 Width="100"
                                                 Height="40"
