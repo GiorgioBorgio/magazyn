@@ -46,17 +46,39 @@ namespace Magazyn
         public void RefreshUserDataGrid(string searchText = "")
         {
             _context.ChangeTracker.Clear();
-            var keywords = searchText.Split(' ');
-            UserDataGrid.ItemsSource = null; // Resetujemy źródło
-            var filteredUsers = _context.Users
-                .Where(user =>
-        keywords.All(kw =>
-            user.FirstName.ToLower().Contains(kw) ||
-            user.LastName.ToLower().Contains(kw) ||
-            user.Login.ToLower().Contains(kw) ||
-            user.PESEL.Contains(kw))).AsNoTracking().ToList();
+            var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string searchField = GetSelectedSearchField();
+
+            var query = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                switch (searchField)
+                {
+                    case "FirstName":
+                        query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().Contains(kw)));
+                        break;
+                    case "LastName":
+                        query = query.Where(user => keywords.All(kw => user.LastName.ToLower().Contains(kw)));
+                        break;
+                    case "Login":
+                        query = query.Where(user => keywords.All(kw => user.Login.ToLower().Contains(kw)));
+                        break;
+                    case "Email":
+                        query = query.Where(user => keywords.All(kw => user.Email.ToLower().Contains(kw)));
+                        break;
+                }
+            }
+
+            var filteredUsers = query.AsNoTracking().ToList();
             _users = new List<User>(filteredUsers);
             UserDataGrid.ItemsSource = _users.Where(e => e.IsForgotten == false);
+        }
+
+        private string GetSelectedSearchField()
+        {
+            var selectedItem = SearchTypeComboBox.SelectedItem as ComboBoxItem;
+            return selectedItem?.Tag?.ToString() ?? "FirstName";
         }
 
 
@@ -156,6 +178,10 @@ namespace Magazyn
             }
         }
 
+        private void SearchCriteriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshUserDataGrid(TextBoxSearch.Text);
+        }
 
     }
 }

@@ -260,6 +260,14 @@
                      Text=""/>
                         </Grid>
                     </Border>
+                    <ComboBox x:Name="SearchTypeComboBox" 
+              SelectedIndex="0"
+              DockPanel.Dock="Right" Width="100">
+                        <ComboBoxItem Tag="FirstName" Content="Imię"/>
+                        <ComboBoxItem Tag="LastName" Content="Nazwisko"/>
+                        <ComboBoxItem Tag="Login" Content="Login"/>
+                        <ComboBoxItem Tag="Email" Content="Email"/>
+                    </ComboBox>
                 </DockPanel>
 
 

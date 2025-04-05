@@ -159,7 +159,7 @@
             Orientation="Horizontal"
             HorizontalAlignment="Center">
 
-            <Button Content="Zapisz"
+            <Button Content="Dodaj"
             Width="140" 
             Height="45"
             Click="Button_Dodaj_Click"/>
