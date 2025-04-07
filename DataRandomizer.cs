@@ -8,6 +8,7 @@ namespace Magazyn
 {
     internal class DataRandomizer
     {
+        //test
         public string GenerateRandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
