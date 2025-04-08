@@ -52,36 +52,7 @@ namespace Magazyn
             UserValidator validator = new UserValidator(_context);
             
             bool plec;
-            var user = new CreateUserDto();
-            //if (_edytowany_user != null)
-            //{
-            //    // Aktualizuj dane edytowanego użytkownika
-            //    user.Login = Textbox_login.Text;
-            //    user.FirstName = Textbox_imie.Text;
-            //    user.LastName = Textbox_nazwisko.Text;
-            //    user.City = Textbox_miejscowość.Text;
-            //    user.PostalCode = Textbox_kod_pocztowy.Text;
-            //    user.Street = Textbox_ulica.Text;
-            //    user.ApartmentNumber = Textbox_numer_lokalu.Text;
-            //    user.HouseNumber = Textbox_numer_posesji.Text;
-            //    user.PESEL = Textbox_pesel.Text;
-            //    user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-            //    user.Email = Textbox_mail.Text;
-            //    user.PhoneNumber = Textbox_numer_telefonu.Text;
-
-            //    if (!validator.Walidacja(_edytowany_user)) return;
-
-            //    if (_existingUser != null)
-            //    {
-            //        var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
-            //        user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
-            //        _mapper.Map(user, _existingUser);
-            //        _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
-  
-            //    }
-            //}
-            
-
+            var user = new CreateUserDto();      
                 if (Radio_btn_kobieta.IsChecked == true)
                 {
                     plec = false;
@@ -122,7 +93,12 @@ namespace Magazyn
             }
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
-            this.Close(); // Zamknij okno bez zapisu
+            if (!IsChanged()) { this.Close(); return; }
+            MessageBoxResult result = MessageBox.Show("Wszystkie wprowadzone dane zostaną utracone, czy na pewno chcesz kontynuować?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Close(); // Zamknij okno bez zapisu
+            }
         }
 
         private void TextBox_mac_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -135,6 +111,21 @@ namespace Magazyn
         {
             // Zezwalaj tylko na litery
             e.Handled = !e.Text.All(char.IsLetter);
+        }
+        private bool IsChanged()
+        {
+            // Sprawdzenie, czy jakiekolwiek pole zostało wypełnione
+            return !string.IsNullOrEmpty(Textbox_login.Text) ||
+                   !string.IsNullOrEmpty(Textbox_imie.Text) ||
+                   !string.IsNullOrEmpty(Textbox_nazwisko.Text) ||
+                   !string.IsNullOrEmpty(Textbox_miejscowość.Text) ||
+                   (Textbox_kod_pocztowy.Text != "__-___") ||
+                   !string.IsNullOrEmpty(Textbox_ulica.Text) ||
+                   !string.IsNullOrEmpty(Textbox_numer_lokalu.Text) ||
+                   !string.IsNullOrEmpty(Textbox_numer_posesji.Text) ||
+                   !string.IsNullOrEmpty(Textbox_pesel.Text) ||
+                   !string.IsNullOrEmpty(Textbox_mail.Text) ||
+                   !string.IsNullOrEmpty(Textbox_numer_telefonu.Text);
         }
     }
 

@@ -55,17 +55,17 @@ namespace Magazyn
             {
                 switch (searchField)
                 {
-                    case "FirstName":
-                        query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().Contains(kw)));
+                    case "Name":
+                        query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().StartsWith(kw) || user.LastName.ToLower().StartsWith(kw)));
                         break;
-                    case "LastName":
-                        query = query.Where(user => keywords.All(kw => user.LastName.ToLower().Contains(kw)));
-                        break;
+                    //case "LastName":
+                    //    query = query.Where(user => keywords.All(kw => user.LastName.ToLower().Contains(kw)));
+                    //    break;
                     case "Login":
-                        query = query.Where(user => keywords.All(kw => user.Login.ToLower().Contains(kw)));
+                        query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
                         break;
                     case "Email":
-                        query = query.Where(user => keywords.All(kw => user.Email.ToLower().Contains(kw)));
+                        query = query.Where(user => keywords.All(kw => user.Email.ToLower().StartsWith(kw)));
                         break;
                 }
             }

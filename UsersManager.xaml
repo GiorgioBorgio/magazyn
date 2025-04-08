@@ -262,9 +262,8 @@
                     </Border>
                     <ComboBox x:Name="SearchTypeComboBox" 
               SelectedIndex="0"
-              DockPanel.Dock="Right" Width="100">
-                        <ComboBoxItem Tag="FirstName" Content="Imię"/>
-                        <ComboBoxItem Tag="LastName" Content="Nazwisko"/>
+              DockPanel.Dock="Right" Width="128">
+                        <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
                         <ComboBoxItem Tag="Email" Content="Email"/>
                     </ComboBox>

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -78,27 +79,8 @@ namespace Magazyn
 
         private void ButtonEdytujClick(object sender, RoutedEventArgs e)
         {
-                var user = new CreateUserDto();
-                user.Login = Textbox_login.Text;
-                if(Radio_btn_kobieta.IsChecked == true)
-                {
-                    user.Gender = false;
-                }
-                else
-                {
-                    user.Gender = true;
-                }
-                user.FirstName = Textbox_imie.Text;
-                user.LastName = Textbox_nazwisko.Text;
-                user.City = Textbox_miejscowość.Text;
-                user.PostalCode = Textbox_kod_pocztowy.Text;
-                user.Street = Textbox_ulica.Text;
-                user.ApartmentNumber = Textbox_numer_lokalu.Text;
-                user.HouseNumber = Textbox_numer_posesji.Text;
-                user.PESEL = Textbox_pesel.Text;
-                user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-                user.Email = Textbox_mail.Text;
-                user.PhoneNumber = Textbox_numer_telefonu.Text;
+                
+                var user = GetUserFromInput();
                 if (!_userValidator.Walidacja(user, _existingUser)) return;
                 //sprawdza czy zmieniono dane
                 if (!IsChanged(_edytowany_user, user)) { this.Close(); return; }
@@ -123,9 +105,39 @@ namespace Magazyn
         }
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
-            this.Close(); // Zamknij okno bez zapisu
+            var user = GetUserFromInput();
+            if (!IsChanged(_edytowany_user, user)) { this.Close(); return; }
+            MessageBoxResult result = MessageBox.Show("Wszystkie wprowadzone dane zostaną utracone, czy na pewno chcesz kontynuować?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(result == MessageBoxResult.Yes)
+            { 
+                this.Close(); // Zamknij okno bez zapisu
+            }
         }
-
+        private CreateUserDto GetUserFromInput()
+        {
+            var user = new CreateUserDto();
+            user.Login = Textbox_login.Text;
+            if (Radio_btn_kobieta.IsChecked == true)
+            {
+                user.Gender = false;
+            }
+            else
+            {
+                user.Gender = true;
+            }
+            user.FirstName = Textbox_imie.Text;
+            user.LastName = Textbox_nazwisko.Text;
+            user.City = Textbox_miejscowość.Text;
+            user.PostalCode = Textbox_kod_pocztowy.Text;
+            user.Street = Textbox_ulica.Text;
+            user.ApartmentNumber = Textbox_numer_lokalu.Text;
+            user.HouseNumber = Textbox_numer_posesji.Text;
+            user.PESEL = Textbox_pesel.Text;
+            user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
+            user.Email = Textbox_mail.Text;
+            user.PhoneNumber = Textbox_numer_telefonu.Text;
+            return user;
+        }
         private bool IsChanged(CreateUserDto original, CreateUserDto modified)
         {
             return original.Login != modified.Login ||
