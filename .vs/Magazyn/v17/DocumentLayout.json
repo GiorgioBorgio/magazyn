@@ -1,0 +1,936 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kacpe\\Desktop\\Magazyn\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\adduser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:adduser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|c:\\users\\kacpe\\desktop\\magazyn\\usersmanager.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:usersmanager.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\warehousemappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:warehousemappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\modifyuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:modifyuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\userpreview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:userpreview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\userpreview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:userpreview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\modifyuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:modifyuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\usersmanager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:usersmanager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\forgottenuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:forgottenuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\validators\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:validators\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\datarandomizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:datarandomizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\adduser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:adduser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\warehousedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\warehousedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\warehousehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\warehousehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\userpermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\userpermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\stocklevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\stocklevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\saleshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\saleshistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\entities\\passwordhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:entities\\passwordhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Magazyn.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Magazyn.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172836_init5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250325172836_init5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172610_init4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250325172610_init4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172310_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250325172310_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172114_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250325172114_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325171540_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250325171540_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324195001_onlyUser5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324195001_onlyUser5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194925_onlyUser1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194925_onlyUser1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194823_onlyUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194823_onlyUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194747_init4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194747_init4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194620_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194620_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194533_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194533_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194411_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250324194411_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:.gitattributes||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\magazyn.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:magazyn.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325174355_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250325174355_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\models\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:models\\createuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325231614_passwordAndLoginNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250325231614_passwordAndLoginNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325224717_userPermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250325224717_userPermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\migrations\\warehousedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:migrations\\warehousedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325183202_correctType.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250325183202_correctType.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\migrations\\20250325180346_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:migrations\\20250325180346_init3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325180318_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250325180318_init2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\addmodifyuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addmodifyuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kacpe\\Desktop\\Magazyn\\addmodifyuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addmodifyuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250402124008_permissionNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250402124008_permissionNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250403152646_boolnotnull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6331B5F-0255-4081-8241-6774BF8C7EF0}|Magazyn.csproj|solutionrelative:Migrations\\20250403152646_boolnotnull.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserPreview.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UserPreview.xaml",
+              "RelativeDocumentMoniker": "UserPreview.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UserPreview.xaml",
+              "RelativeToolTip": "UserPreview.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T06:18:02.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddUser.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddUser.xaml.cs",
+              "RelativeDocumentMoniker": "AddUser.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddUser.xaml.cs",
+              "RelativeToolTip": "AddUser.xaml.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAAwHUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:29:12.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-03-26T00:00:35.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Entities\\User.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\User.cs",
+              "RelativeToolTip": "Entities\\User.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:39:38.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WarehouseMappingProfile.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\WarehouseMappingProfile.cs",
+              "RelativeDocumentMoniker": "WarehouseMappingProfile.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\WarehouseMappingProfile.cs",
+              "RelativeToolTip": "WarehouseMappingProfile.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T21:54:07.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ForgottenUser.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ForgottenUser.xaml",
+              "RelativeDocumentMoniker": "ForgottenUser.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ForgottenUser.xaml",
+              "RelativeToolTip": "ForgottenUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-02T06:17:54.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersManager.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UsersManager.xaml.cs",
+              "RelativeDocumentMoniker": "UsersManager.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UsersManager.xaml.cs",
+              "RelativeToolTip": "UsersManager.xaml.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAAADcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T15:16:50.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsersManager.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UsersManager.xaml",
+              "RelativeDocumentMoniker": "UsersManager.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UsersManager.xaml",
+              "RelativeToolTip": "UsersManager.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-26T15:14:02.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ModifyUser.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ModifyUser.xaml",
+              "RelativeDocumentMoniker": "ModifyUser.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ModifyUser.xaml",
+              "RelativeToolTip": "ModifyUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-29T10:06:11.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ModifyUser.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ModifyUser.xaml.cs",
+              "RelativeDocumentMoniker": "ModifyUser.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\ModifyUser.xaml.cs",
+              "RelativeToolTip": "ModifyUser.xaml.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAAwGcAAABQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T10:40:19.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserPreview.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UserPreview.xaml.cs",
+              "RelativeDocumentMoniker": "UserPreview.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\UserPreview.xaml.cs",
+              "RelativeToolTip": "UserPreview.xaml.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAhwDQAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T06:22:42.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserValidator.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Validators\\UserValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\UserValidator.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Validators\\UserValidator.cs",
+              "RelativeToolTip": "Validators\\UserValidator.cs",
+              "ViewState": "AQIAAFsAAAAAAAAAAADwv0MAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T07:16:34.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DataRandomizer.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\DataRandomizer.cs",
+              "RelativeDocumentMoniker": "DataRandomizer.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\DataRandomizer.cs",
+              "RelativeToolTip": "DataRandomizer.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAEgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T12:15:59.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "20250403152646_boolnotnull.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250403152646_boolnotnull.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250403152646_boolnotnull.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250403152646_boolnotnull.cs",
+              "RelativeToolTip": "Migrations\\20250403152646_boolnotnull.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T15:26:46.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddUser.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddUser.xaml",
+              "RelativeDocumentMoniker": "AddUser.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddUser.xaml",
+              "RelativeToolTip": "AddUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-31T12:09:08.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T22:10:36.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-25T21:45:17.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "WarehouseHistory.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\WarehouseHistory.cs",
+              "RelativeDocumentMoniker": "Entities\\WarehouseHistory.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\WarehouseHistory.cs",
+              "RelativeToolTip": "Entities\\WarehouseHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T17:11:19.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "StockLevel.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\StockLevel.cs",
+              "RelativeDocumentMoniker": "Entities\\StockLevel.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\StockLevel.cs",
+              "RelativeToolTip": "Entities\\StockLevel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T17:26:27.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "WarehouseDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\WarehouseDbContext.cs",
+              "RelativeDocumentMoniker": "Entities\\WarehouseDbContext.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\WarehouseDbContext.cs",
+              "RelativeToolTip": "Entities\\WarehouseDbContext.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAEEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T23:31:43.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "PasswordHistory.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\PasswordHistory.cs",
+              "RelativeDocumentMoniker": "Entities\\PasswordHistory.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\PasswordHistory.cs",
+              "RelativeToolTip": "Entities\\PasswordHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T16:55:41.619Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Permission.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Permission.cs",
+              "RelativeDocumentMoniker": "Entities\\Permission.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Permission.cs",
+              "RelativeToolTip": "Entities\\Permission.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T09:05:40.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-26T14:51:15.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-25T17:35:45.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "20250402124008_permissionNullable.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250402124008_permissionNullable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250402124008_permissionNullable.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250402124008_permissionNullable.cs",
+              "RelativeToolTip": "Migrations\\20250402124008_permissionNullable.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T12:40:08.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserPermission.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\UserPermission.cs",
+              "RelativeDocumentMoniker": "Entities\\UserPermission.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\UserPermission.cs",
+              "RelativeToolTip": "Entities\\UserPermission.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:47:49.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T21:45:11.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SalesHistory.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\SalesHistory.cs",
+              "RelativeDocumentMoniker": "Entities\\SalesHistory.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\SalesHistory.cs",
+              "RelativeToolTip": "Entities\\SalesHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:31:22.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Address.cs",
+              "RelativeDocumentMoniker": "Entities\\Address.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Address.cs",
+              "RelativeToolTip": "Entities\\Address.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T15:50:03.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Entities\\Product.cs",
+              "RelativeToolTip": "Entities\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T16:39:58.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": ".gitattributes",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitattributes",
+              "RelativeDocumentMoniker": ".gitattributes",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\.gitattributes",
+              "RelativeToolTip": ".gitattributes",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-25T18:30:55.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "AddModifyUser.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddModifyUser.xaml.cs",
+              "RelativeDocumentMoniker": "AddModifyUser.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddModifyUser.xaml.cs",
+              "RelativeToolTip": "AddModifyUser.xaml.cs",
+              "ViewState": "AQIAALAAAAAAAAAAAAAAAAkBAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T21:26:57.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "AddModifyUser.xaml",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddModifyUser.xaml",
+              "RelativeDocumentMoniker": "AddModifyUser.xaml",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\AddModifyUser.xaml",
+              "RelativeToolTip": "AddModifyUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-25T21:26:34.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Magazyn.csproj",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Magazyn.csproj",
+              "RelativeDocumentMoniker": "Magazyn.csproj",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Magazyn.csproj",
+              "RelativeToolTip": "Magazyn.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-25T17:56:12.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAD4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-25T17:57:16.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T14:50:09.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Magazyn.csproj.user",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Magazyn.csproj.user",
+              "RelativeDocumentMoniker": "Magazyn.csproj.user",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Magazyn.csproj.user",
+              "RelativeToolTip": "Magazyn.csproj.user",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
+              "WhenOpened": "2025-03-26T14:47:51.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "20250325174355_init.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325174355_init.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325174355_init.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325174355_init.cs",
+              "RelativeToolTip": "Migrations\\20250325174355_init.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:43:55.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "CreateUserDto.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Models\\CreateUserDto.cs",
+              "RelativeDocumentMoniker": "Models\\CreateUserDto.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Models\\CreateUserDto.cs",
+              "RelativeToolTip": "Models\\CreateUserDto.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T21:43:25.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "20250325231614_passwordAndLoginNullable.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325231614_passwordAndLoginNullable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325231614_passwordAndLoginNullable.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325231614_passwordAndLoginNullable.cs",
+              "RelativeToolTip": "Migrations\\20250325231614_passwordAndLoginNullable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T23:16:14.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "20250325224717_userPermission.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325224717_userPermission.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325224717_userPermission.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325224717_userPermission.cs",
+              "RelativeToolTip": "Migrations\\20250325224717_userPermission.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T22:47:17.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "WarehouseDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\WarehouseDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\WarehouseDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\WarehouseDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\WarehouseDbContextModelSnapshot.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:57:51.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "20250325183202_correctType.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325183202_correctType.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325183202_correctType.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325183202_correctType.cs",
+              "RelativeToolTip": "Migrations\\20250325183202_correctType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T18:32:02.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "20250325180346_init3.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325180346_init3.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325180346_init3.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325180346_init3.cs",
+              "RelativeToolTip": "Migrations\\20250325180346_init3.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T18:03:47.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "20250325180318_init2.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325180318_init2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325180318_init2.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325180318_init2.cs",
+              "RelativeToolTip": "Migrations\\20250325180318_init2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T18:03:18.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20250325172836_init5.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172836_init5.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325172836_init5.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172836_init5.cs",
+              "RelativeToolTip": "Migrations\\20250325172836_init5.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:28:36.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "20250325172610_init4.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172610_init4.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325172610_init4.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172610_init4.cs",
+              "RelativeToolTip": "Migrations\\20250325172610_init4.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:26:10.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "20250325172310_init3.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172310_init3.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325172310_init3.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172310_init3.cs",
+              "RelativeToolTip": "Migrations\\20250325172310_init3.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:23:10.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "20250324194747_init4.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194747_init4.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194747_init4.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194747_init4.cs",
+              "RelativeToolTip": "Migrations\\20250324194747_init4.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:47:47.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "20250324194620_init3.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194620_init3.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194620_init3.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194620_init3.cs",
+              "RelativeToolTip": "Migrations\\20250324194620_init3.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:46:21.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "20250324194533_init2.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194533_init2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194533_init2.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194533_init2.cs",
+              "RelativeToolTip": "Migrations\\20250324194533_init2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:45:33.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "20250324194411_init.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194411_init.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194411_init.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194411_init.cs",
+              "RelativeToolTip": "Migrations\\20250324194411_init.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:44:12.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "20250325172114_init2.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172114_init2.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325172114_init2.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325172114_init2.cs",
+              "RelativeToolTip": "Migrations\\20250325172114_init2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:21:14.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20250325171540_init.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325171540_init.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250325171540_init.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250325171540_init.cs",
+              "RelativeToolTip": "Migrations\\20250325171540_init.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:15:40.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20250324195001_onlyUser5.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324195001_onlyUser5.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324195001_onlyUser5.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324195001_onlyUser5.cs",
+              "RelativeToolTip": "Migrations\\20250324195001_onlyUser5.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:50:01.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20250324194925_onlyUser1.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194925_onlyUser1.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194925_onlyUser1.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194925_onlyUser1.cs",
+              "RelativeToolTip": "Migrations\\20250324194925_onlyUser1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:49:25.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "20250324194823_onlyUser.cs",
+              "DocumentMoniker": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194823_onlyUser.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250324194823_onlyUser.cs",
+              "ToolTip": "C:\\Users\\kacpe\\Desktop\\Magazyn\\Migrations\\20250324194823_onlyUser.cs",
+              "RelativeToolTip": "Migrations\\20250324194823_onlyUser.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T19:48:23.327Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
