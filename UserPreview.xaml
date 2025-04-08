@@ -124,7 +124,7 @@
 
 
         <!-- Wiersz 11: Mail -->
-        <Label Content="Mail" Grid.Row="11" Grid.Column="0"/>
+        <Label Content="E-mail" Grid.Row="11" Grid.Column="0"/>
         <Label x:Name="label_email" Grid.Row="11" Grid.Column="1"/>
 
 

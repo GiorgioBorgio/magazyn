@@ -110,7 +110,7 @@ namespace Magazyn.Validators
                 DateTime peselDate = new DateTime(century + year, month, day);
                 if (peselDate != dto.DateOfBirth.Date)
                 {
-                    MessageBox.Show("Data urodzenia nie zgadza się z PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Niepoprawny PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
 
@@ -119,7 +119,7 @@ namespace Magazyn.Validators
                 bool isMale = dto.Gender;
                 if ((isMale && genderDigit % 2 == 0) || (!isMale && genderDigit % 2 != 0))
                 {
-                    MessageBox.Show("Płeć nie zgadza się z PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Niepoprawny PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
 
@@ -131,13 +131,13 @@ namespace Magazyn.Validators
                 int checksum = (10 - (sum % 10)) % 10;
                 if (checksum != int.Parse(pesel[10].ToString()))
                 {
-                    MessageBox.Show("Nieprawidłowa suma kontrolna PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Niepoprawny PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return false;
                 }
             }
             catch
             {
-                MessageBox.Show("Nieprawidłowy format PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Niepoprawny PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;

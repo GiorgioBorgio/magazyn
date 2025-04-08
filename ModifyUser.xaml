@@ -156,7 +156,7 @@
         </StackPanel>
 
         <!-- Wiersz 11: Mail -->
-        <Label Content="Mail" Grid.Row="11" Grid.Column="0"/>
+        <Label Content="E-mail" Grid.Row="11" Grid.Column="0"/>
         <TextBox x:Name="Textbox_mail" Grid.Row="11" Grid.Column="1"/>
 
         <!-- Wiersz 12: Numer telefonu -->

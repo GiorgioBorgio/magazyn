@@ -296,7 +296,7 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*" />
+                        <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="2*" />
                         <DataGridTextColumn Header="Role" Binding="{Binding UserPermission}" Width="*" />
                         <DataGridTemplateColumn Header="Akcje" Width="220">
                             <DataGridTemplateColumn.CellTemplate>
