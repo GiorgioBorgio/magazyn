@@ -41,7 +41,7 @@ namespace Magazyn
             _mapper = config.CreateMapper();
             _context = new WarehouseDbContext();
             InitializeComponent();
-
+            Date_picker_data_urodzenia.SelectedDate = DateTime.Today;
         }
         
         
@@ -99,7 +99,6 @@ namespace Magazyn
                 user.ApartmentNumber = Textbox_numer_lokalu.Text;
                 user.HouseNumber = Textbox_numer_posesji.Text;
                 user.PESEL = Textbox_pesel.Text;
-                if (Date_picker_data_urodzenia.SelectedDate == null) { MessageBox.Show("Proszę wybrać datę urodzenia.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
                 user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
                 user.Gender = plec;
                 user.Email = Textbox_mail.Text;
@@ -126,6 +125,17 @@ namespace Magazyn
             this.Close(); // Zamknij okno bez zapisu
         }
 
+        private void TextBox_mac_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Zezwalaj tylko na cyfry
+            e.Handled = !e.Text.All(char.IsDigit);
+        }
+
+        private void TextboxLetter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Zezwalaj tylko na litery
+            e.Handled = !e.Text.All(char.IsLetter);
+        }
     }
 
 }

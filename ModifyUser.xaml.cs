@@ -142,5 +142,17 @@ namespace Magazyn
                    original.Email != modified.Email ||
                    original.PhoneNumber != modified.PhoneNumber;
         }
+
+        private void TextBox_mac_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Zezwalaj tylko na cyfry
+            e.Handled = !e.Text.All(char.IsDigit);
+        }
+
+        private void TextboxLetter_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Zezwalaj tylko na litery
+            e.Handled = !e.Text.All(char.IsLetter);
+        }
     }
 }
