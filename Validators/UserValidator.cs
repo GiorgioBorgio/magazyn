@@ -21,7 +21,9 @@ namespace Magazyn.Validators
         }
         public bool Walidacja(CreateUserDto dto)
         {
-            WalidacjaPol(dto);
+            var DataValidation = WalidacjaPol(dto);
+            if (!DataValidation)
+                return false;
 
             if (_context.Users.Any(u => u.Login == dto.Login))
             {
@@ -174,6 +176,7 @@ namespace Magazyn.Validators
                 MessageBox.Show("Niepoprawny PESEL.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
+           
             return true;
         }
     }
