@@ -52,37 +52,42 @@ namespace Magazyn
             UserValidator validator = new UserValidator(_context);
             
             bool plec;
-            var user = new CreateUserDto();      
-                if (Radio_btn_kobieta.IsChecked == true)
-                {
-                    plec = false;
-                }
-                else
-                {
-                    plec = true;
-                }
-                user.Login = Textbox_login.Text;
-                user.FirstName = Textbox_imie.Text;
-                user.LastName = Textbox_nazwisko.Text;
-                user.City = Textbox_miejscowość.Text;
-                user.PostalCode = Textbox_kod_pocztowy.Text;
-                user.Street = Textbox_ulica.Text;
-                user.ApartmentNumber = Textbox_numer_lokalu.Text;
-                user.HouseNumber = Textbox_numer_posesji.Text;
-                user.PESEL = Textbox_pesel.Text;
-                user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
-                user.Gender = plec;
-                user.Email = Textbox_mail.Text;
-                user.PhoneNumber = Textbox_numer_telefonu.Text;
+
+          
+            var user = new CreateUserDto();
+            if (Radio_btn_kobieta.IsChecked == true)
+            {
+                plec = false;
+            }
+            else
+            {
+                plec = true;
+            }
+            user.Login = Textbox_login.Text;
+            user.FirstName = Textbox_imie.Text;
+            user.LastName = Textbox_nazwisko.Text;
+            user.City = Textbox_miejscowość.Text;
+            user.PostalCode = Textbox_kod_pocztowy.Text;
+            user.Street = Textbox_ulica.Text;
+            user.ApartmentNumber = Textbox_numer_lokalu.Text;
+            user.HouseNumber = Textbox_numer_posesji.Text;
+            user.PESEL = Textbox_pesel.Text;
+            user.DateOfBirth = Date_picker_data_urodzenia.SelectedDate;
+            user.Gender = plec;
+            user.Email = Textbox_mail.Text;
+            user.PhoneNumber = Textbox_numer_telefonu.Text;
+
             //mapowanie z dto do user
             //
-                if (!validator.Walidacja(user)) return;
-                 User newUser = _mapper.Map<User>(user);
-                _context.Users.Add(newUser);
-                _context.Addresses.Add(newUser.Address);
+            if (!validator.Walidacja(user)) return;
+            User newUser = _mapper.Map<User>(user);
+            _context.Users.Add(newUser);
+            _context.Addresses.Add(newUser.Address);
 
-            
             _context.SaveChanges();
+           
+            
+            
             //RefreshUserDataGrid();
 
 

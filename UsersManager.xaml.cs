@@ -142,7 +142,7 @@ namespace Magazyn
             selectedUser.UserPermission = null;
             selectedUser.ForgottenDate = DateTime.Now;
             UserValidator uv = new UserValidator(_context);
-            if (!uv.Walidacja(_mapper.Map<CreateUserDto>(selectedUser))) return;
+            if (!uv.Walidacja(_mapper.Map<CreateUserDto>(selectedUser), selectedUser)) return;
             _context.SaveChanges();
             RefreshUserDataGrid();
         }

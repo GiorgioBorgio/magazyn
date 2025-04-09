@@ -46,13 +46,13 @@ namespace Magazyn
             ForgottenDataGrid.ItemsSource = _users.Where(e => e.IsForgotten == true);
         }
 
-        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            RefreshUserDataGrid(TextBoxSearch.Text);
-            PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
-            ? Visibility.Visible
-            : Visibility.Collapsed;
-        }
+        //private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    RefreshUserDataGrid(TextBoxSearch.Text);
+        //    PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
+        //    ? Visibility.Visible
+        //    : Visibility.Collapsed;
+        //}
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             var mainWindow = Window.GetWindow(this) as MainWindow;

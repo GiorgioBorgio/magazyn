@@ -13,7 +13,7 @@ namespace Magazyn.Models
         public string LastName { get; set; }
         public string? Login { get; set; }
         public string PESEL { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public bool Gender { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

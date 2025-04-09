@@ -80,37 +80,38 @@ namespace Magazyn
         private void ButtonEdytujClick(object sender, RoutedEventArgs e)
         {
                 
-                var user = GetUserFromInput();
-                if (!_userValidator.Walidacja(user, _existingUser)) return;
-                //sprawdza czy zmieniono dane
-                if (!IsChanged(_edytowany_user, user)) { this.Close(); return; }
+            var user = GetUserFromInput();
+            if (!_userValidator.Walidacja(user, _existingUser)) return;
+            var up = new UserPreview(_existingUser, _usersManager);
+            //sprawdza czy zmieniono dane
+            if (!IsChanged(_edytowany_user, user)) { this.Close(); up.ShowDialog(); return; }
                 
-                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapisac zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-
-                if (_existingUser != null)
+            MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapisac zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
                 {
                     var existingId = _existingUser.Id; // Zapisujemy oryginalne ID
                     user.Gender = Radio_btn_mężczyzna.IsChecked == true; //naprawione mapowanie płci
                     _mapper.Map(user, _existingUser); 
                     _existingUser.Id = existingId; // Ustawiamy z powrotem prawidłowe ID
 
-                }
                 _context.SaveChanges();
                 _usersManager.RefreshUserDataGrid();
-                this.Close();
             }
-            
+            this.Close();
+            up.ShowDialog();
         }
         private void ButtonCancelClick(object sender, RoutedEventArgs e)
         {
             var user = GetUserFromInput();
-            if (!IsChanged(_edytowany_user, user)) { this.Close(); return; }
+            if (!IsChanged(_edytowany_user, user)) { this.Close(); var up = new UserPreview(_existingUser, _usersManager);
+                up.ShowDialog(); return; }
             MessageBoxResult result = MessageBox.Show("Wszystkie wprowadzone dane zostaną utracone, czy na pewno chcesz kontynuować?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if(result == MessageBoxResult.Yes)
-            { 
+            {
                 this.Close(); // Zamknij okno bez zapisu
+                var up = new UserPreview(_existingUser, _usersManager);
+                up.ShowDialog();
+                
             }
         }
         private CreateUserDto GetUserFromInput()
@@ -133,7 +134,7 @@ namespace Magazyn
             user.ApartmentNumber = Textbox_numer_lokalu.Text;
             user.HouseNumber = Textbox_numer_posesji.Text;
             user.PESEL = Textbox_pesel.Text;
-            user.DateOfBirth = (DateTime)Date_picker_data_urodzenia.SelectedDate;
+            user.DateOfBirth = Date_picker_data_urodzenia.SelectedDate;
             user.Email = Textbox_mail.Text;
             user.PhoneNumber = Textbox_numer_telefonu.Text;
             return user;
