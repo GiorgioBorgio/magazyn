@@ -68,7 +68,7 @@ namespace Magazyn.Validators
 
             if (_context.Users.Any(u => u.Email == dto.Email && u.Id != currentUserId))
             {
-                MessageBox.Show("Adres e-mail jest już w użyciu.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("E-mail jest już w użyciu.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
