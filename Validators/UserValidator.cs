@@ -125,7 +125,7 @@ namespace Magazyn.Validators
                 MessageBox.Show("E-mail może mieć maksymalnie 255 znaków.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            var emailRegex = new System.Text.RegularExpressions.Regex(@"^(?![.])(?!.*[.]{2})[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+            var emailRegex = new System.Text.RegularExpressions.Regex(@"^(?![.])(?!.*[.]{2})(?!.*\.[@])(?!.*@\.)([a-zA-Z0-9_%+-]+(?:\.[a-zA-Z0-9_%+-]+)*)@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$");
             if (!emailRegex.IsMatch(dto.Email))
             {
                 MessageBox.Show("Nieprawidłowy format E-mail.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
