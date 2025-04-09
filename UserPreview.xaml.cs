@@ -42,7 +42,7 @@ namespace Magazyn
             label_postalcode.Content = address.PostalCode;
             label_street.Content = address.Street;
             label_streetnumber.Content = address.HouseNumber;
-            label_housenumber.Content = address.HouseNumber;
+            label_apartmentNumber.Content = address.ApartmentNumber;
             label_dateofbirth.Content = user.DateOfBirth.ToString();
             label_email.Content = user.Email;
             label_pesel.Content = user.PESEL.ToString();

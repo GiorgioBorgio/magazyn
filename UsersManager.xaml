@@ -265,7 +265,7 @@
               DockPanel.Dock="Right" Width="128">
                         <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
-                        <ComboBoxItem Tag="Email" Content="Email"/>
+                        <ComboBoxItem Tag="E-mail" Content="E-mail"/>
                     </ComboBox>
                 </DockPanel>
 

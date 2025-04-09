@@ -97,6 +97,7 @@ namespace Magazyn
                 _context.SaveChanges();
                 _usersManager.RefreshUserDataGrid();
             }
+            up = new UserPreview(_existingUser, _usersManager);
             this.Close();
             up.ShowDialog();
         }

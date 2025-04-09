@@ -105,7 +105,7 @@
 
         <!-- Wiersz 7: Numer lokalu (opcjonalne) -->
         <Label Content="Numer lokalu (opcjonalne)" Grid.Row="7" Grid.Column="0"/>
-        <Label x:Name="label_housenumber" Grid.Row="7" Grid.Column="1"/>
+        <Label x:Name="label_apartmentNumber" Grid.Row="7" Grid.Column="1"/>
 
 
         <!-- Wiersz 8: Pesel -->

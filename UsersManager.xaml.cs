@@ -64,7 +64,7 @@ namespace Magazyn
                     case "Login":
                         query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
                         break;
-                    case "Email":
+                    case "E-mail":
                         query = query.Where(user => keywords.All(kw => user.Email.ToLower().StartsWith(kw)));
                         break;
                 }
