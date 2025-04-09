@@ -122,13 +122,13 @@ namespace Magazyn.Validators
             // Walidacja adresu e-mail
             if (dto.Email.Length > 255)
             {
-                MessageBox.Show("Adres e-mail może mieć maksymalnie 255 znaków.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("E-mail może mieć maksymalnie 255 znaków.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             var emailRegex = new System.Text.RegularExpressions.Regex(@"^(?![.])(?!.*[.]{2})[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
             if (!emailRegex.IsMatch(dto.Email))
             {
-                MessageBox.Show("Nieprawidłowy format adresu e-mail.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Nieprawidłowy format E-mail.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             // Walidacja PESEL
