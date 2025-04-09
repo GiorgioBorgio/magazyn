@@ -39,7 +39,7 @@ namespace Magazyn.Validators
 
             if (_context.Users.Any(u => u.Email == dto.Email))
             {
-                MessageBox.Show("Adres e-mail jest już w użyciu.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("E-mail jest już w użyciu.", "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -85,7 +85,7 @@ namespace Magazyn.Validators
                         {"Kod pocztowy", dto.PostalCode },
                         {"Numer posesji", dto.HouseNumber },
                         {"Pesel", dto.PESEL },
-                        {"Adres e-mail", dto.Email },
+                        {"E-mail", dto.Email },
                         {"Numer telefonu", dto.PhoneNumber },
             };
             // Walidacja wymaganych pól
