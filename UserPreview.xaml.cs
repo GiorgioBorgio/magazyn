@@ -43,7 +43,7 @@ namespace Magazyn
             label_street.Content = address.Street;
             label_streetnumber.Content = address.HouseNumber;
             label_apartmentNumber.Content = address.ApartmentNumber;
-            label_dateofbirth.Content = user.DateOfBirth.ToString();
+            label_dateofbirth.Content = user.DateOfBirth.Date.ToString("dd.MM.yyyy");
             label_email.Content = user.Email;
             label_pesel.Content = user.PESEL.ToString();
             if (user.Gender == true)
