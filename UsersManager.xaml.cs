@@ -28,7 +28,6 @@ namespace Magazyn
     public partial class UsersManager : UserControl
     {
         private WarehouseDbContext _context;
-        private List<User> _users = new List<User>();
         private IMapper _mapper;
         public UsersManager()
         {
@@ -37,13 +36,16 @@ namespace Magazyn
             {
                 cfg.AddProfile(new WarehouseMappingProfile());
             });
-            var mapper = config.CreateMapper();
             _mapper = config.CreateMapper();
             InitializeComponent();
-            RefreshUserDataGrid();
+            this.Loaded += UsersManager_Loaded;
+        }
+        private async void UsersManager_Loaded(object sender, RoutedEventArgs e)
+        {
+            await RefreshUserDataGrid();
         }
 
-        public void RefreshUserDataGrid(string searchText = "")
+        public async Task RefreshUserDataGrid(string searchText = "")
         {
             _context.ChangeTracker.Clear();
             var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -58,9 +60,6 @@ namespace Magazyn
                     case "Name":
                         query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().StartsWith(kw) || user.LastName.ToLower().StartsWith(kw)));
                         break;
-                    //case "LastName":
-                    //    query = query.Where(user => keywords.All(kw => user.LastName.ToLower().Contains(kw)));
-                    //    break;
                     case "Login":
                         query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
                         break;
@@ -70,9 +69,8 @@ namespace Magazyn
                 }
             }
 
-            var filteredUsers = query.AsNoTracking().ToList();
-            _users = new List<User>(filteredUsers);
-            UserDataGrid.ItemsSource = _users.Where(e => e.IsForgotten == false);
+            var filteredUsers = await query.AsNoTracking().ToListAsync();
+            UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
         }
 
         private string GetSelectedSearchField()
@@ -82,14 +80,14 @@ namespace Magazyn
         }
 
 
-        private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
+        private async void ButtonAddUser_Click(object sender, RoutedEventArgs e)
         {
             var oknoDodajUser = new AddUser();
             oknoDodajUser.ShowDialog(); // Otwiera nowe okno modalnie
-            RefreshUserDataGrid();
+            await RefreshUserDataGrid();
         }
 
-        private void ButtonModify_Click(object sender, RoutedEventArgs e)
+        private async void ButtonModify_Click(object sender, RoutedEventArgs e)
         {
             var wybranyUser = UserDataGrid.SelectedItem as User;
             if (wybranyUser == null)
@@ -100,7 +98,7 @@ namespace Magazyn
 
             var editWindow = new ModifyUser(wybranyUser, this);
             editWindow.ShowDialog();
-            RefreshUserDataGrid();
+            await RefreshUserDataGrid();
 
             //UserPreview userPreview = new UserPreview();
             //ContentArea.Content = userPreview;
@@ -108,9 +106,9 @@ namespace Magazyn
 
         }
 
-        private void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private async void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            RefreshUserDataGrid(TextBoxSearch.Text);
+            await RefreshUserDataGrid(TextBoxSearch.Text);
             PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
             ? Visibility.Visible
             : Visibility.Collapsed;
@@ -129,9 +127,9 @@ namespace Magazyn
             podgla.ShowDialog();
         }
 
-        private void ForgetUser(int userId)
+        private async Task ForgetUser(int userId)
         {
-            var selectedUser = _context.Users.Include(u => u.Address).First(e => e.Id == userId);
+            var selectedUser = await _context.Users.Include(u => u.Address).FirstAsync(e => e.Id == userId);
             selectedUser.IsForgotten = true;
             DataRandomizer randomizer = new DataRandomizer();
             selectedUser.FirstName = randomizer.GenerateRandomString(10);
@@ -143,11 +141,11 @@ namespace Magazyn
             selectedUser.ForgottenDate = DateTime.Now;
             UserValidator uv = new UserValidator(_context);
             if (!uv.Walidacja(_mapper.Map<CreateUserDto>(selectedUser), selectedUser)) return;
-            _context.SaveChanges();
-            RefreshUserDataGrid();
+            await _context.SaveChangesAsync();
+            await RefreshUserDataGrid();
         }
 
-        private void buttonForget_Click(object sender, RoutedEventArgs e)
+        private async void buttonForget_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapomieć tego użytkownika?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -158,10 +156,8 @@ namespace Magazyn
                     MessageBox.Show("Proszę wybrać użytkownika do edycji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                ForgetUser(wybranyUser.Id);
+                await ForgetUser(wybranyUser.Id);
             }
-            else return;
-
         }
         private void ShowForgottenUsers_Click(object sender, RoutedEventArgs e)
         {
@@ -178,10 +174,9 @@ namespace Magazyn
             }
         }
 
-        private void SearchCriteriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void SearchCriteriaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            RefreshUserDataGrid(TextBoxSearch.Text);
+            await RefreshUserDataGrid(TextBoxSearch.Text);
         }
-
     }
 }
