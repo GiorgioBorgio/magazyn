@@ -37,6 +37,9 @@ namespace Magazyn
         {
             MainContentArea.Content = new UsersManager();
         }
-
+        private void OpenPermissionManager(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new PermissionManager();
+        }
     }
 }
