@@ -164,7 +164,7 @@
 
     <Grid>
         <!-- Pasek górny -->
-        <Border Height="60" VerticalAlignment="Top" Background="#1E293B">
+        <Border Height="60" VerticalAlignment="Top" Background="{DynamicResource TextMain}">
             <DockPanel Margin="20,0" LastChildFill="False">
                 <!-- Tytuł -->
                 <TextBlock Text="👥 Zarządzanie użytkownikami"

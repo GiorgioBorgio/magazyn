@@ -6,6 +6,32 @@
              xmlns:local="clr-namespace:Magazyn"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="RoundedNavButton">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10,0,10,10"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="12"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid Background="White">
         <Border Background="#FF1E293B" Height="60" VerticalAlignment="Top"/>
         <TextBlock Text="👥 Zarządzanie uprawnieniami"
@@ -13,7 +39,53 @@
             Foreground="White"
             FontWeight="Bold"
     Margin="23,18,513,408"/>
-        <DockPanel LastChildFill="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,124,0,0" TextWrapping="Wrap" Text="Rejestrowanie towarów: " VerticalAlignment="Top" Height="45" Width="177" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,180,0,0" TextWrapping="Wrap" Text="Wyszukiwanie towarów i przegląd stanów magazynowych:" VerticalAlignment="Top" Height="37" Width="247" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,251,0,0" TextWrapping="Wrap" Text="Przegląd historii uzupełniania stanów magazynowych:" VerticalAlignment="Top" Height="45" Width="247" FontSize="14" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="23,318,0,0" TextWrapping="Wrap" Text="Podgląd wyszukanej rejestracji towaru:" VerticalAlignment="Top" Height="45" Width="152" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Lista" 
+                HorizontalAlignment="Left" 
+                Margin="292,112,0,0" 
+                VerticalAlignment="Top"
+                Style="{StaticResource RoundedNavButton}" Height="34" Width="82" Background="#FFF56B1B" Foreground="White" FontWeight="Bold"/>
+        <Button Content="Lista" 
+            HorizontalAlignment="Left" 
+            Margin="292,180,0,0" 
+            VerticalAlignment="Top"
+            Style="{StaticResource RoundedNavButton}" Height="35" Width="82" Background="#FFF56B1B" Foreground="White" FontWeight="Bold"/>
+        <Button Content="Lista" 
+            HorizontalAlignment="Left" 
+            Margin="292,251,0,0" 
+            VerticalAlignment="Top"
+            Style="{StaticResource RoundedNavButton}" Height="35" Width="82" Background="#FFF56B1B" Foreground="White" FontWeight="Bold"/>
+        <Button Content="Lista" 
+            HorizontalAlignment="Left" 
+            Margin="292,317,0,0" 
+            VerticalAlignment="Top"
+            Style="{StaticResource RoundedNavButton}" Height="35" Width="82" Background="#FFF56B1B" Foreground="White" FontWeight="Bold"/>
+        <DataGrid x:Name="UserDataGrid"
+            HeadersVisibility="Column"
+            IsReadOnly="True"
+            CanUserAddRows="False"
+            CanUserReorderColumns="False"
+            CanUserSortColumns="False"
+            RowHeight="60"
+            RowHeaderWidth="0"
+            GridLinesVisibility="None"
+            BorderThickness="0"
+            AlternatingRowBackground="White"
+            RowBackground="White"
+            ColumnHeaderHeight="40"
+            EnableRowVirtualization="False"
+            SelectionMode="Single"
+            SelectionUnit="FullRow"
+            Background="Transparent"  Margin="477,104,-272,290" FontSize="16" FontWeight="Bold" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="200" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="200" />
+                <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="200" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </UserControl>
