@@ -29,9 +29,40 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="ModifyButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#F1F5F9"/>
+            <Setter Property="Foreground" Value="#1E293B"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0">
+                                <TextBlock Text="👤" FontSize="14" Margin="0,0,6,0"/>
+                                <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E2E8F0"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#CBD5E1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
-    <Grid Background="White">
+    <Grid x:Name="PermissionManager1" Background="White" Loaded="PermissionManager1_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
@@ -80,54 +111,49 @@
         </Border>
 
         <!-- Uprawnienia -->
-        <StackPanel Grid.Row="1" Margin="0,20,20,0">
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Rejestrowanie towarów: " FontSize="14" FontWeight="Bold" Width="250" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Wyszukiwanie towarów i przegląd stanów magazynowych:" FontSize="14" FontWeight="Bold" Width="350" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" Click="Button_Click" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Przegląd historii uzupełniania stanów magazynowych:" FontSize="14" FontWeight="Bold" Width="350" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Podgląd wyszukanej rejestracji towaru:" FontSize="14" FontWeight="Bold" Width="250" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
-            </StackPanel>
-        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,20,20,0"/>
 
 
         <!-- Tabela użytkowników -->
+        <!-- Tabela użytkowników -->
         <DataGrid x:Name="UserDataGrid"
-                  Grid.Row="2"
-                  Margin="20"
-                  HeadersVisibility="Column"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
-                  CanUserReorderColumns="False"
-                  CanUserSortColumns="False"
-                  RowHeight="60"
-                  RowHeaderWidth="0"
-                  GridLinesVisibility="None"
-                  BorderThickness="0"
-                  AlternatingRowBackground="White"
-                  RowBackground="White"
-                  ColumnHeaderHeight="40"
-                  EnableRowVirtualization="False"
-                  SelectionMode="Single"
-                  SelectionUnit="FullRow"
-                  Background="Transparent"
-                  FontSize="16"
-                  FontWeight="Bold"
-                  AutoGenerateColumns="False">
+          Grid.Row="2"
+          Margin="20"
+          HeadersVisibility="Column"
+          IsReadOnly="True"
+          CanUserAddRows="False"
+          CanUserReorderColumns="False"
+          CanUserSortColumns="False"
+          RowHeight="60"
+          RowHeaderWidth="0"
+          GridLinesVisibility="None"
+          BorderThickness="0"
+          AlternatingRowBackground="White"
+          RowBackground="White"
+          ColumnHeaderHeight="40"
+          EnableRowVirtualization="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow"
+          Background="Transparent"
+          FontSize="16"
+          FontWeight="Bold"
+          AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="200" />
-                <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="200" />
-                <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="200" />
-                <DataGridTextColumn Header="" Binding="{Binding Login}" Width="200" />
+                <DataGridTextColumn Header="Nazwa uprawnienia" Binding="{Binding Name}" Width="600" />
+                <DataGridTemplateColumn Header="Akcje" Width="220">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Button Content="Lista użytkowników"
+                            Style="{StaticResource ModifyButtonStyle}"
+                            Width="100"
+                            Height="40"
+                            Margin="0,0,10,0"
+                            Padding="10,4"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

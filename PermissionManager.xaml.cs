@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Magazyn.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +22,12 @@ namespace Magazyn
     /// </summary>
     public partial class PermissionManager : UserControl
     {
-
+        private WarehouseDbContext _context;
         private PermissionWindow _permissionWindow;
         public PermissionManager()
         {
             InitializeComponent();
+            _context = new WarehouseDbContext();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +51,17 @@ namespace Magazyn
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void PermissionManager1_Loaded(object sender, RoutedEventArgs e)
+        {
+            await LoadPermissionsAsync();
+        }
+
+        private async Task LoadPermissionsAsync()
+        {
+            var permissions = await _context.Permissions.ToListAsync();
+            UserDataGrid.ItemsSource = permissions;
         }
     }
 }
