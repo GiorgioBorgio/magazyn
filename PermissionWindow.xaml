@@ -237,14 +237,25 @@ DockPanel.Dock="Right" Width="128">
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTemplateColumn Header="Role" Width="220">
+                        <DataGridTemplateColumn Header="Uprawnienie" Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <!-- Przyciski lub inne elementy -->
                                         <Button Content="Nadanie uprawnień"
+                                        Background="Orange"
+                                        Foreground="White"
+                                        FontWeight="Bold"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Center"
+        
+                                        Padding="10"
+                                        Margin="5,0"
+                                        BorderThickness="0"
+                                        Cursor="Hand"
+                                        Click="AssignPermission_Click"/>
                                
-                                Tag="{Binding}" />
+                                
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

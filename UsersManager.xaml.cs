@@ -22,9 +22,7 @@ using System.Windows.Shapes;
 
 namespace Magazyn
 {
-    /// <summary>
-    /// Interaction logic for UsersMenager.xaml
-    /// </summary>
+   
     public partial class UsersManager : UserControl
     {
         private WarehouseDbContext _context;

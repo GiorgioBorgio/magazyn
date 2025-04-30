@@ -98,5 +98,10 @@ namespace Magazyn
         {
 
         }
+        private void AssignPermission_Click(object sender, RoutedEventArgs e)
+        {
+            var addPermissionWindow = new AddPermission();
+            addPermissionWindow.ShowDialog();
+        }
     }
 }
