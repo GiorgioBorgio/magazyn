@@ -20,9 +20,31 @@ namespace Magazyn
     /// </summary>
     public partial class PermissionManager : UserControl
     {
+
+        private PermissionWindow _permissionWindow;
         public PermissionManager()
         {
             InitializeComponent();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NadajUprawnienia_Click(object sender, RoutedEventArgs e)
+        {
+            if (_permissionWindow == null || !_permissionWindow.IsLoaded)
+            {
+                _permissionWindow = new PermissionWindow();
+                _permissionWindow.Show();
+            }
+            else
+            {
+                _permissionWindow.Activate(); // przywróć okno na wierzch, jeśli już otwarte
+            }
+        }
+
+      
     }
 }
