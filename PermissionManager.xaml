@@ -80,24 +80,25 @@
         </Border>
 
         <!-- Uprawnienia -->
-        <StackPanel Grid.Row="1" Margin="20,20,20,0">
+        <StackPanel Grid.Row="1" Margin="0,20,20,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="Rejestrowanie towarów: " FontSize="14" FontWeight="Bold" Width="250" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White"/>
+                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="Wyszukiwanie towarów i przegląd stanów magazynowych:" FontSize="14" FontWeight="Bold" Width="350" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" Click="Button_Click" RenderTransformOrigin="0.508,0.61"/>
+                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" Click="Button_Click" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Margin="20,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="Przegląd historii uzupełniania stanów magazynowych:" FontSize="14" FontWeight="Bold" Width="350" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White"/>
+                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Podgląd wyszukanej rejestracji towaru:" FontSize="14" FontWeight="Bold" Width="250" VerticalAlignment="Center"/>
-                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White"/>
+                <Button Content="Lista" Style="{StaticResource RoundedNavButton}" Width="82" Background="#FFF56B1B" Foreground="White" HorizontalAlignment="Right" Margin="20,0,0,0"/>
             </StackPanel>
         </StackPanel>
+
 
         <!-- Tabela użytkowników -->
         <DataGrid x:Name="UserDataGrid"

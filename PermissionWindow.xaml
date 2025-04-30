@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Nadaj uprawnienia"
         WindowStartupLocation="CenterScreen"
@@ -11,6 +12,7 @@
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow"
         ShowInTaskbar="True">
+   
     <Window.Resources>
         <!-- Kolory -->
         <SolidColorBrush x:Key="DarkGreen" Color="#134E4A"/>
@@ -155,6 +157,60 @@
         <!-- Główna zawartość -->
         <Border Background="{StaticResource LightBackground}" CornerRadius="12" Margin="40,80,40,144" Padding="20" Grid.RowSpan="2">
             <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Wyszukiwarka -->
+                    <RowDefinition Height="*"/>
+                    <!-- DataGrid -->
+                </Grid.RowDefinitions>
+
+                <!-- Wyszukiwarka (przyciemniona) -->
+                <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Border Background="#E2E8F0" 
+              BorderBrush="#CBD5E1" 
+              BorderThickness="1"
+              CornerRadius="6" 
+              Height="38"
+              Width="270" 
+              VerticalAlignment="Top">
+                        <Grid Margin="10,0">
+                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
+         Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
+
+                            <!-- Placeholder -->
+                            <TextBlock x:Name="PlaceholderText"
+                         Text="Wyszukaj"
+                         FontSize="13"
+                         Foreground="Gray"
+                         Margin="24,0,0,0"
+                         VerticalAlignment="Center"
+                         IsHitTestVisible="False"
+         Visibility="Visible"/>
+
+                            <TextBox x:Name="TextBoxSearch"
+                       Width="200"
+                       BorderThickness="0"
+                       Background="Transparent"
+                       Foreground="#1E293B"
+                       FontSize="13"
+                       VerticalContentAlignment="Center"
+                       Margin="24,0,0,0"
+                       TextChanged="TextBoxSearch_TextChanged"
+       Text=""/>
+                        </Grid>
+                    </Border>
+                    <ComboBox x:Name="SearchTypeComboBox" 
+SelectedIndex="0"
+DockPanel.Dock="Right" Width="128">
+                        <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
+                        <ComboBoxItem Tag="Login" Content="Login"/>
+                        <ComboBoxItem Tag="E-mail" Content="E-mail"/>
+                    </ComboBox>
+                </DockPanel>
+
+
+
                 <!-- DataGrid -->
                 <DataGrid x:Name="UserDataGrid"
           Grid.Row="1"
@@ -181,7 +237,7 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTemplateColumn Header="" Width="220">
+                        <DataGridTemplateColumn Header="Role" Width="220">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
