@@ -69,6 +69,11 @@ namespace Magazyn
 
             var filteredUsers = await query.AsNoTracking().ToListAsync();
             UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
+
+            var filteredUsersPermission = await query
+                .Include(u => u.UserPermission)  // Dodaj to, aby załadować dane o roli
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         private string GetSelectedSearchField()

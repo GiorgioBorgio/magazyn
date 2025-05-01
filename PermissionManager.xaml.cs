@@ -32,7 +32,11 @@ namespace Magazyn
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+            if (mainWindow != null)
+            {
+                mainWindow.MainContentArea.Content = null; // lub np. jakiś domyślny UserControl
+            }
         }
 
         private void NadajUprawnienia_Click(object sender, RoutedEventArgs e)
@@ -48,10 +52,7 @@ namespace Magazyn
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private async void PermissionManager1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -63,5 +64,12 @@ namespace Magazyn
             var permissions = await _context.Permissions.ToListAsync();
             UserDataGrid.ItemsSource = permissions;
         }
+
+        private void UserListButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+    
     }
 }

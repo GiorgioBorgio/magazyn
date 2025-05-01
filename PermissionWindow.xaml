@@ -130,7 +130,7 @@
         <Border Background="{DynamicResource TextMain}" Height="60" VerticalAlignment="Top">
             <DockPanel Margin="20,0" LastChildFill="False">
                 <!-- Tytuł -->
-                <TextBlock Text="👥 Nadawanie uprawnień"
+                <TextBlock Text="👥 Zarządzanie uprawnieniami"
                            FontSize="18"
                            Foreground="White"
                            FontWeight="Bold"
@@ -205,7 +205,7 @@ SelectedIndex="0"
 DockPanel.Dock="Right" Width="128">
                         <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
-                        <ComboBoxItem Tag="E-mail" Content="E-mail"/>
+                       
                     </ComboBox>
                 </DockPanel>
 
@@ -237,25 +237,25 @@ DockPanel.Dock="Right" Width="128">
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTemplateColumn Header="Uprawnienie" Width="150">
+                        <DataGridTemplateColumn Header="Zarządzaj uprawnieniami" Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                                         <!-- Przyciski lub inne elementy -->
-                                        <Button Content="Nadanie uprawnień"
-                                        Background="Orange"
-                                        Foreground="White"
-                                        FontWeight="Bold"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Center"
-        
-                                        Padding="10"
-                                        Margin="5,0"
-                                        BorderThickness="0"
-                                        Cursor="Hand"
-                                        Click="AssignPermission_Click"/>
-                               
-                                
+                                        <Button Content="Zarządzaj"
+        Background="Orange"
+        Foreground="White"
+        FontWeight="Bold"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Center"
+        Padding="10"
+        Margin="5,0"
+        BorderThickness="0"
+        Cursor="Hand"
+        Click="AssignPermission_Click"
+        Tag="{Binding}" />
+
+
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

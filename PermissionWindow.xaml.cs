@@ -19,7 +19,10 @@ namespace Magazyn
 
     public partial class PermissionWindow : Window
     {
-        private WarehouseDbContext _context;
+        private readonly WarehouseDbContext _context;
+        private readonly int _userId;
+
+   
         public PermissionWindow()
         {
             InitializeComponent();
@@ -27,6 +30,8 @@ namespace Magazyn
 
 
             _context = new WarehouseDbContext();
+
+
         }
 
         private async void UsersManager_Loaded(object sender, RoutedEventArgs e)
@@ -96,12 +101,18 @@ namespace Magazyn
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+          
+            this.Close();
         }
         private void AssignPermission_Click(object sender, RoutedEventArgs e)
         {
-            var addPermissionWindow = new AddPermission();
-            addPermissionWindow.ShowDialog();
-        }
+          
+            if (sender is Button button && button.Tag is User selectedUser)
+            {
+                var addPermissionWindow = new AddPermission(selectedUser.Id); // <- przekazujemy ID użytkownika
+                addPermissionWindow.ShowDialog();
+            }
+       
+    }
     }
 }

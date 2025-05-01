@@ -22,11 +22,17 @@ namespace Magazyn
     public partial class AddPermission : Window
     {
         private readonly WarehouseDbContext _context;
-        public AddPermission()
+        private readonly int _userId;
+        private int userId;
+
+        public AddPermission(int id)
         {
             InitializeComponent();
             _context = new WarehouseDbContext();
+            _userId = userId;
         }
+
+     
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -39,17 +45,9 @@ namespace Magazyn
             PermissionsPanel.ItemsSource = permissions;
         }
 
-
-        private void PermissionButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var selectedPermission = button?.Tag as Permission;
 
-            if (selectedPermission != null)
-            {
-                MessageBox.Show($"Wybrano: {selectedPermission.Name}", "Uprawnienie", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Możesz tu np. zapisać do bazy przypisanie roli do użytkownika
-            }
         }
     }
 }

@@ -20,8 +20,9 @@ namespace Magazyn
         WarehouseDbContext context;
         public MainWindow()
         {
-            context = new WarehouseDbContext();
             InitializeComponent();
+            context = new WarehouseDbContext();
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
