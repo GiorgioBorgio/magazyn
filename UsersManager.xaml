@@ -218,6 +218,10 @@
         <!-- Główna zawartość -->
         <Border Background="{StaticResource LightBackground}" CornerRadius="12" Margin="40,80,40,144" Padding="20">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="277*"/>
+                    <ColumnDefinition Width="318*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <!-- Wyszukiwarka -->
@@ -226,7 +230,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Wyszukiwarka (przyciemniona) -->
-                <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <DockPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2">
                     <Border Background="#E2E8F0" 
                             BorderBrush="#CBD5E1" 
                             BorderThickness="1"
@@ -291,7 +295,7 @@
                           EnableRowVirtualization="False"
                           SelectionMode="Single"
                           SelectionUnit="FullRow"
-                          Background="Transparent"  Margin="0,0,0,-56" Cursor="">
+                          Background="Transparent"  Margin="0,0,0,-56" Cursor="" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
