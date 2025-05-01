@@ -23,7 +23,6 @@ namespace Magazyn
     public partial class PermissionManager : UserControl
     {
         private WarehouseDbContext _context;
-        private PermissionWindow _permissionWindow;
         public PermissionManager()
         {
             InitializeComponent();
@@ -39,37 +38,43 @@ namespace Magazyn
             }
         }
 
-        private void NadajUprawnienia_Click(object sender, RoutedEventArgs e)
-        {
-            if (_permissionWindow == null || !_permissionWindow.IsLoaded)
-            {
-                _permissionWindow = new PermissionWindow();
-                _permissionWindow.Show();
-            }
-            else
-            {
-                _permissionWindow.Activate(); // przywróć okno na wierzch, jeśli już otwarte
-            }
-        }
 
-        
+        public async Task RefreshUserDataGrid(string searchText = "")
+        {
+            _context.ChangeTracker.Clear();
+            var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string searchField = GetSelectedSearchField();
+
+            var query = _context.Users.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                switch (searchField)
+                {
+                    case "Imię":
+                        query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().StartsWith(kw) || user.LastName.ToLower().StartsWith(kw)));
+                        break;
+                    case "Nazwisko":
+                        query = query.Where(user => keywords.All(kw => user.LastName.ToLower().StartsWith(kw)));
+                        break;
+                    case "Login":
+                        query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
+                        break;
+                }
+            }
+
+            var filteredUsers = await query.AsNoTracking().ToListAsync();
+            UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
+        }
+        private string GetSelectedSearchField()
+        {
+            var selectedItem = SearchTypeComboBox.SelectedItem as ComboBoxItem;
+            return selectedItem?.Tag?.ToString() ?? "FirstName";
+        }
 
         private async void PermissionManager1_Loaded(object sender, RoutedEventArgs e)
         {
-            await LoadPermissionsAsync();
+            await RefreshUserDataGrid();
         }
-
-        private async Task LoadPermissionsAsync()
-        {
-            var permissions = await _context.Permissions.ToListAsync();
-            UserDataGrid.ItemsSource = permissions;
-        }
-
-        private void UserListButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-    
     }
 }
