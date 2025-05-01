@@ -9,6 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
+        <SolidColorBrush x:Key="LightBackground" Color="White"/>
         <Style TargetType="{x:Type Button}" x:Key="RoundedNavButton">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -65,7 +66,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid x:Name="PermissionManager1" Background="White" Loaded="PermissionManager1_Loaded">
+    <Grid x:Name="PermissionManager1" Loaded="PermissionManager1_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"/>
@@ -88,25 +89,6 @@
                            Margin="23,0,0,0"/>
 
                 <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
-                    <Button Content="Zarządzaj uprawnieniami"
-        Width="150" Height="30"
-        Margin="0,0,10,0"
-        Background="#22C55E"
-        Foreground="White"
-        Cursor="Hand"
-        Click="NadajUprawnienia_Click"
-        BorderThickness="0">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}"
-                    CornerRadius="8"
-                    SnapsToDevicePixels="True">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
 
                     <Button Content="↩ Powrót"
         Margin="0,10,0,10"
@@ -115,7 +97,7 @@
         Foreground="White"
         Cursor="Hand"
         Click="BackButton_Click"
-        BorderThickness="0">
+        BorderThickness="0" FontSize="14" FontWeight="Bold">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
@@ -134,58 +116,114 @@
 
         <!-- Uprawnienia -->
         <StackPanel Grid.Row="1" Margin="0,20,20,0"/>
+        <Border Background="{StaticResource LightBackground}" 
+                CornerRadius="12" 
+                Margin="40,0,125,282" 
+                Padding="20" 
+                Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- DataGrid -->
+                    <!-- Wyszukiwarka -->
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Wyszukiwarka (przyciemniona) -->
+                <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Border Background="#E2E8F0" 
+                        BorderBrush="#CBD5E1" 
+                        BorderThickness="1"
+                        CornerRadius="6" 
+                        Height="38"
+                        Width="270" 
+                        VerticalAlignment="Top">
+                        <Grid Margin="10,0">
+                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
+                                Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
+
+                            <!-- Placeholder -->
+                            <TextBlock x:Name="PlaceholderText"
+                                Text="Wyszukaj"
+                                FontSize="13"
+                                Foreground="Gray"
+                                Margin="24,0,0,0"
+                                VerticalAlignment="Center"
+                                IsHitTestVisible="False"
+                                Visibility="Visible"/>
+
+                            <TextBox x:Name="TextBoxSearch"
+                                Width="200"
+                                BorderThickness="0"
+                                Background="Transparent"
+                                Foreground="#1E293B"
+                                FontSize="13"
+                                VerticalContentAlignment="Center"
+                                Margin="24,0,0,0"
+                                Text=""/>
+                        </Grid>
+                    </Border>
+                    <ComboBox x:Name="SearchTypeComboBox" 
+                        SelectedIndex="0"
+                        DockPanel.Dock="Right" Width="128" FontSize="14">
+                        <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
+                        <ComboBoxItem Tag="Login" Content="Login"/>
+                        <ComboBoxItem Tag="E-mail" Content="E-mail"/>
+                    </ComboBox>
+                </DockPanel>
+
+
+
+
+                <!-- DataGrid -->
+                <DataGrid x:Name="UserDataGrid"
+                    Grid.Row="1"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    CanUserReorderColumns="False"
+                    CanUserSortColumns="False"
+                    RowHeight="60"
+                    RowHeaderWidth="0"
+                    GridLinesVisibility="None"
+                    BorderThickness="0"
+                    AlternatingRowBackground="White"
+                    RowBackground="White"
+                    ColumnHeaderHeight="40"
+                    EnableRowVirtualization="False"
+                    SelectionMode="Single"
+                    SelectionUnit="FullRow"
+                    Background="Transparent"  Margin="0,0,0,-56" FontSize="14" FontWeight="Bold">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
+                        <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
+                        <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
+                        <DataGridTextColumn Header="Uprawnienia" Binding="{Binding UserPermission}" Width="*" />
+                        <DataGridTemplateColumn Header="Akcje" Width="220">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <Button Content="Zarządzaj"
+                                            Background="Orange"
+                                            Foreground="White"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            Padding="10"
+                                            Margin="5,0"
+                                            BorderThickness="0"
+                                            Cursor="Hand"
+                                            Tag="{Binding}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
 
         <!-- Tabela użytkowników -->
-        <DataGrid x:Name="UserDataGrid"
-                  Grid.Row="2"
-                  Margin="20"
-                  HeadersVisibility="Column"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
-                  CanUserReorderColumns="False"
-                  CanUserSortColumns="False"
-                  RowHeight="60"
-                  RowHeaderWidth="0"
-                  GridLinesVisibility="None"
-                  BorderThickness="0"
-                  AlternatingRowBackground="White"
-                  RowBackground="White"
-                  ColumnHeaderHeight="40"
-                  EnableRowVirtualization="False"
-                  SelectionMode="Single"
-                  SelectionUnit="Cell"
-                  Background="Transparent"
-                  FontSize="16"
-                  FontWeight="Bold"
-                  AutoGenerateColumns="False">
-
-            <DataGrid.Resources>
-                <!-- Styl wyłączający wizualne zaznaczenie wiersza -->
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="IsHitTestVisible" Value="False"/>
-                </Style>
-            </DataGrid.Resources>
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nazwa uprawnienia" Binding="{Binding Name}" Width="600" />
-                <DataGridTemplateColumn Header="Akcje" Width="220">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <Button Content="Lista użytkowników"
-                                        Style="{StaticResource ModifyButtonStyle}"
-                                        Width="100"
-                                        Height="40"
-                                        Margin="0,0,10,0"
-                                        Padding="10,4"
-                                        Cursor="Hand"
-                                        Click="UserListButton_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </UserControl>
