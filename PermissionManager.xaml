@@ -10,6 +10,8 @@
 
     <UserControl.Resources>
         <SolidColorBrush x:Key="LightBackground" Color="White"/>
+        <SolidColorBrush x:Key="BadgeYellow" Color="#FACC15"/>
+
         <Style TargetType="{x:Type Button}" x:Key="RoundedNavButton">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -25,6 +27,24 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" CornerRadius="12" SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource BadgeYellow}"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -160,7 +180,8 @@
                                 FontSize="13"
                                 VerticalContentAlignment="Center"
                                 Margin="24,0,0,0"
-                                Text=""/>
+                                Text=""
+                                TextChanged="TextBoxSearch_TextChanged"/>
                         </Grid>
                     </Border>
                     <ComboBox x:Name="SearchTypeComboBox" 
@@ -168,7 +189,7 @@
                         DockPanel.Dock="Right" Width="128" FontSize="14">
                         <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
-                        <ComboBoxItem Tag="E-mail" Content="E-mail"/>
+                        <ComboBoxItem Tag="E-mail" Content="Uprawnienie"/>
                     </ComboBox>
                 </DockPanel>
 
@@ -194,7 +215,7 @@
                     EnableRowVirtualization="False"
                     SelectionMode="Single"
                     SelectionUnit="FullRow"
-                    Background="Transparent"  Margin="0,0,0,-56" FontSize="14" FontWeight="Bold">
+                    Background="Transparent"  Margin="0,0,0,-56" FontSize="14" FontWeight="Bold" BorderBrush="#FF688CAF">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
@@ -214,7 +235,8 @@
                                             Margin="5,0"
                                             BorderThickness="0"
                                             Cursor="Hand"
-                                            Tag="{Binding}" />
+                                            Tag="{Binding}"
+                                            Click="button_zarzadzaj_Click"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

@@ -76,5 +76,20 @@ namespace Magazyn
         {
             await RefreshUserDataGrid();
         }
+
+        private async void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            await RefreshUserDataGrid(TextBoxSearch.Text);
+            PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        }
+
+        private async void button_zarzadzaj_Click(object sender, RoutedEventArgs e)
+        {
+            var okno_dodaj_uprawnienie = new AddPermission();
+            okno_dodaj_uprawnienie.ShowDialog();
+            await RefreshUserDataGrid();
+        }
     }
 }
