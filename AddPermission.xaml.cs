@@ -25,7 +25,7 @@ namespace Magazyn
         private readonly int _userId;
         private int userId;
 
-        public AddPermission(int id)
+        public AddPermission()
         {
             InitializeComponent();
             _context = new WarehouseDbContext();

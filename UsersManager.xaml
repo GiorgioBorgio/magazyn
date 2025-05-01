@@ -291,7 +291,7 @@
                           EnableRowVirtualization="False"
                           SelectionMode="Single"
                           SelectionUnit="FullRow"
-                          Background="Transparent"  Margin="0,0,0,-56">
+                          Background="Transparent"  Margin="0,0,0,-56" Cursor="">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
