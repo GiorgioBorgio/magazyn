@@ -201,7 +201,23 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTextColumn Header="Uprawnienia" Binding="{Binding PermissionsDisplay}" Width="3*" />
+                        <DataGridTemplateColumn Header="Uprawnienia" Width="4*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="#CBD5E1" CornerRadius="4" Padding="4" Background="#F8FAFC">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
+                                            <ItemsControl ItemsSource="{Binding UserPermissions}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Permission.Name}" FontSize="12" Foreground="#1E293B" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
 
                         <DataGridTemplateColumn Header="Akcje" Width="*">
