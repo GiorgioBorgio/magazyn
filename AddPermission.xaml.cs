@@ -24,6 +24,14 @@ namespace Magazyn
         private readonly WarehouseDbContext _context;
         private readonly int _userId;
         private int userId;
+        
+
+        public AddPermission(int userId)
+        {
+            InitializeComponent();
+            _context = new WarehouseDbContext();
+            _userId = userId;
+        }
 
         public AddPermission()
         {
@@ -31,8 +39,6 @@ namespace Magazyn
             _context = new WarehouseDbContext();
             _userId = userId;
         }
-
-     
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -45,9 +51,75 @@ namespace Magazyn
             PermissionsPanel.ItemsSource = permissions;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+      
+         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            var selectedPermissions = new List<Permission>();
 
+            foreach (var item in PermissionsPanel.Items)
+            {
+                var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
+                if (container != null)
+                {
+                    var checkBox = FindVisualChild<CheckBox>(container);
+                    if (checkBox != null && checkBox.IsChecked == true && checkBox.Tag is Permission permission)
+                    {
+                        selectedPermissions.Add(permission);
+                    }
+                }
+            }
+
+            // Istniejące uprawnienia użytkownika
+            var existingPermissions = await _context.UserPermissions
+                .Where(up => up.UserId == _userId)
+                .ToListAsync();
+
+            // Dodaj nowe
+            foreach (var permission in selectedPermissions)
+            {
+                if (!existingPermissions.Any(ep => ep.PermissionId == permission.Id))
+                {
+                    _context.UserPermissions.Add(new UserPermission
+                    {
+                        UserId = _userId,
+                        PermissionId = permission.Id
+                    });
+                }
+            }
+
+            // Usuń odznaczone
+            foreach (var existing in existingPermissions)
+            {
+                if (!selectedPermissions.Any(sp => sp.Id == existing.PermissionId))
+                {
+                    _context.UserPermissions.Remove(existing);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            MessageBox.Show("Uprawnienia zapisane.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+         
+
+
+
+        
+
+    private static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T tChild)
+                    return tChild;
+
+                var result = FindVisualChild<T>(child);
+                if (result != null)
+                    return result;
+            }
+            return null;
         }
+
+
     }
 }
