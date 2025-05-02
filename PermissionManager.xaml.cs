@@ -87,9 +87,16 @@ namespace Magazyn
 
         private async void button_zarzadzaj_Click(object sender, RoutedEventArgs e)
         {
-            var okno_dodaj_uprawnienie = new AddPermission();
-            okno_dodaj_uprawnienie.ShowDialog();
-            await RefreshUserDataGrid();
+            if (UserDataGrid.SelectedItem is User selectedUser)
+            {
+                var okno_dodaj_uprawnienie = new AddPermission(selectedUser.Id);
+                okno_dodaj_uprawnienie.ShowDialog();
+                await RefreshUserDataGrid();
+            }
+            else
+            {
+                MessageBox.Show("Wybierz użytkownika, aby zarządzać uprawnieniami.", "Brak wyboru", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }
