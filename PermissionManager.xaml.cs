@@ -45,7 +45,11 @@ namespace Magazyn
             var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string searchField = GetSelectedSearchField();
 
-            var query = _context.Users.AsQueryable();
+            var query = _context.Users
+            .Include(u => u.UserPermissions)
+            .ThenInclude(up => up.Permission)
+            .AsQueryable();
+
 
             if (!string.IsNullOrEmpty(searchText))
             {
@@ -65,6 +69,10 @@ namespace Magazyn
 
             var filteredUsers = await query.AsNoTracking().ToListAsync();
             UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
+
+         
+
+
         }
         private string GetSelectedSearchField()
         {

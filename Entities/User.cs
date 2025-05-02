@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -29,11 +30,20 @@ namespace Magazyn.Entities
         public UserPermission? UserPermission { get; set; }
         public List<PasswordHistory> PasswordHistories { get; set; }
         public List<User> ForgottenUsers { get; set; }
+        public List<UserPermission> UserPermissions { get; set; }
 
         //zeby observable dzialalo
         public event PropertyChangedEventHandler? PropertyChanged;
         //public int UserPermissionId { get; set; }
 
         //public List<Product> Products { get; set; }
+
+        [NotMapped]
+        public string PermissionsDisplay =>
+       UserPermissions != null && UserPermissions.Any()
+           ? string.Join("\n", UserPermissions.Select(up => up.Permission?.Name))
+           : string.Empty;
+
+
     }
 }

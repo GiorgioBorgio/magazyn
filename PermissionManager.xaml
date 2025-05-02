@@ -201,7 +201,9 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTextColumn Header="Uprawnienia" Binding="{Binding UserPermission}" Width="2*" />
+                        <DataGridTextColumn Header="Uprawnienia" Binding="{Binding PermissionsDisplay}" Width="3*" />
+
+
                         <DataGridTemplateColumn Header="Akcje" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
