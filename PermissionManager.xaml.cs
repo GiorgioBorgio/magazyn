@@ -55,11 +55,8 @@ namespace Magazyn
             {
                 switch (searchField)
                 {
-                    case "Imię":
+                    case "Name":
                         query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().StartsWith(kw) || user.LastName.ToLower().StartsWith(kw)));
-                        break;
-                    case "Nazwisko":
-                        query = query.Where(user => keywords.All(kw => user.LastName.ToLower().StartsWith(kw)));
                         break;
                     case "Login":
                         query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
@@ -105,6 +102,13 @@ namespace Magazyn
             {
                 MessageBox.Show("Wybierz użytkownika, aby zarządzać uprawnieniami.", "Brak wyboru", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private async void button_filtr_u_Click(object sender, RoutedEventArgs e)
+        {
+            var okno_filtruj_u = new Permission_filter();
+            okno_filtruj_u.ShowDialog();
+            await RefreshUserDataGrid() ;
         }
     }
 }

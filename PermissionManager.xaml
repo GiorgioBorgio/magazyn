@@ -8,7 +8,24 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-
+        <SolidColorBrush x:Key="BadgeYellow" Color="#FACC15"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource BadgeYellow}"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!-- Styl dla DataGridRow z wyłączonym podświetlaniem po kliknięciu -->
         <Style TargetType="DataGridRow">
             <Setter Property="Background" Value="White"/>
@@ -169,7 +186,6 @@
                               DockPanel.Dock="Right" Width="128" FontSize="14">
                         <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
-                        <ComboBoxItem Tag="E-mail" Content="Uprawnienie"/>
                     </ComboBox>
                 </DockPanel>
 
@@ -234,6 +250,11 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button x:Name="button_filtr_u" Content="Filtruj uprawnienia"
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Background="#f56b1b"
+                    Foreground="White"
+                    Margin="455,0,0,10" HorizontalAlignment="Left" Click="button_filtr_u_Click"/>
             </Grid>
         </Border>
     </Grid>
