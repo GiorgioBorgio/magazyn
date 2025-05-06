@@ -10,6 +10,6 @@ namespace Magazyn.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<UserPermission> UserPermissions { get; set; }
+        public ICollection<UserPermission> UserPermissions { get; set; }
     }
 }

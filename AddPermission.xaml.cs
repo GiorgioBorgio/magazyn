@@ -47,21 +47,23 @@ namespace Magazyn
             // Zaznacz odpowiednie uprawnienia
             await Dispatcher.InvokeAsync(() =>
             {
-            foreach (var item in PermissionsPanel.Items)
-            {
-                var permission = item as Permission;
-                var userPermission = userPermissions.FirstOrDefault(up => up.PermissionId == permission?.Id);
-                var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
-                if (container != null)
+                foreach (var item in PermissionsPanel.Items)
                 {
-                    var checkBox = FindVisualChild<CheckBox>(container);
-                    if (checkBox != null)
+                    var permission = item as Permission;
+                    var userPermission = userPermissions.FirstOrDefault(up => up.PermissionId == permission?.Id);
+                    var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
+                    if (container != null)
                     {
-                        checkBox.IsChecked = userPermission != null;
+                        var checkBox = FindVisualChild<CheckBox>(container);
+                        if (checkBox != null)
+                        {
+                            checkBox.IsChecked = userPermission != null;
+                        }
                     }
                 }
-            }
-        }
+            });
+        
+    }
 
         // Zapisz uprawnienia do bazy danych
         private async void SaveButton_Click(object sender, RoutedEventArgs e)

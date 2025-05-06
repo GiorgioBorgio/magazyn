@@ -45,11 +45,12 @@ namespace Magazyn
             var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string searchField = GetSelectedSearchField();
 
-            var query = _context.Users
+            var query =  _context.Users
             .Include(u => u.UserPermissions)
             .ThenInclude(up => up.Permission)
             .AsQueryable();
 
+            var usersWithPermissions = await query.ToListAsync();
 
             if (!string.IsNullOrEmpty(searchText))
             {
@@ -65,12 +66,25 @@ namespace Magazyn
             }
 
             var filteredUsers = await query.AsNoTracking().ToListAsync();
+
+            foreach (var user in filteredUsers)
+            {
+                Console.WriteLine($"User: {user.FirstName} {user.LastName}");
+                foreach (var up in user.UserPermissions)
+                {
+                    Console.WriteLine($"Permission: {up.Permission.Name}");
+                }
+            }
+
             UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
-
-         
-
-
         }
+
+        
+
+
+
+
+        
         private string GetSelectedSearchField()
         {
             var selectedItem = SearchTypeComboBox.SelectedItem as ComboBoxItem;
@@ -108,7 +122,7 @@ namespace Magazyn
         {
             var okno_filtruj_u = new Permission_filter();
             okno_filtruj_u.ShowDialog();
-            await RefreshUserDataGrid() ;
+            await RefreshUserDataGrid();
         }
     }
 }

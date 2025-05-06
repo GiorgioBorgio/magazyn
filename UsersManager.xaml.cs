@@ -70,10 +70,11 @@ namespace Magazyn
             var filteredUsers = await query.AsNoTracking().ToListAsync();
             UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
 
-            var filteredUsersPermission = await query
-                .Include(u => u.UserPermission)  // Dodaj to, aby załadować dane o roli
-                .AsNoTracking()
-                .ToListAsync();
+            //to ma wyswietlac role
+            //var filteredUsersPermission = await query
+            //    .Include(u => u.UserPermissions)  // Dodaj to, aby załadować dane o roli
+            //    .AsNoTracking()
+            //    .ToListAsync();
         }
 
         private string GetSelectedSearchField()
@@ -140,7 +141,7 @@ namespace Magazyn
             selectedUser.DateOfBirth = randomizer.GenerateRandomDateOfBirth();
             selectedUser.Gender = randomizer.GenerateRandomGender();
             selectedUser.PESEL = randomizer.GenerateValidPesel(selectedUser.DateOfBirth, selectedUser.Gender);
-            selectedUser.UserPermission = null;
+            selectedUser.UserPermissions = null;
             selectedUser.ForgottenDate = DateTime.Now;
             UserValidator uv = new UserValidator(_context);
             if (!uv.Walidacja(_mapper.Map<CreateUserDto>(selectedUser), selectedUser)) return;

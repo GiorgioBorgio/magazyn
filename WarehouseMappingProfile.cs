@@ -23,10 +23,13 @@ namespace Magazyn
                     HouseNumber = src.HouseNumber,
                     ApartmentNumber = src.ApartmentNumber
                 }))
-                .ForMember(m => m.UserPermission, opt => opt.MapFrom(src => new UserPermission
+                .ForMember(m => m.UserPermissions, opt => opt.MapFrom(src => new List<UserPermission>
                 {
-                    UserId = src.Id,
-                    PermissionId = 1
+                    new UserPermission
+                    {
+                        PermissionId = 1,
+                        UserId = src.Id
+                    }
                 }));
             CreateMap<User, CreateUserDto>()
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))

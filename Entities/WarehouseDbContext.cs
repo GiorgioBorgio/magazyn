@@ -22,10 +22,10 @@ namespace Magazyn.Entities
             {
                 eb.HasMany(a => a.Users).WithOne(u => u.Address).HasForeignKey(e=>e.AddressId).IsRequired().OnDelete(DeleteBehavior.Restrict);
             });
-            modelBuilder.Entity<UserPermission>(eb =>
-            {
-                eb.HasMany(r => r.Users).WithOne(u => u.UserPermission).IsRequired().OnDelete(DeleteBehavior.Restrict);
-            });
+            //modelBuilder.Entity<UserPermission>(eb =>
+            //{
+            //    eb.HasMany(r => r.Users).WithOne(u => u.UserPermission).IsRequired().OnDelete(DeleteBehavior.Restrict);
+            //});
             modelBuilder.Entity<Permission>(eb =>
             {
                 eb.HasMany(p => p.UserPermissions).WithOne(u => u.Permission).IsRequired().OnDelete(DeleteBehavior.Restrict);
