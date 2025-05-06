@@ -45,6 +45,8 @@ namespace Magazyn
                 .ToListAsync();
 
             // Zaznacz odpowiednie uprawnienia
+            await Dispatcher.InvokeAsync(() =>
+            {
             foreach (var item in PermissionsPanel.Items)
             {
                 var permission = item as Permission;
