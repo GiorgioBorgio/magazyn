@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Magazyn
 {
@@ -27,6 +28,7 @@ namespace Magazyn
         {
             InitializeComponent();
             _context = new WarehouseDbContext();
+            LoadPermissionTypes();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -39,73 +41,62 @@ namespace Magazyn
         }
 
 
-        public async Task RefreshUserDataGrid(string searchText = "")
+        public async Task RefreshUserDataGrid()
         {
-            _context.ChangeTracker.Clear();
-            var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string searchField = GetSelectedSearchField();
+                _context.ChangeTracker.Clear();
+                //var keywords = searchText.ToLower().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                //string searchField = GetSelectedSearchField();
 
-            var query =  _context.Users
-            .Include(u => u.UserPermissions)
-            .ThenInclude(up => up.Permission)
-            .AsQueryable();
-
-            var usersWithPermissions = await query.ToListAsync();
-
-            if (!string.IsNullOrEmpty(searchText))
-            {
-                switch (searchField)
+                var permissions = _context.UserPermissions.Include(e => e.Permission).ToList();
+                var filteredUsers = _context.Users.ToList();
+                if (PermissionTypeComboBox.SelectedValue is int selectedPermissionId && selectedPermissionId > 0)
                 {
-                    case "Name":
-                        query = query.Where(user => keywords.All(kw => user.FirstName.ToLower().StartsWith(kw) || user.LastName.ToLower().StartsWith(kw)));
-                        break;
-                    case "Login":
-                        query = query.Where(user => keywords.All(kw => user.Login.ToLower().StartsWith(kw)));
-                        break;
-                }
+                    //MessageBox.Show("Selected permission ID: " + selectedPermissionId + "Permission ID " + _context.Permissions.FirstOrDefault(e=>e.Id==1).Id);
+                    
+                    permissions = permissions
+                        .Where(e => e.PermissionId == selectedPermissionId)
+                        .ToList();
+                filteredUsers = filteredUsers.Where(user =>
+                permissions.Any(up => up.UserId == user.Id && up.PermissionId == selectedPermissionId))
+                .ToList();
+
             }
 
-            var filteredUsers = await query.AsNoTracking().ToListAsync();
+            
 
-            foreach (var user in filteredUsers)
-            {
-                Console.WriteLine($"User: {user.FirstName} {user.LastName}");
-                foreach (var up in user.UserPermissions)
-                {
-                    Console.WriteLine($"Permission: {up.Permission.Name}");
-                }
-            }
 
-            UserDataGrid.ItemsSource = filteredUsers.Where(e => e.IsForgotten == false);
+            UserDataGrid.ItemsSource = filteredUsers.Where(e => !e.IsForgotten);
         }
 
-        
 
 
 
 
-        
-        private string GetSelectedSearchField()
-        {
-            var selectedItem = SearchTypeComboBox.SelectedItem as ComboBoxItem;
-            return selectedItem?.Tag?.ToString() ?? "FirstName";
-        }
+
+
+        //private string GetSelectedSearchField()
+        //{
+        //    var selectedItem = SearchTypeComboBox.SelectedItem as ComboBoxItem;
+        //    return selectedItem?.Tag?.ToString() ?? "FirstName";
+        //}
 
         private async void PermissionManager1_Loaded(object sender, RoutedEventArgs e)
         {
             await RefreshUserDataGrid();
         }
 
-        private async void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            await RefreshUserDataGrid(TextBoxSearch.Text);
-            PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
-            ? Visibility.Visible
-            : Visibility.Collapsed;
-        }
+        //private async void TextBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    await RefreshUserDataGrid();
+        //    PlaceholderText.Visibility = string.IsNullOrEmpty(TextBoxSearch.Text)
+        //    ? Visibility.Visible
+        //    : Visibility.Collapsed;
+        //}
 
         private async void button_zarzadzaj_Click(object sender, RoutedEventArgs e)
         {
+           
+
             if (UserDataGrid.SelectedItem is User selectedUser)
             {
                 var okno_dodaj_uprawnienie = new AddPermission(selectedUser.Id);
@@ -118,11 +109,32 @@ namespace Magazyn
             }
         }
 
-        private async void button_filtr_u_Click(object sender, RoutedEventArgs e)
+        //private async void button_filtr_u_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var okno_filtruj_u = new Permission_filter();
+        //    okno_filtruj_u.ShowDialog();
+        //    await RefreshUserDataGrid();
+        //}
+
+        private void LoadPermissionTypes()
         {
-            var okno_filtruj_u = new Permission_filter();
-            okno_filtruj_u.ShowDialog();
-            await RefreshUserDataGrid();
+
+            var permissionTypes =  _context.Permissions.ToList();
+            permissionTypes.Insert(0, new Permission
+            {
+                Id = -1,
+                Name = "Wszystkie uprawnienia"
+            });
+            PermissionTypeComboBox.ItemsSource = permissionTypes;
+            PermissionTypeComboBox.DisplayMemberPath = "Name";        // widoczne w UI
+            PermissionTypeComboBox.SelectedValuePath = "Id";          // np. do filtrowania
+            PermissionTypeComboBox.SelectedIndex = 0;
         }
+
+        private void PermissionTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+             RefreshUserDataGrid();
+        }
+
     }
 }

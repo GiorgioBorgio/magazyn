@@ -149,7 +149,7 @@
                 </Grid.RowDefinitions>
 
                 <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <Border Background="#E2E8F0" 
+                    <!--<Border Background="#E2E8F0" 
                             BorderBrush="#CBD5E1" 
                             BorderThickness="1"
                             CornerRadius="6" 
@@ -180,13 +180,13 @@
                                      Text=""
                                      TextChanged="TextBoxSearch_TextChanged"/>
                         </Grid>
-                    </Border>
-                    <ComboBox x:Name="SearchTypeComboBox" 
+                    </Border>-->
+                    <!--<ComboBox x:Name="SearchTypeComboBox" 
                               SelectedIndex="0"
                               DockPanel.Dock="Right" Width="128" FontSize="14">
                         <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
                         <ComboBoxItem Tag="Login" Content="Login"/>
-                    </ComboBox>
+                    </ComboBox>-->
                 </DockPanel>
 
                 <DataGrid x:Name="UserDataGrid"
@@ -217,7 +217,9 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-                        <DataGridTemplateColumn Header="Uprawnienia" Width="4*">
+
+
+                        <DataGridTemplateColumn Header="Uprawnienia"  Width="4*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="#CBD5E1" CornerRadius="4" Padding="4" Background="#F8FAFC">
@@ -250,11 +252,16 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="button_filtr_u" Content="Filtruj uprawnienia"
+                <!--<Button x:Name="button_filtr_u" Content="Filtruj uprawnienia"
                     Style="{StaticResource RoundedButtonStyle}"
                     Background="#f56b1b"
                     Foreground="White"
-                    Margin="455,0,0,10" HorizontalAlignment="Left" Click="button_filtr_u_Click"/>
+                    Margin="455,0,0,10" HorizontalAlignment="Left" Click="button_filtr_u_Click"/>-->
+                <ComboBox x:Name="PermissionTypeComboBox" 
+                          Margin="403,1,0,9" HorizontalAlignment="Left"
+                        SelectedIndex="0"
+                        DockPanel.Dock="Right" Width="192" FontSize="14" SelectionChanged="PermissionTypeComboBox_SelectionChanged">
+                </ComboBox>
             </Grid>
         </Border>
     </Grid>
