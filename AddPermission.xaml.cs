@@ -109,6 +109,12 @@ namespace Magazyn
                 }
             }
 
+            if(selectedPermissions.Count == 0)
+            {
+                MessageBox.Show("Użytkownik musi posiadać co najmniej jedno uprawnienie", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             // Istniejące uprawnienia użytkownika
             var existingPermissions = await _context.UserPermissions
                 .Where(up => up.UserId == _userId)
