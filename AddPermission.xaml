@@ -51,17 +51,13 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Anuluj"
-            Style="{StaticResource SaveButtonStyle}"
-            Click="CancelButton_Click"
-            Width="200"
-            Margin="10"/>
+           
+            
             <!-- Przycisk Zapisz -->
             <Button Content="Zapisz"
                     Style="{StaticResource SaveButtonStyle}"
                     Click="SaveButton_Click"/>
-        </StackPanel>
+        
         </StackPanel>
     </Grid>
 </Window>
