@@ -35,35 +35,60 @@ namespace Magazyn
         private async Task LoadPermissionsAsync()
         {
             // Pobierz wszystkie uprawnienia z bazy danych
-            var permissions = await _context.Permissions.ToListAsync();
+            var permissions =  _context.Permissions.ToList();
             PermissionsPanel.ItemsSource = permissions;
 
+            var userPermissionIds =  _context.UserPermissions
+                .Where(up => up.UserId == _userId)
+                .Select(up => up.PermissionId)
+                .ToList();
+
             // Pobierz istniejące uprawnienia użytkownika
-            var userPermissions = await _context.UserPermissions
+            var userPermissions = _context.UserPermissions
                 .Where(up => up.UserId == _userId)
                 .Include(up => up.Permission)
-                .ToListAsync();
+                .ToList();
 
             // Zaznacz odpowiednie uprawnienia
+            //await Dispatcher.InvokeAsync(() =>
+            //{
+            //    foreach (var item in PermissionsPanel.Items)
+            //    {
+            //        var permission = item as Permission;
+            //        var userPermission = userPermissions.FirstOrDefault(up => up.PermissionId == permission?.Id);
+            //        var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
+            //        if (container != null)
+            //        {
+            //            var checkBox = FindVisualChild<CheckBox>(container);
+            //            if (checkBox != null)
+            //            {
+            //                checkBox.IsChecked = userPermission != null;
+            //            }
+            //        }
+            //    }
+            //});
+
             await Dispatcher.InvokeAsync(() =>
             {
                 foreach (var item in PermissionsPanel.Items)
                 {
-                    var permission = item as Permission;
-                    var userPermission = userPermissions.FirstOrDefault(up => up.PermissionId == permission?.Id);
-                    var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
-                    if (container != null)
+                    if (item is Permission permission)
                     {
-                        var checkBox = FindVisualChild<CheckBox>(container);
-                        if (checkBox != null)
+                        var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(permission) as FrameworkElement;
+                        if (container != null)
                         {
-                            checkBox.IsChecked = userPermission != null;
+                            var checkBox = FindVisualChild<CheckBox>(container);
+                            if (checkBox != null)
+                            {
+                                checkBox.IsChecked = userPermissionIds.Contains(permission.Id);
+                                checkBox.Tag = permission; // Upewniamy się, że Tag jest ustawiony
+                            }
                         }
                     }
                 }
+
             });
-        
-    }
+        }
 
         // Zapisz uprawnienia do bazy danych
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -134,7 +159,10 @@ namespace Magazyn
             }
             return null;
         }
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
-     
     }
 }

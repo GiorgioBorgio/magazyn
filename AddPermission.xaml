@@ -21,7 +21,7 @@
 
         <!-- Styl dla przycisku Zapisz -->
         <Style x:Key="SaveButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#FF8C00"/>
+            <Setter Property="Background" Value="#4CAF50"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -51,13 +51,19 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-           
-            
-            <!-- Przycisk Zapisz -->
-            <Button Content="Zapisz"
-                    Style="{StaticResource SaveButtonStyle}"
-                    Click="SaveButton_Click"/>
-        
+            <!-- Przyciski Zapisz i Anuluj -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Content="Zapisz"
+            Style="{StaticResource SaveButtonStyle}"
+            Click="SaveButton_Click"/>
+
+                <Button Content="Anuluj"
+            Style="{StaticResource SaveButtonStyle}"
+            Background="#CBD5E1"
+            Foreground="Black"
+            Click="CancelButton_Click"/>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>
