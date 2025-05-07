@@ -136,7 +136,7 @@
 
         <Border Height="60" VerticalAlignment="Top" Background="{StaticResource TextMain}" Grid.Row="0">
             <DockPanel Margin="20,0" LastChildFill="False">
-                <TextBlock Text="👥 Zarządzanie uprawnieniami"
+                <TextBlock Text="🔐 Zarządzanie uprawnieniami"
                            FontSize="18"
                            Foreground="White"
                            FontWeight="Bold"
@@ -172,10 +172,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <ComboBox x:Name="PermissionTypeComboBox" 
-                          Margin="403,1,0,9" HorizontalAlignment="Left"
-                          SelectedIndex="0"
-                          DockPanel.Dock="Right" Width="192" FontSize="14" SelectionChanged="PermissionTypeComboBox_SelectionChanged"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+                    <TextBlock Text="Filtruj po uprawnieniach:" 
+                               VerticalAlignment="Center" 
+                               FontSize="14" 
+                               Margin="0,0,10,0"
+                               Foreground="{StaticResource TextMain}"/>
+                    <ComboBox x:Name="PermissionTypeComboBox" 
+                              Width="192" 
+                              FontSize="14"
+                              SelectedIndex="0"
+                              SelectionChanged="PermissionTypeComboBox_SelectionChanged"/>
+                </StackPanel>
 
                 <DataGrid x:Name="UserDataGrid"
                           Grid.Row="1"
