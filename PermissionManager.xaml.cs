@@ -135,6 +135,18 @@ namespace Magazyn
         {
              RefreshUserDataGrid();
         }
+        private void ListPermissionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var permissions = _context.Permissions
+                .OrderBy(p => p.Name)
+                .Select(p => p.Name)
+                .ToList();
+
+            var permission_window = new PermissionListWindow(permissions);
+            permission_window.Owner = Window.GetWindow(this);
+            permission_window.ShowDialog();
+        }
+
 
     }
 }

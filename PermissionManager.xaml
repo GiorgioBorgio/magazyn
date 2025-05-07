@@ -5,10 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Magazyn"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Segoe UI" FontSize="14"
+             Background="#F2F4F7">
 
     <UserControl.Resources>
+        <!-- Kolory i Style wspólne z UserManager -->
+        <SolidColorBrush x:Key="DarkGreen" Color="#134E4A"/>
+        <SolidColorBrush x:Key="LightBackground" Color="White"/>
+        <SolidColorBrush x:Key="TextMain" Color="#1E293B"/>
+        <SolidColorBrush x:Key="BadgeGreen" Color="#22C55E"/>
         <SolidColorBrush x:Key="BadgeYellow" Color="#FACC15"/>
+        <SolidColorBrush x:Key="BadgeGray" Color="#94A3B8"/>
+        <SolidColorBrush x:Key="BadgeRed" Color="#EF4444"/>
+
         <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="{StaticResource BadgeYellow}"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -26,44 +36,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!-- Styl dla DataGridRow z wyłączonym podświetlaniem po kliknięciu -->
-        <Style TargetType="DataGridRow">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#E2E8F0"/>
-                </Trigger>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
 
-        <!-- Styl dla DataGridCell z wyłączonym zaznaczeniem -->
-        <Style TargetType="DataGridCell">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="White"/>
-                </Trigger>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Styl przycisku -->
         <Style x:Key="ModifyButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="#F1F5F9"/>
             <Setter Property="Foreground" Value="#1E293B"/>
@@ -76,23 +49,82 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0">
                                 <TextBlock Text="👤" FontSize="14" Margin="0,0,6,0"/>
                                 <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFD580"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E2E8F0"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#CBD5E1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridRow}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <DataGridCellsPresenter/>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16,0,0,0"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="16,4"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#F9FAFB"/>
+            <Setter Property="BorderBrush" Value="#E5E7EB"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="SeparatorVisibility" Value="Collapsed"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Grid x:Name="PermissionManager1" Loaded="PermissionManager1_Loaded">
@@ -102,92 +134,48 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Background="#FF1E293B" Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
+        <Border Height="60" VerticalAlignment="Top" Background="{StaticResource TextMain}" Grid.Row="0">
+            <DockPanel Margin="20,0" LastChildFill="False">
                 <TextBlock Text="👥 Zarządzanie uprawnieniami"
                            FontSize="18"
                            Foreground="White"
                            FontWeight="Bold"
                            VerticalAlignment="Center"
-                           Margin="23,0,0,0"/>
+                           DockPanel.Dock="Left"/>
 
-                <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,20,0">
-                    <Button Content="↩ Powrót"
-                            Margin="0,10,0,10"
-                            Width="100" Height="30"
-                            Background="#94A3B8"
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <Button Content="Lista uprawnień"
+                            Width="140" Height="30"
+                            Style="{StaticResource RoundedButtonStyle}"
                             Foreground="White"
-                            Cursor="Hand"
-                            Click="BackButton_Click"
-                            BorderThickness="0" FontSize="14" FontWeight="Bold">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}"
-                                        CornerRadius="8"
-                                        SnapsToDevicePixels="True">
-                                    <ContentPresenter HorizontalAlignment="Center"
-                                                      VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                            Background="#f56b1b"
+                            Click="ListPermissionsButton_Click"/>
+
+                    <Button Content="↩ Powrót"
+                            Width="100" Height="30"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="{StaticResource BadgeGray}"
+                            Foreground="White"
+                            Margin="20,0,0,0"
+                            Click="BackButton_Click"/>
                 </StackPanel>
-            </Grid>
+
+            </DockPanel>
         </Border>
 
         <StackPanel Grid.Row="1" Margin="0,20,20,0"/>
-        <Border CornerRadius="12" Margin="40,0,125,282" Padding="20" Grid.Row="2">
+
+        <Border Background="{StaticResource LightBackground}" CornerRadius="12" Margin="40,0,125,282" Padding="20" Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <DockPanel Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <!--<Border Background="#E2E8F0" 
-                            BorderBrush="#CBD5E1" 
-                            BorderThickness="1"
-                            CornerRadius="6" 
-                            Height="38"
-                            Width="270" 
-                            VerticalAlignment="Top">
-                        <Grid Margin="10,0">
-                            <TextBlock Text="🔍" FontSize="16" VerticalAlignment="Center"
-                                      Margin="0,0,6,0" Foreground="#334155" HorizontalAlignment="Left"/>
-
-                            <TextBlock x:Name="PlaceholderText"
-                                       Text="Wyszukaj"
-                                       FontSize="13"
-                                       Foreground="Gray"
-                                       Margin="24,0,0,0"
-                                       VerticalAlignment="Center"
-                                       IsHitTestVisible="False"
-                                       Visibility="Visible"/>
-
-                            <TextBox x:Name="TextBoxSearch"
-                                     Width="200"
-                                     BorderThickness="0"
-                                     Background="Transparent"
-                                     Foreground="#1E293B"
-                                     FontSize="13"
-                                     VerticalContentAlignment="Center"
-                                     Margin="24,0,0,0"
-                                     Text=""
-                                     TextChanged="TextBoxSearch_TextChanged"/>
-                        </Grid>
-                    </Border>-->
-                    <!--<ComboBox x:Name="SearchTypeComboBox" 
-                              SelectedIndex="0"
-                              DockPanel.Dock="Right" Width="128" FontSize="14">
-                        <ComboBoxItem Tag="Name" Content="Imię i Nazwisko"/>
-                        <ComboBoxItem Tag="Login" Content="Login"/>
-                    </ComboBox>-->
-                </DockPanel>
+                <ComboBox x:Name="PermissionTypeComboBox" 
+                          Margin="403,1,0,9" HorizontalAlignment="Left"
+                          SelectedIndex="0"
+                          DockPanel.Dock="Right" Width="192" FontSize="14" SelectionChanged="PermissionTypeComboBox_SelectionChanged"/>
 
                 <DataGrid x:Name="UserDataGrid"
                           Grid.Row="1"
@@ -209,7 +197,6 @@
                           SelectionUnit="FullRow"
                           Background="Transparent"  
                           Margin="0,0,0,-56"
-                          FontWeight="Bold"
                           BorderBrush="#FF688CAF"
                           CanUserResizeColumns="False"
                           Grid.ColumnSpan="2">
@@ -217,33 +204,38 @@
                         <DataGridTextColumn Header="Imię" Binding="{Binding FirstName}" Width="*" />
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
-
-
-                        <DataGridTemplateColumn Header="Uprawnienia"  Width="4*">
+                        <DataGridTemplateColumn Header="Uprawnienia" Width="4*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="1" BorderBrush="#CBD5E1" CornerRadius="4" Padding="4" Background="#F8FAFC">
-                                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
-                                            <ItemsControl ItemsSource="{Binding UserPermissions}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Permission.Name}" FontSize="12" Foreground="#1E293B" />
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </ScrollViewer>
+                                        <ItemsControl ItemsSource="{Binding UserPermissions}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Background="#E2E8F0" CornerRadius="4" Margin="2" Padding="4">
+                                                        <TextBlock Text="{Binding Permission.Name}" FontSize="12" Foreground="#1E293B"/>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-
-
                         <DataGridTemplateColumn Header="Akcje" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
                                         <Button Content="Zarządzaj"
                                                 Style="{StaticResource ModifyButtonStyle}"
+                                                Width="100"
+                                                Height="40"
+                                                Padding="10,4"
+                                                Margin="0,0,10,0"
                                                 Tag="{Binding}"
                                                 Click="button_zarzadzaj_Click"/>
                                     </StackPanel>
@@ -252,16 +244,6 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <!--<Button x:Name="button_filtr_u" Content="Filtruj uprawnienia"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Background="#f56b1b"
-                    Foreground="White"
-                    Margin="455,0,0,10" HorizontalAlignment="Left" Click="button_filtr_u_Click"/>-->
-                <ComboBox x:Name="PermissionTypeComboBox" 
-                          Margin="403,1,0,9" HorizontalAlignment="Left"
-                        SelectedIndex="0"
-                        DockPanel.Dock="Right" Width="192" FontSize="14" SelectionChanged="PermissionTypeComboBox_SelectionChanged">
-                </ComboBox>
             </Grid>
         </Border>
     </Grid>
