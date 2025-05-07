@@ -113,6 +113,7 @@ namespace Magazyn
             var existingPermissions = await _context.UserPermissions
                 .Where(up => up.UserId == _userId)
                 .ToListAsync();
+            bool isChanged = false;
 
             // Dodaj nowe uprawnienia
             foreach (var permission in selectedPermissions)
@@ -124,6 +125,7 @@ namespace Magazyn
                         UserId = _userId,
                         PermissionId = permission.Id
                     });
+                    //isChanged = IsPermissionChanged(existingPermissions, selectedPermissions);
                 }
             }
 
@@ -133,14 +135,20 @@ namespace Magazyn
                 if (!selectedPermissions.Any(sp => sp.Id == existing.PermissionId))
                 {
                     _context.UserPermissions.Remove(existing);
+                    //isChanged = true;
                 }
             }
+            isChanged = IsPermissionChanged(existingPermissions, selectedPermissions);
 
             // Zapisz zmiany w bazie danych
-            await _context.SaveChangesAsync();
-
-           
-            MessageBox.Show("Uprawnienia zostały zapisane.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (isChanged)
+            {
+                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz zapisać zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    await _context.SaveChangesAsync();
+                }
+            }
             this.Close();
         }
 
@@ -161,7 +169,55 @@ namespace Magazyn
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            var selectedPermissions = new List<Permission>();
+
+            // Przejdź przez wszystkie kontrolki CheckBox i wybierz zaznaczone
+            foreach (var item in PermissionsPanel.Items)
+            {
+                var container = PermissionsPanel.ItemContainerGenerator.ContainerFromItem(item) as FrameworkElement;
+                if (container != null)
+                {
+                    var checkBox = FindVisualChild<CheckBox>(container);
+                    if (checkBox != null && checkBox.IsChecked == true && checkBox.Tag is Permission permission)
+                    {
+                        selectedPermissions.Add(permission);
+                    }
+                }
+            }
+            var existingPermissions = _context.UserPermissions
+               .Where(up => up.UserId == _userId)
+               .ToList();
+            bool isChanged = false;
+            isChanged = IsPermissionChanged(existingPermissions, selectedPermissions);
+            if (isChanged)
+            {
+                MessageBoxResult result = MessageBox.Show("Czy na pewno chcesz anulować zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    _context.SaveChangesAsync();
+                }
+            }
             this.Close();
+        }
+        private bool IsPermissionChanged(List<UserPermission> existingPermissions, List<Permission> selectedPermissions)
+        {
+            bool isChanged = false;
+            foreach (var permission in selectedPermissions)
+            {
+                if (!existingPermissions.Any(ep => ep.PermissionId == permission.Id))
+                {
+                    isChanged = true;
+                }
+            }
+
+            foreach (var existing in existingPermissions)
+            {
+                if (!selectedPermissions.Any(sp => sp.Id == existing.PermissionId))
+                {
+                    isChanged = true;
+                }
+            }
+            return isChanged;
         }
 
     }
