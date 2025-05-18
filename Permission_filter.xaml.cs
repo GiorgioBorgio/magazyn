@@ -21,6 +21,7 @@ namespace Magazyn
     /// </summary>
     public partial class Permission_filter : Window
     {
+        public List<string> WybraneUprawnienia { get; private set; } = new List<string>();
         private readonly WarehouseDbContext _context;
         public Permission_filter()
         {
@@ -30,11 +31,11 @@ namespace Magazyn
 
         private async Task LoadPermissionsAsync()
         {
-            // Pobierz wszystkie uprawnienia z bazy danych
+            // Pobiera wszystkie uprawnienia z bazy danych
             var permissions = await _context.Permissions.ToListAsync();
             PermissionsPanel.ItemsSource = permissions;
 
-            // Zaznacz odpowiednie uprawnienia
+            // Zaznacza odpowiednie uprawnienia
             foreach (var item in PermissionsPanel.Items)
             {
                 var permission = item as Permission;
@@ -46,6 +47,11 @@ namespace Magazyn
         private async void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             await LoadPermissionsAsync();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) // zapis filtrów
+        {
+
         }
     }
 }

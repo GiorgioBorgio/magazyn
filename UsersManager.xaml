@@ -162,7 +162,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid x:Name="UserManager">
         <!-- Pasek górny -->
         <Border Height="60" VerticalAlignment="Top" Background="{DynamicResource TextMain}">
             <DockPanel Margin="20,0" LastChildFill="False">
@@ -301,7 +301,23 @@
                         <DataGridTextColumn Header="Nazwisko" Binding="{Binding LastName}" Width="*" />
                         <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="*" />
                         <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="2*" />
-                        <DataGridTextColumn Header="Role" Binding="{Binding UserPermission}" Width="*" />
+                        <DataGridTemplateColumn Header="Uprawnienia" Width="4*" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="#CBD5E1" CornerRadius="4" Padding="4" Background="#F8FAFC">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="50">
+                                            <ItemsControl ItemsSource="{Binding UserPermissions}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Permission.Name}" FontSize="12" Foreground="#1E293B" />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Akcje" Width="220">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

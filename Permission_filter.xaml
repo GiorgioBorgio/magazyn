@@ -43,7 +43,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
             <Button Content="Zapisz"
-             Style="{StaticResource SaveButtonStyle}"/>
+             Style="{StaticResource SaveButtonStyle}" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>
