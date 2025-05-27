@@ -52,6 +52,11 @@
                         Click="OpenUsersManager"/>
                 <Button Content="Zarządzanie uprawnieniami"
                     Style="{StaticResource RoundedNavButton}" Click="OpenPermissionManager"/>
+                <Button x:Name="ChangePasswordButton"
+        Content="Zarządzanie hasłami"
+        Style="{StaticResource RoundedNavButton}"
+        Click="OpenPasswordManager"
+        Visibility="Collapsed" />
                 <Button Content="Wyloguj"
         Style="{StaticResource RoundedNavButton}"
         Click="Logout_Click"/>

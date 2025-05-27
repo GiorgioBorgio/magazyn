@@ -54,6 +54,21 @@ namespace Magazyn.Entities
             //{
             //    eb.HasOne(s => s.Product).WithMany(p => p.ProductSales).HasForeignKey(k=>k.ProductId).OnDelete(DeleteBehavior.NoAction);
             //});
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserPermission>()
+                .HasKey(up => new { up.UserId, up.PermissionId });
+
+            modelBuilder.Entity<UserPermission>()
+                .HasOne(up => up.User)
+                .WithMany(u => u.UserPermissions)
+                .HasForeignKey(up => up.UserId);
+
+            modelBuilder.Entity<UserPermission>()
+                .HasOne(up => up.Permission)
+                .WithMany(p => p.UserPermissions)
+                .HasForeignKey(up => up.PermissionId);
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

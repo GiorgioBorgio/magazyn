@@ -11,12 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Magazyn.Entities;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Magazyn
 {
     /// <summary>
     /// Logika interakcji dla klasy Login_window.xaml
     /// </summary>
+    /// 
+    
     public partial class Login_window : Window
     {
         public Login_window()
@@ -31,7 +36,9 @@ namespace Magazyn
 
         private void Button_logowanie_ok_Click(object sender, RoutedEventArgs e)
         {
-            
+
+           
+
             if (lockoutEndTime.HasValue && DateTime.Now < lockoutEndTime.Value)
             {
                 MessageBox.Show($"Logowanie zablokowane do {lockoutEndTime.Value:HH:mm:ss}.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -43,13 +50,31 @@ namespace Magazyn
 
             using (var context = new Entities.WarehouseDbContext())
             {
-                var user = context.Users.FirstOrDefault(u => u.Login == login);
+                var user = context.Users
+                    .Include(u => u.UserPermissions)
+                    .ThenInclude(up => up.Permission)
+                    .FirstOrDefault(u => u.Login == login);
+
+
+                if (user == null)
+                {
+                    MessageBox.Show("Brak użytkownika");
+                }
+                else
+                {
+                    var perms = user.UserPermissions?.Select(p => p.Permission?.Name).ToList();
+                    MessageBox.Show($"Uprawnienia: {string.Join(", ", perms)}");
+                }
+
+
+
 
                 if (user == null)
                 {
                     MessageBox.Show("Podany login nie istnieje.", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+               
 
                 if (user.Password != password)
                 {
@@ -80,7 +105,8 @@ namespace Magazyn
                 failedAttempts = 0;
 
                 MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(user); 
+
                 mainWindow.Show();
                 this.Close();
             }

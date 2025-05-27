@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace Magazyn
 {
@@ -18,13 +19,26 @@ namespace Magazyn
     public partial class MainWindow : Window
     {
         WarehouseDbContext context;
-        public MainWindow()
+        private readonly User loggedUser;
+        internal MainWindow(User user)
         {
             InitializeComponent();
             context = new WarehouseDbContext();
-           
+            loggedUser = user;
+
+
+            if (loggedUser.UserPermissions.Any(p => p.Permission?.Name == "zmiana hasła"))
+            {
+                ChangePasswordButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ChangePasswordButton.Visibility = Visibility.Collapsed;
+            }
+
         }
 
+      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UsersManager usersManager = new UsersManager();
@@ -64,6 +78,14 @@ namespace Magazyn
                 this.Close();
             }
         }
+
+        private void OpenPasswordManager(object sender, RoutedEventArgs e)
+        {
+            MainContentArea.Content = new PasswordManager(); 
+        }
+
+
+
 
     }
 }
