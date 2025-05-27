@@ -23,5 +23,21 @@ namespace Magazyn
         {
             InitializeComponent();
         }
+
+        
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        { 
+        
+        }
+        private void button_zarzadzaj_Click(object sender, RoutedEventArgs e)
+        { 
+        
+        }
+
+        private void PasswordManager_Loaded(object sender, RoutedEventArgs e)
+        {
+        
+        }
     }
 }

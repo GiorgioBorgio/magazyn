@@ -56,17 +56,7 @@ namespace Magazyn
                     .FirstOrDefault(u => u.Login == login);
 
 
-                if (user == null)
-                {
-                    MessageBox.Show("Brak użytkownika");
-                }
-                else
-                {
-                    var perms = user.UserPermissions?.Select(p => p.Permission?.Name).ToList();
-                    MessageBox.Show($"Uprawnienia: {string.Join(", ", perms)}");
-                }
-
-
+            
 
 
                 if (user == null)
