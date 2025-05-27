@@ -24,33 +24,90 @@ namespace Magazyn
             InitializeComponent();
         }
 
+        private int failedAttempts = 0;
+        private DateTime? lockoutEndTime = null;
+        private readonly TimeSpan lockoutDuration = TimeSpan.FromMinutes(10);
+
+
         private void Button_logowanie_ok_Click(object sender, RoutedEventArgs e)
         {
-            string login = LoginTextBox.Text;
-            string password = PasswordBox.Password; // Jeśli TextBox, użyj .Text
+            // Sprawdzenie, czy trwa blokada
+            if (lockoutEndTime.HasValue && DateTime.Now < lockoutEndTime.Value)
+            {
+                MessageBox.Show($"Logowanie zablokowane do {lockoutEndTime.Value:HH:mm:ss}.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string login = LoginTextBox.Text.Trim();
+            string password = PasswordBox.Password;
 
             using (var context = new Entities.WarehouseDbContext())
             {
-                var user = context.Users
-                    .FirstOrDefault(u => u.Login == login && u.Password == password);
+                var user = context.Users.FirstOrDefault(u => u.Login == login);
 
-                if (user != null)
+                if (user == null)
                 {
-                    MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Podany login nie istnieje.", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
+                if (user.Password != password)
+                {
+                    failedAttempts++;
 
-                    // Otwórz nowe okno
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
+                    if (failedAttempts >= 3)
+                    {
+                        lockoutEndTime = DateTime.Now.Add(lockoutDuration);
+                        Button_logowanie_ok.IsEnabled = false;
 
-                    // Zamknij to okno logowania
-                    this.Close();
+                        MessageBox.Show("Trzykrotnie podałeś/aś błędne hasło! Spróbuj ponownie za 10 minut.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        // Wyświetlenie informacji o czasie odblokowania
+                        LockoutInfoTextBlock.Text = $"Logowanie dostępne od: {lockoutEndTime.Value:HH:mm:ss}";
+
+                        // Uruchom timer
+                        StartLockoutTimer();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Błędne hasło.", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+                    return;
+                }
+
+                // Hasło poprawne – resetujemy licznik
+                failedAttempts = 0;
+
+                MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void StartLockoutTimer()
+        {
+            var dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+            dispatcherTimer.Tick += (s, e) =>
+            {
+                if (DateTime.Now >= lockoutEndTime)
+                {
+                    dispatcherTimer.Stop();
+                    failedAttempts = 0;
+                    lockoutEndTime = null;
+                    Button_logowanie_ok.IsEnabled = true;
+                    LockoutInfoTextBlock.Text = ""; // Wyczyść info
                 }
                 else
                 {
-                    MessageBox.Show("Błędny login lub hasło.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    LockoutInfoTextBlock.Text = $"Logowanie dostępne od: {lockoutEndTime.Value:HH:mm:ss}";
                 }
-            }
+            };
+            dispatcherTimer.Start();
         }
+
+
     }
 }

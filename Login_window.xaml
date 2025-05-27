@@ -71,6 +71,8 @@
                 Style="{StaticResource LoginButtonStyle}" 
                 Cursor="" Click="Button_logowanie_ok_Click"/>
 
+        <TextBlock x:Name="LockoutInfoTextBlock" Margin="481,325,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="14"/>
+
         <Button x:Name="Button_pass_recovery" 
                 Content="Nie pamiętasz hasła?" 
                 HorizontalAlignment="Left" 
