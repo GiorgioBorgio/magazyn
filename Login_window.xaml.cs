@@ -31,7 +31,7 @@ namespace Magazyn
 
         private void Button_logowanie_ok_Click(object sender, RoutedEventArgs e)
         {
-            // Sprawdzenie, czy trwa blokada
+            
             if (lockoutEndTime.HasValue && DateTime.Now < lockoutEndTime.Value)
             {
                 MessageBox.Show($"Logowanie zablokowane do {lockoutEndTime.Value:HH:mm:ss}.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -62,10 +62,10 @@ namespace Magazyn
 
                         MessageBox.Show("Trzykrotnie podałeś/aś błędne hasło! Spróbuj ponownie za 10 minut.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                        // Wyświetlenie informacji o czasie odblokowania
+                        
                         LockoutInfoTextBlock.Text = $"Logowanie dostępne od: {lockoutEndTime.Value:HH:mm:ss}";
 
-                        // Uruchom timer
+                      
                         StartLockoutTimer();
                     }
                     else
@@ -76,7 +76,7 @@ namespace Magazyn
                     return;
                 }
 
-                // Hasło poprawne – resetujemy licznik
+                
                 failedAttempts = 0;
 
                 MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -98,7 +98,7 @@ namespace Magazyn
                     failedAttempts = 0;
                     lockoutEndTime = null;
                     Button_logowanie_ok.IsEnabled = true;
-                    LockoutInfoTextBlock.Text = ""; // Wyczyść info
+                    LockoutInfoTextBlock.Text = ""; 
                 }
                 else
                 {

@@ -42,5 +42,28 @@ namespace Magazyn
         {
             MainContentArea.Content = new PermissionManager();
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Czy na pewno chcesz się wylogować?",
+                "Wylogowanie",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
+
+            if (result == MessageBoxResult.Yes)
+            {
+                
+                var loginWindow = new Login_window();
+
+                
+                loginWindow.Show();
+
+                
+                this.Close();
+            }
+        }
+
     }
 }

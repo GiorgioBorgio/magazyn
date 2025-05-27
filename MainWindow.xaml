@@ -52,6 +52,9 @@
                         Click="OpenUsersManager"/>
                 <Button Content="Zarządzanie uprawnieniami"
                     Style="{StaticResource RoundedNavButton}" Click="OpenPermissionManager"/>
+                <Button Content="Wyloguj"
+        Style="{StaticResource RoundedNavButton}"
+        Click="Logout_Click"/>
             </StackPanel>
         </DockPanel>
 
