@@ -9,13 +9,11 @@ namespace Magazyn
     public partial class PasswordChangeWindow : Window
     {
         private readonly User _user;
-        private readonly List<string> _passwordHistory; // ostatnie 3 hasła
 
-        internal PasswordChangeWindow(User user, List<string> passwordHistory)
+        internal PasswordChangeWindow(User user)
         {
             InitializeComponent();
             _user = user;
-            _passwordHistory = passwordHistory;
             LoginTextBox.Text = _user.Login;
         }
 
@@ -23,59 +21,94 @@ namespace Magazyn
         {
             string newPassword = NewPasswordBox.Password;
 
-            if (_passwordHistory.Contains(newPassword))
+            using (var context = new WarehouseDbContext())
             {
-                MessageBox.Show("Nowe hasło nie może być takie samo jak 3 ostatnie hasła użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+                var lastThreePasswords = context.PasswordHistories
+                    .Where(p => p.UserId == _user.Id)
+                    .OrderByDescending(p => p.ChangeDate)
+                    .Take(3)
+                    .Select(p => p.Password)
+                    .ToList();
 
-            if (!ValidatePassword(newPassword))
-            {
-                MessageBox.Show("Hasło musi zawierać co najmniej 8 znaków, w tym cyfrę i znak specjalny.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+                if (lastThreePasswords.Contains(newPassword))
+                {
+                    MessageBox.Show("Nowe hasło nie może być takie samo jak 3 ostatnie hasła użytkownika.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-            var result = MessageBox.Show("Czy na pewno chcesz zapisać zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                SaveNewPassword(_user, newPassword);
-                MessageBox.Show("Hasło zostało zmienione.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                Close();
+                if (!ValidatePassword(newPassword))
+                {
+                    return; 
+                }
+
+                var result = MessageBox.Show("Czy na pewno chcesz zapisać zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var existingUser = context.Users.FirstOrDefault(u => u.Id == _user.Id);
+                    if (existingUser != null)
+                    {
+                        existingUser.Password = newPassword;
+
+                        var historyEntry = new PasswordHistory
+                        {
+                            UserId = _user.Id,
+                            Password = newPassword,
+                            ChangeDate = DateTime.Now
+                        };
+
+                        context.PasswordHistories.Add(historyEntry);
+                        context.SaveChanges();
+
+                        MessageBox.Show("Hasło zostało zmienione.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Close();
+                    }
+                }
             }
         }
 
         private bool ValidatePassword(string password)
         {
-            return password.Length >= 8 && password.Any(char.IsDigit) && password.Any(char.IsPunctuation);
-        }
-
-        private void SaveNewPassword(User user, string password)
-        {
-            using (var context = new WarehouseDbContext())
+            if (password.Length < 8)
             {
-                var existingUser = context.Users.FirstOrDefault(u => u.Id == user.Id);
-                if (existingUser != null)
-                {
-                    // Zakładamy, że pole Password przechowuje hasło jawnie lub zaszyfrowane
-                    existingUser.Password = password;
-
-                    // Dodaj do historii haseł
-                    var historyEntry = new PasswordHistory
-                    {
-                        UserId = user.Id,
-                        Password = password,
-                        ChangeDate = DateTime.Now
-                    };
-
-                    context.PasswordHistories.Add(historyEntry);
-                    context.SaveChanges();
-                }
+                MessageBox.Show("Hasło powinno mieć co najmniej 8 znaków.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
             }
+
+            if (!password.Any(char.IsLower))
+            {
+                MessageBox.Show("Hasło powinno zawierać co najmniej jedną małą literę.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!password.Any(char.IsUpper))
+            {
+                MessageBox.Show("Hasło powinno zawierać co najmniej jedną wielką literę.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            if (!password.Any(char.IsDigit))
+            {
+                MessageBox.Show("Hasło powinno zawierać co najmniej jedną cyfrę.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            string specialChars = "-_!*#$&";
+            if (!password.Any(c => specialChars.Contains(c)))
+            {
+                MessageBox.Show("Hasło powinno zawierać co najmniej jeden ze znaków specjalnych: -, _, !, *, #, $, &", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            var result = MessageBox.Show("Czy na pewno chcesz anulować zmiany?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Close();
+            }
         }
     }
 }

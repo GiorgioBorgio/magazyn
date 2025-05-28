@@ -16,16 +16,16 @@ namespace Magazyn
         public PasswordManager()
         {
             InitializeComponent();
-            this.Loaded += PasswordManager_Loaded; // Upewnij się, że metoda jest przypięta
+            this.Loaded += PasswordManager_Loaded; 
         }
 
-        // Obsługa przycisku cofania (jeśli potrzebna)
+       
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Możesz tu dodać logikę powrotu do poprzedniego widoku
+            
         }
 
-        // Odświeżenie listy użytkowników
+      
         private async Task RefreshUserDataGrid()
         {
             using (var context = new WarehouseDbContext())
@@ -35,7 +35,7 @@ namespace Magazyn
             }
         }
 
-        // Obsługa kliknięcia przycisku "Zarządzaj"
+      
         private async void button_zarzadzaj_Click(object sender, RoutedEventArgs e)
         {
             if (UserDataGrid.SelectedItem is User selectedUser)
@@ -47,14 +47,14 @@ namespace Magazyn
 
                     var passwordHistory = context.PasswordHistories
                         .Where(ph => ph.UserId == selectedUser.Id)
-                        .OrderByDescending(ph => ph.ChangeDate) // zakładam, że masz pole daty
+                        .OrderByDescending(ph => ph.ChangeDate) 
                         .Take(3)
                         .Select(ph => ph.Password)
                         .ToList();
 
-                    var passwordChangeWindow = new PasswordChangeWindow(user, passwordHistory);
+                    var passwordChangeWindow = new PasswordChangeWindow(user);
                     passwordChangeWindow.ShowDialog();
-                    await RefreshUserDataGrid(); // po zamknięciu okna odśwież listę
+                    await RefreshUserDataGrid(); 
                 }
             }
         }
