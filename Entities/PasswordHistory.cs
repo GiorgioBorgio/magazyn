@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Magazyn.Entities
 {
@@ -13,5 +14,6 @@ namespace Magazyn.Entities
         public string Password { get; set; }
         public DateTime ChangeDate { get; set; }
         public User User { get; set; }
+        public DbSet<PasswordHistory> PasswordHistories { get; set; }
     }
 }
