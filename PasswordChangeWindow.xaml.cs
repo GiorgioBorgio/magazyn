@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Magazyn.Entities;
@@ -7,8 +8,8 @@ namespace Magazyn
 {
     public partial class PasswordChangeWindow : Window
     {
-        private User _user;
-        private List<string> _passwordHistory; // ostatnie 3 hasła
+        private readonly User _user;
+        private readonly List<string> _passwordHistory; // ostatnie 3 hasła
 
         internal PasswordChangeWindow(User user, List<string> passwordHistory)
         {
@@ -39,7 +40,7 @@ namespace Magazyn
             {
                 SaveNewPassword(_user, newPassword);
                 MessageBox.Show("Hasło zostało zmienione.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
+                Close();
             }
         }
 
@@ -50,12 +51,31 @@ namespace Magazyn
 
         private void SaveNewPassword(User user, string password)
         {
-            // TODO: zapis hasła do bazy danych i aktualizacja historii haseł
+            using (var context = new WarehouseDbContext())
+            {
+                var existingUser = context.Users.FirstOrDefault(u => u.Id == user.Id);
+                if (existingUser != null)
+                {
+                    // Zakładamy, że pole Password przechowuje hasło jawnie lub zaszyfrowane
+                    existingUser.Password = password;
+
+                    // Dodaj do historii haseł
+                    var historyEntry = new PasswordHistory
+                    {
+                        UserId = user.Id,
+                        Password = password,
+                        ChangeDate = DateTime.Now
+                    };
+
+                    context.PasswordHistories.Add(historyEntry);
+                    context.SaveChanges();
+                }
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
