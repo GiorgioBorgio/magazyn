@@ -52,7 +52,8 @@ namespace Magazyn
         
             user.Password = newPassword;
 
-            
+            user.MustChangePassword = true;
+
             context.PasswordHistories.Add(new PasswordHistory
             {
                 UserId = user.Id,
@@ -111,6 +112,9 @@ namespace Magazyn
 
             return new string(passwordChars.ToArray());
         }
+
+
+        
 
     }
 }
