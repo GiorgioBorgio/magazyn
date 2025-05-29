@@ -47,7 +47,7 @@ namespace Magazyn
 
         private void SendResetEmail(User user, WarehouseDbContext context)
         {
-            string newPassword = GenerateRandomPassword(8);
+            string newPassword = GenerateRandomPassword();
 
         
             user.Password = newPassword;
@@ -90,12 +90,27 @@ namespace Magazyn
             }
         }
 
-        private string GenerateRandomPassword(int length)
+        private string GenerateRandomPassword()
         {
-            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+            const string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string lowercase = "abcdefghijklmnopqrstuvwxyz";
+            const string digits = "0123456789";
+            const string special = "!@#$%^&*";
+
             var random = new Random();
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
+            var passwordChars = new List<char>();
+
+            // Dodaj wymaganą liczbę znaków z każdej kategorii
+            passwordChars.AddRange(Enumerable.Range(0, 3).Select(_ => uppercase[random.Next(uppercase.Length)]));
+            passwordChars.AddRange(Enumerable.Range(0, 3).Select(_ => lowercase[random.Next(lowercase.Length)]));
+            passwordChars.AddRange(Enumerable.Range(0, 2).Select(_ => digits[random.Next(digits.Length)]));
+            passwordChars.AddRange(Enumerable.Range(0, 2).Select(_ => special[random.Next(special.Length)]));
+
+            // Tasowanie, aby znaki były w losowej kolejności
+            passwordChars = passwordChars.OrderBy(_ => random.Next()).ToList();
+
+            return new string(passwordChars.ToArray());
         }
+
     }
 }
