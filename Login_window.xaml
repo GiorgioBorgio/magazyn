@@ -80,7 +80,7 @@
                 VerticalAlignment="Top" 
                 Width="170"
                 Cursor="Hand"
-                Style="{StaticResource TransparentTextButtonStyle}">
+                Style="{StaticResource TransparentTextButtonStyle}" Click="Button_pass_recovery_Click">
         </Button>
         <Rectangle HorizontalAlignment="Left" Height="434" Stroke="Black" VerticalAlignment="Center" Width="376">
             <Rectangle.Fill>

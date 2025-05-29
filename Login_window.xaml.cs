@@ -124,6 +124,10 @@ namespace Magazyn
             dispatcherTimer.Start();
         }
 
-
+        private void Button_pass_recovery_Click(object sender, RoutedEventArgs e)
+        {
+            //var passwordChangeWindow = new ForgotPasswordManager();
+            //passwordChangeWindow.ShowDialog();
+        }
     }
 }
