@@ -52,7 +52,7 @@ namespace Magazyn
         
             user.Password = newPassword;
 
-            user.MustChangePassword = true;
+            //user.MustChangePassword = true;
 
             context.PasswordHistories.Add(new PasswordHistory
             {

@@ -36,7 +36,7 @@ namespace Magazyn.Entities
         //zeby observable dzialalo
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public bool MustChangePassword { get; set; } = false;
+        //public bool MustChangePassword { get; set; } = false;
 
         //public int UserPermissionId { get; set; }
 
