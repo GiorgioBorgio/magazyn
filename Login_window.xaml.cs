@@ -126,8 +126,8 @@ namespace Magazyn
 
         private void Button_pass_recovery_Click(object sender, RoutedEventArgs e)
         {
-            //var passwordChangeWindow = new ForgotPasswordManager();
-            //passwordChangeWindow.ShowDialog();
+          var passwordChangeWindow = new ForgottenPassword();
+            passwordChangeWindow.ShowDialog();
         }
     }
 }
