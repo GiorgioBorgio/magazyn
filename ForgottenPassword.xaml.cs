@@ -1,24 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Magazyn.Entities;
 
 namespace Magazyn
 {
-    /// <summary>
-    /// Logika interakcji dla klasy ForgottenPassword.xaml
-    /// </summary>
     public partial class ForgottenPassword : Window
     {
         public ForgottenPassword()
@@ -48,8 +35,8 @@ namespace Magazyn
 
                 try
                 {
-                    SendResetEmail(user);
-                    MessageBox.Show("Wysłano e-mail z instrukcjami resetowania hasła.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    SendResetEmail(user, context);
+                    MessageBox.Show("Wysłano e-mail z nowym hasłem.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
@@ -58,34 +45,57 @@ namespace Magazyn
             }
         }
 
-        private void SendResetEmail(User user)
+        private void SendResetEmail(User user, WarehouseDbContext context)
         {
-            //var fromAddress = new MailAddress("lucas003gg@gmail.com", "Magazyn - reset hasła");
-            //var toAddress = new MailAddress(user.Email);
-            //const string fromPassword = "twoje_hasło_app"; 
-            //const string subject = "Reset hasła";
-            //string body = $"Witaj {user.FirstName},\n\nKliknij w poniższy link, aby zresetować hasło:\nhttps://twojastrona/reset/{user.Id}";
+            string newPassword = GenerateRandomPassword(8);
 
-            //var smtp = new SmtpClient
-            //{
-            //    Host = "smtp.gmail.com",
-            //    Port = 587,
-            //    EnableSsl = true,
-            //    DeliveryMethod = SmtpDeliveryMethod.Network,
-            //    UseDefaultCredentials = false,
-            //    Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
-            //};
+        
+            user.Password = newPassword;
 
-            //using (var message = new MailMessage(fromAddress, toAddress)
-            //{
-            //    Subject = subject,
-            //    Body = body
-            //})
-            //{
-            //    smtp.Send(message);
-            //}
+            
+            context.PasswordHistories.Add(new PasswordHistory
+            {
+                UserId = user.Id,
+                Password = newPassword,
+                ChangeDate = DateTime.Now
+            });
+
+            context.SaveChanges();
+
+            
+            var fromAddress = new MailAddress("", "Magazyn - reset hasła");
+            var toAddress = new MailAddress(user.Email);
+            const string fromPassword = ""; 
+            const string subject = "Nowe hasło";
+
+            string body = $"Witaj {user.FirstName},\n\nTwoje nowe hasło to: {newPassword}\nZaloguj się i zmień hasło jak najszybciej.";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
         }
 
-
+        private string GenerateRandomPassword(int length)
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
     }
 }
