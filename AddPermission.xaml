@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Magazyn"
         mc:Ignorable="d"
         Title="Wybierz uprawnienie"
-        Height="450" Width="600"
+        Height="700" Width="600"
         WindowStartupLocation="CenterScreen"
         Background="#f2f2f2"
         Loaded="Window_Loaded">
