@@ -14,14 +14,11 @@ using System.Windows.Shapes;
 using Magazyn.Entities;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Magazyn
 {
     /// <summary>
     /// Logika interakcji dla klasy Login_window.xaml
     /// </summary>
-    /// 
-    
     public partial class Login_window : Window
     {
         public Login_window()
@@ -33,12 +30,11 @@ namespace Magazyn
         private DateTime? lockoutEndTime = null;
         private readonly TimeSpan lockoutDuration = TimeSpan.FromMinutes(10);
 
+        // Statyczne słownik do przechowywania blokad dla różnych loginów
+        private static Dictionary<string, DateTime> userLockouts = new Dictionary<string, DateTime>();
 
         private void Button_logowanie_ok_Click(object sender, RoutedEventArgs e)
         {
-
-           
-
             if (lockoutEndTime.HasValue && DateTime.Now < lockoutEndTime.Value)
             {
                 MessageBox.Show($"Logowanie zablokowane do {lockoutEndTime.Value:HH:mm:ss}.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -55,16 +51,11 @@ namespace Magazyn
                     .ThenInclude(up => up.Permission)
                     .FirstOrDefault(u => u.Login == login);
 
-
-            
-
-
                 if (user == null)
                 {
                     MessageBox.Show("Podany login nie istnieje.", "Błąd logowania", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-               
 
                 if (user.Password != password)
                 {
@@ -73,14 +64,15 @@ namespace Magazyn
                     if (failedAttempts >= 3)
                     {
                         lockoutEndTime = DateTime.Now.Add(lockoutDuration);
+
+                        // Zapisz blokadę dla tego loginu
+                        userLockouts[login] = lockoutEndTime.Value;
+
                         Button_logowanie_ok.IsEnabled = false;
 
                         MessageBox.Show("Trzykrotnie podałeś/aś błędne hasło! Spróbuj ponownie za 10 minut.", "Zablokowano", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                        
                         LockoutInfoTextBlock.Text = $"Logowanie dostępne od: {lockoutEndTime.Value:HH:mm:ss}";
-
-                      
                         StartLockoutTimer();
                     }
                     else
@@ -91,15 +83,31 @@ namespace Magazyn
                     return;
                 }
 
-                
                 failedAttempts = 0;
 
                 MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindow mainWindow = new MainWindow(user); 
+                MainWindow mainWindow = new MainWindow(user);
 
                 mainWindow.Show();
                 this.Close();
             }
+        }
+                
+        // Metoda do sprawdzania blokady z innych okien
+        public static bool IsUserLockedOut(string login)
+        {
+            if (userLockouts.ContainsKey(login))
+            {
+                if (DateTime.Now < userLockouts[login])
+                {
+                    return true;
+                }
+                else
+                {
+                    userLockouts.Remove(login);
+                }
+            }
+            return false;
         }
 
         private void StartLockoutTimer()
@@ -114,7 +122,7 @@ namespace Magazyn
                     failedAttempts = 0;
                     lockoutEndTime = null;
                     Button_logowanie_ok.IsEnabled = true;
-                    LockoutInfoTextBlock.Text = ""; 
+                    LockoutInfoTextBlock.Text = "";
                 }
                 else
                 {
@@ -126,7 +134,7 @@ namespace Magazyn
 
         private void Button_pass_recovery_Click(object sender, RoutedEventArgs e)
         {
-          var passwordChangeWindow = new ForgottenPassword();
+            var passwordChangeWindow = new ForgottenPassword();
             passwordChangeWindow.ShowDialog();
         }
     }

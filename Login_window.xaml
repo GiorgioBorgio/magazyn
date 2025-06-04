@@ -4,95 +4,237 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Magazyn"
+        WindowState="Maximized"
         mc:Ignorable="d"
-        Title="Logowanie" Height="450" Width="800">
+        Title="Logowanie" 
+        MinHeight="600" 
+        MinWidth="900"
+        Height="800" 
+        Width="1200">
+
     <Window.Resources>
-        <SolidColorBrush x:Key="TextBoxBackground" Color="White"/>
-        <SolidColorBrush x:Key="BorderColor" Color="#ccc"/>
-        <SolidColorBrush x:Key="PrimaryColor" Color="#4CAF50"/>
+        <!-- Kolory -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#1E3A8A"/>
+        <SolidColorBrush x:Key="SecondaryBlue" Color="#3B82F6"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#10B981"/>
+        <SolidColorBrush x:Key="BackgroundGray" Color="#F8FAFC"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#1F2937"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#6B7280"/>
+        <SolidColorBrush x:Key="BorderColor" Color="#E5E7EB"/>
+        <SolidColorBrush x:Key="ErrorColor" Color="#EF4444"/>
 
-        <!-- styl dla textboxów -->
-        <Style TargetType="TextBox">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <!-- Gradient dla lewego panelu -->
+        <LinearGradientBrush x:Key="LeftPanelGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#0F172A" Offset="0"/>
+            <GradientStop Color="#1E293B" Offset="0.3"/>
+            <GradientStop Color="#334155" Offset="0.7"/>
+            <GradientStop Color="#475569" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Style dla TextBox -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="15,12"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
-            <Setter Property="Background" Value="{StaticResource TextBoxBackground}"/>
-            <Setter Property="Width" Value="200"/>
-        </Style>
-        <!-- styl dla przycisku logowania-->
-        <Style x:Key="LoginButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="45"/>
-            <Setter Property="Width" Value="126"/>
-        </Style>
-
-        <!-- styl dla przycisku odzyskiwania-->
-        <Style x:Key="TransparentTextButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground">
-                <Setter.Value>
-                    <SolidColorBrush Color="Black" Opacity="0.75"/>
-                </Setter.Value>
-            </Setter>
-
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="CaretBrush" Value="Black"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBlue}"/>
+                </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Foreground">
-                        <Setter.Value>
-                            <SolidColorBrush Color="Black" Opacity="1.0"/>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBlue}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
+        <!-- Style dla PasswordBox -->
+        <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="15,12"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="PasswordChar" Value="●"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBlue}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBlue}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
+        <!-- Style dla głównego przycisku -->
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentGreen}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#059669"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#047857"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style dla przycisku tekstowego -->
+        <Style x:Key="TextButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource SecondaryBlue}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style dla etykiet -->
+        <Style x:Key="FieldLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
     </Window.Resources>
-    <Grid>
-        <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" Margin="481,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="40" Cursor="IBeam"/>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="481,155,0,0"  VerticalAlignment="Top" Width="300" Height="40" Cursor="IBeam"/>
-        <Label Content="Login" Grid.Row="0" Grid.Column="0" Margin="381,101,319,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" Height="40" RenderTransformOrigin="0.868,0.517"/>
-        <Label Content="Hasło" Grid.Row="0" Grid.Column="0" Margin="381,155,319,0" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" Height="40"/>
-        <Button x:Name="Button_logowanie_ok"
-                Content="Zaloguj" 
-                HorizontalAlignment="Left" 
-                Margin="546,269,0,0" 
-                VerticalAlignment="Top" 
-                Style="{StaticResource LoginButtonStyle}" 
-                Cursor="" Click="Button_logowanie_ok_Click"/>
 
-        <TextBlock x:Name="LockoutInfoTextBlock" Margin="481,325,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="14"/>
+    <Grid Background="{StaticResource BackgroundGray}">
+        <Grid.ColumnDefinitions>
+            <!-- Lewy panel - elastyczny, minimum 300px -->
+            <ColumnDefinition Width="2*" MinWidth="300"/>
+            <!-- Prawy panel - elastyczny, minimum 400px -->
+            <ColumnDefinition Width="3*" MinWidth="400"/>
+        </Grid.ColumnDefinitions>
 
-        <Button x:Name="Button_pass_recovery" 
-                Content="Nie pamiętasz hasła?" 
-                HorizontalAlignment="Left" 
-                Margin="524,387,0,0" 
-                VerticalAlignment="Top" 
-                Width="170"
-                Cursor="Hand"
-                Style="{StaticResource TransparentTextButtonStyle}" Click="Button_pass_recovery_Click">
-        </Button>
-        <Rectangle HorizontalAlignment="Left" Height="434" Stroke="Black" VerticalAlignment="Center" Width="376">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FF1E293B" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label Content="Warehouse" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="48" FontFamily="Dubai" FontStyle="Italic"/>
-        <Label Content="Manager" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="48" FontFamily="Dubai" FontStyle="Italic"/>
+        <!-- Lewy panel z brandingiem -->
+        <Border Grid.Column="0" 
+                Background="{StaticResource LeftPanelGradient}"
+                CornerRadius="0,20,20,0">
+            <Grid>
+                <StackPanel VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Margin="40">
+                    <!-- Logo -->
+                    <TextBlock Text="📦" 
+                              FontSize="80" 
+                              HorizontalAlignment="Center"
+                               Foreground="White"
+                              Margin="0,0,0,20"/>
 
+                    <!-- Tytuł aplikacji -->
+                    <TextBlock Text="Magazyn" 
+                              FontSize="48" 
+                              FontWeight="Bold" 
+                              Foreground="White"
+                              TextAlignment="Center"
+                              FontFamily="Segoe UI Light"
+                              Margin="0,0,0,30"/>
 
+                    <!-- Opis -->
+                    <TextBlock Text=""
+                              FontSize="16"
+                              Foreground="White"
+                              TextAlignment="Center"
+                              Opacity="0.8"
+                              TextWrapping="Wrap"
+                              LineHeight="24"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Prawy panel z formularzem logowania -->
+        <Grid Grid.Column="1">
+            <StackPanel VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       MaxWidth="400"
+                       Margin="60,40">
+
+                <!-- Nagłówek formularza -->
+                <TextBlock Text="Zaloguj się" 
+                          FontSize="32" 
+                          FontWeight="Bold" 
+                          Foreground="{StaticResource TextPrimary}"
+                          Margin="0,0,0,10"
+                          HorizontalAlignment="Center"/>
+
+                <TextBlock Text="Wprowadź swoje dane logowania aby kontynuować"
+                          FontSize="16"
+                          Foreground="{StaticResource TextSecondary}"
+                          TextAlignment="Center"
+                          Margin="0,0,0,40"
+                          TextWrapping="Wrap"/>
+
+                <!-- Pole Login -->
+                <Label Content="Login" Style="{StaticResource FieldLabel}"/>
+                <TextBox x:Name="LoginTextBox" 
+                        Style="{StaticResource ModernTextBox}"
+                        Margin="0,0,0,20"/>
+
+                <!-- Pole Hasło -->
+                <Label Content="Hasło" Style="{StaticResource FieldLabel}"/>
+                <PasswordBox x:Name="PasswordBox" 
+                           Style="{StaticResource ModernPasswordBox}"
+                           Margin="0,0,0,30"/>
+
+                <!-- Komunikat o błędzie/blokadzie -->
+                <TextBlock x:Name="LockoutInfoTextBlock" 
+                          Foreground="{StaticResource ErrorColor}"
+                          FontSize="14"
+                          TextWrapping="Wrap"
+                          Margin="0,0,0,20"
+                          HorizontalAlignment="Center"/>
+
+                <!-- Przycisk logowania -->
+                <Button x:Name="Button_logowanie_ok"
+                       Content="Zaloguj się" 
+                       Style="{StaticResource PrimaryButton}"
+                       Margin="0,0,0,30"
+                       Click="Button_logowanie_ok_Click"/>
+
+                <!-- Odzyskiwanie hasła -->
+                <Button x:Name="Button_pass_recovery" 
+                       Content="Nie pamiętasz hasła?" 
+                       Style="{StaticResource TextButton}"
+                       HorizontalAlignment="Center"
+                       Click="Button_pass_recovery_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
