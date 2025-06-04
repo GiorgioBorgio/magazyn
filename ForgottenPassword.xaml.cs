@@ -63,6 +63,7 @@ namespace Magazyn
             string newPassword = GenerateRandomPassword();
 
             user.Password = newPassword;
+            user.MustChangePassword = true;
 
             context.PasswordHistories.Add(new PasswordHistory
             {
@@ -73,7 +74,7 @@ namespace Magazyn
 
             context.SaveChanges();
 
-            var fromAddress = new MailAddress("your-email@gmail.com", "Magazyn - reset hasła"); 
+            var fromAddress = new MailAddress("", "Magazyn - reset hasła"); 
             var toAddress = new MailAddress(user.Email);
             const string fromPassword = ""; 
             const string subject = "Nowe hasło";

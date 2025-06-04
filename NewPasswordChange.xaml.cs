@@ -55,7 +55,7 @@ namespace Magazyn
 
                 var userInDb = context.Users.First(u => u.Id == _user.Id);
                 userInDb.Password = newPassword;
-                //userInDb.MustChangePassword = false;
+                userInDb.MustChangePassword = false;
 
                 context.PasswordHistories.Add(new PasswordHistory
                 {

@@ -27,14 +27,7 @@ namespace Magazyn
             loggedUser = user;
 
 
-            if (loggedUser.UserPermissions.Any(p => p.Permission?.Name == "zmiana hasla"))
-            {
-                ChangePasswordButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                ChangePasswordButton.Visibility = Visibility.Collapsed;
-            }
+            
 
         }
 

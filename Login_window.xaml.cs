@@ -99,6 +99,27 @@ namespace Magazyn
                 if (userLockouts.ContainsKey(login))
                     userLockouts.Remove(login);
 
+                // Jeżeli konto wymaga natychmiastowej zmiany hasła:
+                if (user.MustChangePassword)
+                {
+                    MessageBox.Show(
+                        "Twoje konto korzysta z hasła tymczasowego. Musisz je zmienić przed dalszym użyciem.",
+                        "Zmiana hasła wymagana",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information
+                    );
+
+                    // Otwórz okno zmiany hasła:
+                    var changePassWindow = new NewPasswordChange(user);
+                    changePassWindow.ShowDialog();
+                                        
+                    using (var ctx = new WarehouseDbContext())
+                    {
+                        user = ctx.Users.Include(u => u.UserPermissions).First(u => u.Login == login);
+                    }
+                }
+
+                // Teraz już normalnie otwierasz MainWindow
                 MessageBox.Show("Zalogowano pomyślnie!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
                 MainWindow mainWindow = new MainWindow(user);
                 mainWindow.Show();
