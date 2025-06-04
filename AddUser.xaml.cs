@@ -57,7 +57,7 @@ namespace Magazyn
             var user = new CreateUserDto();
             if (Radio_btn_kobieta.IsChecked == true)
             {
-                plec = false;
+                plec = false;   
             }
             else
             {

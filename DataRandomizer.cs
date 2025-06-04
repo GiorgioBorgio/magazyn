@@ -8,7 +8,7 @@ namespace Magazyn
 {
     internal class DataRandomizer
     {
-        //test
+        private readonly Random random = new Random();
         public string GenerateRandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -19,7 +19,6 @@ namespace Magazyn
 
         public string GenerateValidPesel(DateTime birthDate, bool gender)
         {
-            var random = new Random();
             int year = birthDate.Year % 100;
             int month = birthDate.Month;
             int day = birthDate.Day;
@@ -31,7 +30,7 @@ namespace Magazyn
             else if (birthDate.Year >= 1800 && birthDate.Year < 1900) month += 80;
 
             // Generowanie losowej serii 3 cyfr
-            int serialNumber = random.Next(100, 999);
+            int serialNumber = random.Next(100, 1000); // przy next górna granica jest wyłączna, więc 1000 nie zostanie wygenerowane
 
             // Generowanie cyfry kontrolnej płci (parzysta dla kobiet, nieparzysta dla mężczyzn)
             int genderDigit = gender ? random.Next(0, 5) * 2 + 1 : random.Next(0, 5) * 2;
@@ -55,16 +54,15 @@ namespace Magazyn
 
         public DateTime GenerateRandomDateOfBirth()
         {
-            var random = new Random();
-            int year = random.Next(1950, 2010);
-            int month = random.Next(1, 12);
+            int year = random.Next(1950, 2011); // jw
+            int month = random.Next(1, 13); // jw
             int day = random.Next(1, DateTime.DaysInMonth(year, month));
             return new DateTime(year, month, day);
         }
 
         public bool GenerateRandomGender()
         {
-            return new Random().Next(2) == 0;
+            return random.Next(2) == 0;
         }
 
         public string GenerateRandomEmail()
@@ -74,7 +72,6 @@ namespace Magazyn
 
         public string GenerateRandomPhoneNumber()
         {
-            var random = new Random();
             return string.Concat(Enumerable.Range(0, 9).Select(_ => random.Next(0, 10).ToString()));
         }
     }

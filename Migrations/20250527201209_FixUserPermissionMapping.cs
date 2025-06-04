@@ -17,14 +17,17 @@ namespace Magazyn.Migrations
                 name: "PK_UserPermissions",
                 table: "UserPermissions");
 
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.DropColumn(
+    name: "Id",
+    table: "UserPermissions");
+
+            migrationBuilder.AddColumn<int>(
                 name: "Id",
                 table: "UserPermissions",
                 type: "int",
                 nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                defaultValue: 0);
+
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_UserPermissions",
